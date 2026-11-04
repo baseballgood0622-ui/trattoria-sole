@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ★ここでWINEページのタイトル・検索結果説明文を変更できます -->
+  <title>WINE（料理を引き立てるワイン）｜Trattoria SOLE（トラットリア ソーレ）</title>
+  <meta name="description" content="代々木上原「Trattoria SOLE」の厳選ワインリスト。イタリア全20州から揃えたバローロ、ブルネッロ、フランチャコルタなど常時80種以上。グラス・ペアリングやノンアルコールペアリングもご用意しております。">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- 共通スタイルシート -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =====================================================================
+       共通ヘッダー（スクロール追従・全ページ共通予約導線）
+       ===================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner">
+      <!-- ★既存のロゴ画像ファイルがある場合は、ここのテキストロゴを <img src="assets/logo.png" alt="Trattoria SOLE"> に差し替えられます -->
+      <a href="index.html" class="site-logo" aria-label="Trattoria SOLE ホームへ">
+        <span class="site-logo__main">Trattoria SOLE</span>
+        <span class="site-logo__sub">YOYOGI-UEHARA | SINCE 2011</span>
+      </a>
+
+      <div class="header-nav-wrap">
+        <nav class="global-nav" aria-label="メインナビゲーション">
+          <ul class="global-nav__list">
+            <li><a href="index.html" class="global-nav__link">HOME</a></li>
+            <li><a href="menu.html" class="global-nav__link">MENU</a></li>
+            <li><a href="wine.html" class="global-nav__link is-current">WINE</a></li>
+            <li><a href="index.html#access" class="global-nav__link">ACCESS</a></li>
+            <li><a href="index.html#concept" class="global-nav__link">CONCEPT</a></li>
+            <li><a href="reservation.html" class="global-nav__link">RESERVATION</a></li>
+          </ul>
+        </nav>
+        <a href="reservation.html" class="header-cta-btn">オンライン予約</a>
+      </div>
+
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="メニューを開く">
+        <span class="nav-toggle__bars" aria-hidden="true">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </span>
+        <span class="nav-toggle__label" id="nav-toggle-label">MENU</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- スマホ・タブレット用ドロワーメニュー -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <nav aria-label="スマートフォン用メニュー">
+      <ul class="mobile-drawer__list">
+        <li class="mobile-drawer__item">
+          <a href="index.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">HOME</span>
+            <span class="mobile-drawer__jp">トップページ</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="index.html#anniversary" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">ANNIVERSARY</span>
+            <span class="mobile-drawer__jp">記念日のおもてなし</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="menu.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">MENU</span>
+            <span class="mobile-drawer__jp">お料理・コースのご案内</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="wine.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">WINE</span>
+            <span class="mobile-drawer__jp">料理を引き立てるワイン</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="index.html#access" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">ACCESS</span>
+            <span class="mobile-drawer__jp">店舗情報・アクセス</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="index.html#concept" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">CONCEPT</span>
+            <span class="mobile-drawer__jp">私たちが大切にしていること</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="reservation.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">RESERVATION</span>
+            <span class="mobile-drawer__jp">ご予約・記念日のご相談</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="mobile-drawer__footer">
+      <p class="mobile-drawer__tel-label">お電話でのご予約・ご相談（11:00–22:00）</p>
+      <a href="tel:0354540150" class="mobile-drawer__tel tel-num">03-5454-0150</a>
+      <p class="mobile-drawer__hours">
+        LUNCH 11:30–15:00 (L.O. 13:30) / DINNER 17:30–22:30 (L.O. 20:30)<br>
+        定休日：毎週水曜日・第2火曜日
+      </p>
+      <a href="reservation.html" class="btn btn--primary">
+        <span>オンライン予約・ご相談</span>
+        <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ===================================================================
+         1. ページヘッダー・導入コピー
+         =================================================================== -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+          <ol class="breadcrumb__list">
+            <li><a href="index.html">HOME</a></li>
+            <li class="breadcrumb__sep" aria-hidden="true">/</li>
+            <li aria-current="page">WINE</li>
+          </ol>
+        </nav>
+
+        <div class="page-hero__header">
+          <span class="page-hero__en">WINE</span>
+          <span class="page-hero__sub">料理を引き立てるワイン</span>
+          <h1 class="page-hero__catch">イタリア各地の風土と、<span class="ib">一皿の手仕事が出会う瞬間。</span></h1>
+          <p class="page-hero__lead">
+            アルプスの麓ピエモンテから、太陽が降り注ぐシチリア島まで。<br class="pc-only">
+            Trattoria SOLEでは、松本シェフの料理に寄り添うイタリアワインを中心に常時80種類以上をセラーに揃えております。<br class="pc-only">
+            ワインに詳しくない方もどうぞご安心ください。「華やかな香りの白」「お肉に合う滑らかな赤」など、お好みに合わせて一杯から丁寧にご提案いたします。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ページ内カテゴリー移動バー -->
+    <nav class="anchor-bar" aria-label="ワインカテゴリー移動">
+      <div class="container">
+        <ul class="anchor-bar__list">
+          <li>
+            <a href="#red-wine" class="anchor-bar__link">
+              <span>RED WINE（赤ワイン）</span>
+              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M7 2.5V11.5M3.5 8L7 11.5L10.5 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#white-wine" class="anchor-bar__link">
+              <span>WHITE WINE（白ワイン）</span>
+              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M7 2.5V11.5M3.5 8L7 11.5L10.5 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#sparkling-wine" class="anchor-bar__link">
+              <span>SPARKLING WINE（スパークリング）</span>
+              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M7 2.5V11.5M3.5 8L7 11.5L10.5 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ===================================================================
+         2. 導入ビジュアル ＆ グラス・ペアリングのご案内
+         ★ここでペアリング料金・説明を編集できます
+         =================================================================== -->
+    <section class="section section--ivory" style="padding-bottom: 40px;">
+      <div class="container">
+        <figure class="wine-hero-photo fade-up">
+          <img
+            src="assets/wine-selection.jpg"
+            alt="温かな照明のセラーを背景に並ぶイタリア各地の赤・白・スパークリングワイン"
+            width="1376"
+            height="768"
+            loading="eager"
+          >
+        </figure>
+
+        <div class="pairing-sheet fade-up">
+          <div class="pairing-sheet__inner">
+            <div class="section-eyebrow" style="margin-bottom: 10px;">
+              <span class="section-eyebrow__en">GLASS PAIRING</span>
+              <span class="section-eyebrow__sep" aria-hidden="true">/</span>
+              <span class="section-eyebrow__jp">ペアリングのご案内</span>
+            </div>
+            <h2 class="pairing-sheet__title">コースの流れに合わせて楽しむ、グラス・ペアリング</h2>
+            <p class="pairing-sheet__desc">
+              乾杯の泡から前菜、パスタ、メインディッシュまで。お料理一皿ごとの香りや温度に合わせて最適なワインを少量ずつお注ぎするペアリングも人気です。お二人のペースに合わせて量の調整も承ります。
+            </p>
+
+            <div class="pairing-table">
+              <div class="pairing-table__row">
+                <span class="pairing-table__name">ワイン・ペアリング（3グラス）</span>
+                <span class="pairing-table__price">¥4,200</span>
+                <span class="pairing-table__note">乾杯スパークリング＋白＋赤など、気軽に楽しみたい方に</span>
+              </div>
+              <div class="pairing-table__row">
+                <span class="pairing-table__name">ワイン・ペアリング（5グラス）</span>
+                <span class="pairing-table__price">¥6,800</span>
+                <span class="pairing-table__note">コース料理一皿ごとにマリアージュを堪能したい方に</span>
+              </div>
+              <div class="pairing-table__row">
+                <span class="pairing-table__name">ノンアルコール・ペアリング（3グラス）</span>
+                <span class="pairing-table__price">¥3,000</span>
+                <span class="pairing-table__note">ぶどう果汁スパークリングや自家製ハーブ＆果実ドリンクなど、お酒を控えたい方にも特別な体験を</span>
+              </div>
+            </div>
+
+            <p class="pairing-sheet__tax-note">※すべて税込表記（ディナータイムはサービス料5%別）</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         3. 厳選ワインリスト（3カテゴリー × 各3銘柄＝計9銘柄）
+         ★ここでワインの銘柄・産地・品種・特徴・グラス/ボトル価格を変更できます
+         =================================================================== -->
+    <section class="section section--ivory">
+      <div class="container">
+
+        <!-- ▼ Category 01：RED WINE｜赤ワイン ▼ -->
+        <div class="sommelier-cat fade-up" id="red-wine">
+          <div class="sommelier-cat__header">
+            <div class="sommelier-cat__title-wrap">
+              <h2 class="sommelier-cat__en">RED WINE</h2>
+              <span class="sommelier-cat__jp">赤ワイン</span>
+            </div>
+            <p class="sommelier-cat__lead">炭火で焼き上げる黒毛和牛やじっくり煮込んだラグーソースに寄り添う、気品と温かみのある赤ワイン。</p>
+          </div>
+
+          <div class="sommelier-list">
+            <!-- 赤ワイン 01 -->
+            <article class="sommelier-row">
+              <div>
+                <span class="sommelier-row__num num-en">No. 01</span>
+                <h3 class="sommelier-row__name">バローロ・クラシコ（ボルゴーニョ）</h3>
+                <span class="sommelier-row__orig lang-it">Barolo Classico / Giacomo Borgogno &amp; Figli</span>
+                <div class="sommelier-row__meta">
+                  <span>産地：イタリア・ピエモンテ州</span>
+                  <span>品種：ネッビオーロ 100%</span>
+                </div>
+              </div>
+
+              <div>
+                <p class="sommelier-row__desc">「ワインの王様」と称されるピエモンテの名門ワイン。ドライローズや熟したチェリー、ほのかなスパイスの気品ある香りが立ち上り、きめ細かなタンニン（渋み）と長く優美な余韻が特別な夜を彩ります。</p>
+                <p class="sommelier-row__pairing">
+                  <span class="sommelier-row__pairing-label">PAIRING :</span>厳選黒毛和牛イチボの炭火タリアータ、黒毛和牛フィレ肉の炭火ロースト
+                </p>
+              </div>
+
+              <div class="sommelier-row__prices">
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">GLASS</span>
+                  <span class="wine-price-line__val">¥2,200</span>
+                </div>
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">BOTTLE</span>
+                  <span class="wine-price-line__val">¥13,500</span>
+                </div>
+                <div class="wine-price-tax">（税込）</div>
+              </div>
+            </article>
+
+            <!-- 赤ワイン 02 -->
+            <article class="sommelier-row">
+              <div>
+                <span class="sommelier-row__num num-en">No. 02</span>
+                <h3 class="sommelier-row__name">ブルネッロ・ディ・モンタルチーノ（バンフィ）</h3>
+                <span class="sommelier-row__orig lang-it">Brunello di Montalcino / Castello Banfi</span>
+                <div class="sommelier-row__meta">
+                  <span>産地：イタリア・トスカーナ州</span>
+                  <span>品種：サンジョヴェーゼ・グロッソ 100%</span>
+                </div>
+              </div>
+
+              <div>
+                <p class="sommelier-row__desc">熟したブラックベリーに、バニラやカカオが溶け合う芳醇なアロマ。力強い骨格がありながら口当たりはビロードのように滑らかで、記念日のメインディッシュを格調高く引き立てる一本です。</p>
+                <p class="sommelier-row__pairing">
+                  <span class="sommelier-row__pairing-label">PAIRING :</span>骨付き仔羊背肉の香草ロースト、黒毛和牛すね肉のラグーソース 手打ちタリアテッレ
+                </p>
+              </div>
+
+              <div class="sommelier-row__prices">
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">GLASS</span>
+                  <span class="wine-price-line__val">¥2,400</span>
+                </div>
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">BOTTLE</span>
+                  <span class="wine-price-line__val">¥14,800</span>
+                </div>
+                <div class="wine-price-tax">（税込）</div>
+              </div>
+            </article>
+
+            <!-- 赤ワイン 03 -->
+            <article class="sommelier-row">
+              <div>
+                <span class="sommelier-row__num num-en">No. 03</span>
+                <h3 class="sommelier-row__name">エトナ・ロッソ（テヌータ・デッレ・テッレ・ネーレ）</h3>
+                <span class="sommelier-row__orig lang-it">Etna Rosso / Tenuta delle Terre Nere</span>
+                <div class="sommelier-row__meta">
+                  <span>産地：イタリア・シチリア州</span>
+                  <span>品種：ネレッロ・マスカレーゼ 95%、ネレッロ・カプッチョ 5%</span>
+                </div>
+              </div>
+
+              <div>
+                <p class="sommelier-row__desc">シチリア島の活火山・エトナ山のミネラル豊かな大地が育む、透明感あふれるエレガントな赤ワイン。赤いベリーの瑞々しい果実味と綺麗な酸があり、重すぎる赤が苦手な方にも心地よくお楽しみいただけます。</p>
+                <p class="sommelier-row__pairing">
+                  <span class="sommelier-row__pairing-label">PAIRING :</span>銘柄豚肩ロースの低温炭火グリル、イタリア産生ハム・サラミの盛り合わせ
+                </p>
+              </div>
+
+              <div class="sommelier-row__prices">
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">GLASS</span>
+                  <span class="wine-price-line__val">¥1,500</span>
+                </div>
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">BOTTLE</span>
+                  <span class="wine-price-line__val">¥8,800</span>
+                </div>
+                <div class="wine-price-tax">（税込）</div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ▼ Category 02：WHITE WINE｜白ワイン ▼ -->
+        <div class="sommelier-cat fade-up" id="white-wine">
+          <div class="sommelier-cat__header">
+            <div class="sommelier-cat__title-wrap">
+              <h2 class="sommelier-cat__en">WHITE WINE</h2>
+              <span class="sommelier-cat__jp">白ワイン</span>
+            </div>
+            <p class="sommelier-cat__lead">旬の鮮魚のカルパッチョや魚介パスタの旨みを瑞々しく引き出す、香り豊かなイタリアの白ワイン。</p>
+          </div>
+
+          <div class="sommelier-list">
+            <!-- 白ワイン 01 -->
+            <article class="sommelier-row">
+              <div>
+                <span class="sommelier-row__num num-en">No. 01</span>
+                <h3 class="sommelier-row__name">ガヴィ・ディ・ガヴィ（ラ・スコルカ）</h3>
+                <span class="sommelier-row__orig lang-it">Gavi dei Gavi / La Scolca</span>
+                <div class="sommelier-row__meta">
+                  <span>産地：イタリア・ピエモンテ州</span>
+                  <span>品種：コルテーゼ 100%</span>
+                </div>
+              </div>
+
+              <div>
+                <p class="sommelier-row__desc">青リンゴや白い花、新鮮な柑橘を思わせる清々しい香り。凛とした美しい酸とミネラル感が心地よく広がり、お食事の始まりである魚介の冷前菜と驚くほど爽やかに調和します。</p>
+                <p class="sommelier-row__pairing">
+                  <span class="sommelier-row__pairing-label">PAIRING :</span>季節の鮮魚のカルパッチョ、真鯛と浅利・カラスミのリングイネ
+                </p>
+              </div>
+
+              <div class="sommelier-row__prices">
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">GLASS</span>
+                  <span class="wine-price-line__val">¥1,600</span>
+                </div>
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">BOTTLE</span>
+                  <span class="wine-price-line__val">¥9,200</span>
+                </div>
+                <div class="wine-price-tax">（税込）</div>
+              </div>
+            </article>
+
+            <!-- 白ワイン 02 -->
+            <article class="sommelier-row">
+              <div>
+                <span class="sommelier-row__num num-en">No. 02</span>
+                <h3 class="sommelier-row__name">ソアーヴェ・クラシコ &ldquo;ラ・ロッカ&rdquo;（ピエロパン）</h3>
+                <span class="sommelier-row__orig lang-it">Soave Classico &ldquo;La Rocca&rdquo; / Pieropan</span>
+                <div class="sommelier-row__meta">
+                  <span>産地：イタリア・ヴェネト州</span>
+                  <span>品種：ガルガーネガ 100%</span>
+                </div>
+              </div>
+
+              <div>
+                <p class="sommelier-row__desc">完熟した白桃やナッツ、ほのかな蜂蜜のニュアンスを持つ樽熟成の白ワイン。ふくよかで厚みのある味わいが、バターやクリームを使った温かい魚介料理を優しく包み込みます。</p>
+                <p class="sommelier-row__pairing">
+                  <span class="sommelier-row__pairing-label">PAIRING :</span>北海道産ホタテと旬野菜のソテー、活オマール海老の濃厚トマトクリームパスタ
+                </p>
+              </div>
+
+              <div class="sommelier-row__prices">
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">GLASS</span>
+                  <span class="wine-price-line__val">¥1,900</span>
+                </div>
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">BOTTLE</span>
+                  <span class="wine-price-line__val">¥11,000</span>
+                </div>
+                <div class="wine-price-tax">（税込）</div>
+              </div>
+            </article>
+
+            <!-- 白ワイン 03 -->
+            <article class="sommelier-row">
+              <div>
+                <span class="sommelier-row__num num-en">No. 03</span>
+                <h3 class="sommelier-row__name">ヴェルメンティーノ・ディ・サルデーニャ（パーラ）</h3>
+                <span class="sommelier-row__orig lang-it">Vermentino di Sardegna &ldquo;Stellato&rdquo; / Pala</span>
+                <div class="sommelier-row__meta">
+                  <span>産地：イタリア・サルデーニャ州</span>
+                  <span>品種：ヴェルメンティーノ 100%</span>
+                </div>
+              </div>
+
+              <div>
+                <p class="sommelier-row__desc">地中海の太陽と潮風を浴びて育った、グレープフルーツや摘みたてハーブの華やかなアロマ。後味にほんのり心地よい塩味（ミネラル）が残り、魚介の甘みと旨みを何倍にも引き出します。</p>
+                <p class="sommelier-row__pairing">
+                  <span class="sommelier-row__pairing-label">PAIRING :</span>本日の天然鮮魚のアクアパッツァ、北海道産生ウニとトマトのスパゲッティ
+                </p>
+              </div>
+
+              <div class="sommelier-row__prices">
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">GLASS</span>
+                  <span class="wine-price-line__val">¥1,400</span>
+                </div>
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">BOTTLE</span>
+                  <span class="wine-price-line__val">¥7,800</span>
+                </div>
+                <div class="wine-price-tax">（税込）</div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ▼ Category 03：SPARKLING WINE｜スパークリングワイン ▼ -->
+        <div class="sommelier-cat fade-up" id="sparkling-wine">
+          <div class="sommelier-cat__header">
+            <div class="sommelier-cat__title-wrap">
+              <h2 class="sommelier-cat__en">SPARKLING WINE</h2>
+              <span class="sommelier-cat__jp">スパークリングワイン</span>
+            </div>
+            <p class="sommelier-cat__lead">「おめでとう」と「ありがとう」の乾杯を華やかに彩る、きめ細かな泡立ちのスパークリング＆シャンパーニュ。</p>
+          </div>
+
+          <div class="sommelier-list">
+            <!-- スパークリング 01 -->
+            <article class="sommelier-row">
+              <div>
+                <span class="sommelier-row__num num-en">No. 01</span>
+                <h3 class="sommelier-row__name">フランチャコルタ・アルマ・グラン・キュヴェ・ブリュット（ベラヴィスタ）</h3>
+                <span class="sommelier-row__orig lang-it">Franciacorta Alma Gran Cuvée Brut / Bellavista</span>
+                <div class="sommelier-row__meta">
+                  <span>産地：イタリア・ロンバルディア州</span>
+                  <span>品種：シャルドネ 77%、ピノ・ネロ 22%、ピノ・ビアンコ 1%</span>
+                </div>
+              </div>
+
+              <div>
+                <p class="sommelier-row__desc">「イタリアの奇跡」と讃えられる最高峰の瓶内二次発酵スパークリング。真珠のようにきめ細かな泡立ちと、熟した果実や焼き立てブリオッシュの気品ある香りが、記念日の乾杯を華やかに演出します。</p>
+                <p class="sommelier-row__pairing">
+                  <span class="sommelier-row__pairing-label">PAIRING :</span>始まりのアミューズ、水牛モッツァレラ「ブッラータ」とフルーツトマトのカプレーゼ
+                </p>
+              </div>
+
+              <div class="sommelier-row__prices">
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">GLASS</span>
+                  <span class="wine-price-line__val">¥2,000</span>
+                </div>
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">BOTTLE</span>
+                  <span class="wine-price-line__val">¥12,500</span>
+                </div>
+                <div class="wine-price-tax">（税込）</div>
+              </div>
+            </article>
+
+            <!-- スパークリング 02 -->
+            <article class="sommelier-row">
+              <div>
+                <span class="sommelier-row__num num-en">No. 02</span>
+                <h3 class="sommelier-row__name">プロセッコ・スペリオーレ・ブリュット &ldquo;ルスティコ&rdquo;（ニーノ・フランコ）</h3>
+                <span class="sommelier-row__orig lang-it">Valdobbiadene Prosecco Superiore Brut &ldquo;Rustico&rdquo; / Nino Franco</span>
+                <div class="sommelier-row__meta">
+                  <span>産地：イタリア・ヴェネト州</span>
+                  <span>品種：グレラ 100%</span>
+                </div>
+              </div>
+
+              <div>
+                <p class="sommelier-row__desc">洋梨や白い花のような優美でフルーティーな香り。軽やかで親しみやすい辛口仕立てのため、普段あまりワインを召し上がらないお相手様の最初の一杯にもぴったりの一本です。</p>
+                <p class="sommelier-row__pairing">
+                  <span class="sommelier-row__pairing-label">PAIRING :</span>イタリア産生ハムと季節の果実、季節の彩り前菜盛り合わせ
+                </p>
+              </div>
+
+              <div class="sommelier-row__prices">
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">GLASS</span>
+                  <span class="wine-price-line__val">¥1,300</span>
+                </div>
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">BOTTLE</span>
+                  <span class="wine-price-line__val">¥7,200</span>
+                </div>
+                <div class="wine-price-tax">（税込）</div>
+              </div>
+            </article>
+
+            <!-- スパークリング 03 -->
+            <article class="sommelier-row">
+              <div>
+                <span class="sommelier-row__num num-en">No. 03</span>
+                <h3 class="sommelier-row__name">シャンパーニュ・ルイ・ロデレール・コレクション <span class="num-en">244</span></h3>
+                <span class="sommelier-row__orig lang-it">Champagne Louis Roederer Collection 244</span>
+                <div class="sommelier-row__meta">
+                  <span>産地：フランス・シャンパーニュ地方</span>
+                  <span>品種：シャルドネ 42%、ピノ・ノワール 36%、ムニエ 22%</span>
+                </div>
+              </div>
+
+              <div>
+                <p class="sommelier-row__desc">一生に一度のプロポーズや節目のご結婚記念日にふさわしい、老舗メゾンの名作シャンパーニュ。柑橘の瑞々しさと長期熟成による深いコクが織りなす、祝福に満ちた格別の味わいです。</p>
+                <p class="sommelier-row__pairing">
+                  <span class="sommelier-row__pairing-label">PAIRING :</span>アニバーサリーコース全般、北海道産ホタテとトリュフの温前菜
+                </p>
+              </div>
+
+              <div class="sommelier-row__prices">
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">GLASS</span>
+                  <span class="wine-price-line__val">¥2,600</span>
+                </div>
+                <div class="wine-price-line">
+                  <span class="wine-price-line__label">BOTTLE</span>
+                  <span class="wine-price-line__val">¥16,500</span>
+                </div>
+                <div class="wine-price-tax">（税込）</div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <p class="wine-list-footnote fade-up">
+          ※上記はリストの一部です。ヴィンテージ（収穫年）やグラスワインの銘柄は季節や入荷状況により替わる場合がございます。ご予算（ボトル<span class="price-num">¥6,000</span>台〜）や記念年のワインなどのご相談も事前に承っております。
+        </p>
+
+        <!-- ノンアルコール案内ミニコラム -->
+        <div class="non-alc-column fade-up">
+          <span class="callout-non-alc__en">NON-ALCOHOLIC SELECTION</span>
+          <h3 class="non-alc-column__title">お料理と楽しむノンアルコールドリンク（グラス <span class="price-num">¥900</span>〜）</h3>
+          <p class="non-alc-column__body">
+            南仏産プレミアム・ノンアルコールスパークリング「ピエール・ゼロ」をはじめ、イタリア産ブラッドオレンジ、自家製季節のフルーツ＆ハーブコーディアル、香り高い水出し宇治玉露など、お食事の邪魔をしない上品なノンアルコールメニューも揃えております。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         4. MENUページへの回遊 ＆ 予約クロージングエリア
+         =================================================================== -->
+    <section class="section section--beige-soft">
+      <div class="container">
+        <div class="cross-link-banner fade-up" style="background-color: var(--color-bg-ivory);">
+          <figure class="cross-link-banner__thumb">
+            <img
+              src="assets/menu-secondo.jpg"
+              alt="厳選黒毛和牛イチボの炭火タリアータ"
+              width="1200"
+              height="896"
+              loading="lazy"
+            >
+          </figure>
+          <div>
+            <span class="cross-link-banner__en">SEASONAL DISHES &amp; COURSE</span>
+            <h2 class="cross-link-banner__title">ワインと響き合う、季節のお料理とコース</h2>
+            <p class="cross-link-banner__desc">手打ちパスタや炭火焼きのメイン、乾杯スパークリング付きの記念日コースをご覧いただけます。</p>
+            <a href="menu.html" class="text-link">
+              <span>お料理・コースを見る</span>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-cta" aria-label="ご予約のご案内">
+      <div class="container fade-up">
+        <div class="closing-cta__ornament" aria-hidden="true"></div>
+        <h2 class="closing-cta__title">美酒と美食に包まれる、<br>心温まる夜をご予約ください。</h2>
+        <p class="closing-cta__sub">お好みのワインのご相談や、お相手様がお酒に弱い場合のご配慮なども予約フォームよりお気軽にお知らせいただけます。</p>
+        <div class="closing-cta__actions">
+          <a href="reservation.html" class="btn btn--primary-on-dark">
+            <span>オンライン予約・記念日のご相談</span>
+            <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       共通フッター
+       ===================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cta">
+        <div class="footer-cta__inner">
+          <p class="footer-cta__micro">記念日プレートやサプライズのご相談もWebから承ります</p>
+          <a href="reservation.html" class="btn btn--primary-on-dark">
+            <span>オンライン予約・ご相談はこちら</span>
+            <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-main">
+        <div class="footer-brand">
+          <p class="footer-brand__logo">Trattoria SOLE</p>
+          <p class="footer-brand__copy">大切な日には、心に残る一皿を。</p>
+          <p class="footer-brand__desc">代々木上原の静かな街角で15年。旬の食材とイタリアワインで、心ほどけるひとときをお届けします。</p>
+          <div class="footer-info">
+            <p>〒151-0064 東京都渋谷区上原1-24-8 ソーレ代々木上原 1F（代々木上原駅 南口 徒歩3分）</p>
+            <p>TEL：<a href="tel:0354540150" class="footer-info__tel tel-num">03-5454-0150</a></p>
+            <p class="num-en">LUNCH 11:30–15:00 (L.O. 13:30) / DINNER 17:30–22:30 (L.O. 20:30)｜定休日：水曜・第2火曜</p>
+          </div>
+        </div>
+
+        <div class="footer-nav-area">
+          <nav aria-label="フッターナビゲーション">
+            <ul class="footer-nav__list">
+              <li><a href="index.html" class="footer-nav__link">HOME</a></li>
+              <li><a href="index.html#anniversary" class="footer-nav__link">ANNIVERSARY</a></li>
+              <li><a href="menu.html" class="footer-nav__link">MENU</a></li>
+              <li><a href="wine.html" class="footer-nav__link">WINE</a></li>
+              <li><a href="index.html#access" class="footer-nav__link">ACCESS</a></li>
+              <li><a href="index.html#concept" class="footer-nav__link">CONCEPT</a></li>
+              <li><a href="reservation.html" class="footer-nav__link">RESERVATION</a></li>
+            </ul>
+          </nav>
+
+          <div class="footer-sns">
+            <span class="footer-sns__label">FOLLOW US</span>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="footer-sns__link">Instagram</a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="footer-sns__link">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <small>&copy; Trattoria SOLE All Rights Reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- スマホ専用・画面下部追従（フローティング）予約バー -->
+  <div class="floating-bar" id="floating-bar" aria-label="スマートフォン用クイック予約バー">
+    <a href="tel:0354540150" class="floating-bar__tel">
+      <span class="floating-bar__tel-sub">TEL 11:00–22:00</span>
+      <span class="floating-bar__tel-main">お電話相談</span>
+    </a>
+    <a href="reservation.html" class="floating-bar__web">
+      <span class="floating-bar__web-sub">24H WEB RESERVATION</span>
+      <span class="floating-bar__web-main">
+        <span>オンライン予約</span>
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,4091 @@
+@charset "UTF-8";
+/* ==========================================================================
+   Trattoria SOLE（トラットリア ソーレ）公式Webサイト スタイルシート
+   デザインテーマ：Warm European Elegance（温かな品格と一番の見やすさ）
+   --------------------------------------------------------------------------
+   【オーナー様向け編集ガイド】
+   ・サイト全体の色味を変えたい場合は、すぐ下の「:root（カラーパレット定義）」の
+     カラーコード（#から始まる6桁の英数字）を書き換えるだけで全ページに反映されます。
+   ・文字サイズや余白も、スマートフォン・パソコンの両方で崩れないよう自動調整しています。
+   ========================================================================== */
+
+/* =========================================================
+   1. カラーパレット・フォント・余白の変数定義
+   ★ここでサイト全体の色やフォントを一括変更できます
+   ========================================================= */
+:root {
+  /* --- オーナー指定・基本5色（厳守） --- */
+  --color-bg-ivory: #FAF8F5;          /* ベース背景（約70%）：上質なリネンクロスのようなアイボリーホワイト */
+  --color-bg-beige: #F5E6D3;          /* サブ背景（約20%）：温もりのあるウォームベージュ */
+  --color-text-dark: #3E2723;         /* 基本テキスト色：深く柔らかなダークブラウン（見出し・主要本文） */
+  --color-accent-wine: #722F37;       /* プライマリCTA（約5〜7%）：熟成ワインレッド（予約ボタン・重要強調） */
+  --color-accent-gold: #C9A96E;       /* 上品アクセント（約3〜5%）：アンティークゴールド（飾り罫・特別枠） */
+
+  /* --- 可読性とUI操作感を高める補助シェード（基本5色からの派生トーン） --- */
+  --color-bg-paper: #FFFFFF;          /* フォーム入力欄やベージュ背景上の清潔な紙面背景 */
+  --color-bg-beige-soft: #F8EFE4;     /* コース案内などで使う優しいベージュティント */
+  --color-text-body: #47302B;         /* 長文本文用：高コントラストを維持しつつ目に優しいダークブラウン */
+  --color-text-muted: #6B514C;        /* 補足文・注釈用：薄いグレーを使わず読みやすさを保つブラウン */
+  --color-text-gold-readable: #7D5E2A;/* 明背景上の英字ラベル用：くっきり読めるアンティークブロンズ */
+
+  /* --- ボタンホバー・枠線（ボーダー）・状態色 --- */
+  --color-wine-hover: #5B232A;        /* ワインレッドボタンにマウスを乗せた時の深みのある色 */
+  --color-wine-subtle: rgba(114, 47, 55, 0.05); /* ラジオカード選択時のほんのり淡い背景色 */
+  --color-border-subtle: rgba(62, 39, 35, 0.14);/* お品書きやセクションを区切る繊細な1pxヘアライン */
+  --color-border-strong: rgba(62, 39, 35, 0.28);/* ややはっきり見せたい区切り線 */
+  --color-border-input: #CDBDB0;      /* フォーム入力欄の枠線（未入力でも輪郭が分かりやすい色） */
+  --color-error: #9E2A2B;             /* フォーム入力エラー時の案内文字・枠線色 */
+  --color-error-bg: #FDF3F3;          /* フォーム入力エラー時の淡い背景色 */
+
+  /* --- フォント設定 --- */
+  --font-serif-jp: "Shippori Mincho", "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+  --font-serif-en: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+
+  /* --- レイアウト幅・ヘッダー高さ --- */
+  --container-max: 1160px;            /* 基本コンテンツ最大幅 */
+  --container-narrow: 820px;          /* 読み物・フォーム用のスリム幅 */
+  --header-height-pc: 80px;           /* PCヘッダーの高さ */
+  --header-height-sp: 64px;           /* スマホヘッダーの高さ */
+  --floating-bar-height: 64px;        /* スマホ下部予約バーの高さ */
+
+  /* --- アニメーション速度（静謐で上品なイージング） --- */
+  --ease-elegant: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =========================================================
+   2. リセット ＆ ベーススタイル（一番の見やすさの土台）
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%; /* 16px基準 */
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height-pc);
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (max-width: 1023px) {
+  html {
+    scroll-padding-top: var(--header-height-sp);
+  }
+}
+
+body {
+  background-color: var(--color-bg-ivory);
+  color: var(--color-text-body);
+  font-family: var(--font-serif-jp);
+  font-size: 16.5px;
+  font-weight: 400;
+  line-height: 1.95;
+  letter-spacing: 0.04em;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* スマホでも文字が小さくなりすぎないよう 15.5px〜16px を維持 */
+@media (max-width: 767px) {
+  body {
+    font-size: 15.5px;
+    line-height: 1.9;
+  }
+}
+
+/* ドロワーメニュー展開時の背景スクロール固定用 */
+body.is-drawer-open {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+/* キーボード操作時のフォーカス枠（アクセシビリティ配慮） */
+:focus-visible {
+  outline: 2px solid var(--color-accent-wine);
+  outline-offset: 3px;
+}
+
+/* 価格（¥12,000）や電話番号（03-5454-0150）の数字が上下にガタつかない設定 */
+.num-en,
+.price-num,
+.tel-num {
+  font-family: var(--font-serif-en);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+}
+
+/* イタリア語料理名・ワイン原題などの優美な斜体 */
+.lang-it {
+  font-family: var(--font-serif-en);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+
+/* 文節の途中で不自然に改行されるのを防ぐ補助クラス */
+.ib {
+  display: inline-block;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 767px) {
+  .pc-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .sp-only {
+    display: none !important;
+  }
+}
+
+/* =========================================================
+   3. コンテナ・セクション余白・見出しデザイン
+   ========================================================= */
+.container {
+  width: 100%;
+  max-width: calc(var(--container-max) + 80px);
+  margin-inline: auto;
+  padding-inline: 40px;
+}
+
+.container--narrow {
+  max-width: calc(var(--container-narrow) + 80px);
+}
+
+@media (max-width: 1023px) {
+  .container {
+    padding-inline: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding-inline: 20px;
+  }
+}
+
+/* セクション上下のゆったりとした呼吸感のある余白 */
+.section {
+  padding-block: 118px;
+  position: relative;
+}
+
+@media (max-width: 1023px) {
+  .section {
+    padding-block: 86px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding-block: 72px;
+  }
+}
+
+.section--ivory {
+  background-color: var(--color-bg-ivory);
+}
+
+.section--beige {
+  background-color: var(--color-bg-beige);
+  border-top: 1px solid rgba(201, 169, 110, 0.35);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.35);
+}
+
+.section--beige-soft {
+  background-color: var(--color-bg-beige-soft);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.section--dark {
+  background-color: var(--color-text-dark);
+  color: var(--color-bg-ivory);
+}
+
+/* セクション共通見出し（英字＋ゴールド細線＋日本語大見出し） */
+.section-header {
+  margin-bottom: 56px;
+}
+
+.section-header--center {
+  text-align: center;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+@media (max-width: 767px) {
+  .section-header {
+    margin-bottom: 40px;
+  }
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.section-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background-color: var(--color-accent-gold);
+}
+
+.section-header--center .section-eyebrow::after {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background-color: var(--color-accent-gold);
+}
+
+.section-eyebrow__en {
+  font-family: var(--font-serif-en);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  line-height: 1.2;
+  color: var(--color-text-gold-readable);
+  text-transform: uppercase;
+}
+
+.section-eyebrow__jp {
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+}
+
+.section-eyebrow__sep {
+  color: var(--color-accent-gold);
+  font-size: 12px;
+}
+
+.section-title {
+  font-size: clamp(24px, 2.7vw, 34px);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0.08em;
+  color: var(--color-text-dark);
+}
+
+.section--dark .section-title {
+  color: var(--color-bg-ivory);
+}
+
+.section-lead {
+  margin-top: 20px;
+  font-size: 16.5px;
+  line-height: 1.95;
+  color: var(--color-text-body);
+}
+
+@media (max-width: 767px) {
+  .section-eyebrow__en {
+    font-size: 13.5px;
+  }
+  .section-title {
+    font-size: 23px;
+    line-height: 1.55;
+  }
+  .section-lead {
+    font-size: 15.5px;
+    margin-top: 16px;
+  }
+}
+
+/* =========================================================
+   4. ボタン（CTA）の3階層デザインシステム（絵文字ゼロ・端正な角丸2px）
+   ========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 15px 34px;
+  border-radius: 2px;
+  font-size: 15.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid transparent;
+  transition:
+    background-color 0.35s var(--ease-elegant),
+    color 0.35s var(--ease-elegant),
+    border-color 0.35s var(--ease-elegant),
+    transform 0.35s var(--ease-elegant),
+    box-shadow 0.35s var(--ease-elegant);
+}
+
+.btn__arrow {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition: transform 0.35s var(--ease-elegant);
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(4px);
+}
+
+/* 1. プライマリCTAボタン（ワインレッド #722F37） */
+.btn--primary {
+  background-color: var(--color-accent-wine);
+  color: var(--color-bg-ivory);
+  border-color: var(--color-accent-wine);
+  box-shadow: 0 3px 12px rgba(114, 47, 55, 0.16);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-wine-hover);
+  border-color: var(--color-wine-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(114, 47, 55, 0.25);
+}
+
+/* 暗背景（FV・クロージング）上でワインレッドがくっきり浮き立つ微細枠付き */
+.btn--primary-on-dark {
+  background-color: var(--color-accent-wine);
+  color: var(--color-bg-ivory);
+  border-color: rgba(201, 169, 110, 0.55);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+}
+
+.btn--primary-on-dark:hover {
+  background-color: var(--color-wine-hover);
+  border-color: var(--color-accent-gold);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.36);
+}
+
+/* 2. セカンダリCTAボタン（明背景用アウトライン） */
+.btn--secondary {
+  background-color: transparent;
+  color: var(--color-text-dark);
+  border-color: var(--color-text-dark);
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-text-dark);
+  color: var(--color-bg-ivory);
+  transform: translateY(-1px);
+}
+
+/* FV（暗背景）上セカンダリ（繊細なすりガラス白枠） */
+.btn--ghost-light {
+  background-color: rgba(250, 248, 245, 0.12);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: var(--color-bg-ivory);
+  border-color: rgba(250, 248, 245, 0.78);
+}
+
+.btn--ghost-light:hover {
+  background-color: var(--color-bg-ivory);
+  color: var(--color-text-dark);
+  border-color: var(--color-bg-ivory);
+  transform: translateY(-1px);
+}
+
+/* 3. テキストリンク（ゴールド1px下線＋右矢印スライド） */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15.5px;
+  font-weight: 500;
+  color: var(--color-text-dark);
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--color-accent-gold);
+  letter-spacing: 0.06em;
+}
+
+.text-link svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.3s var(--ease-elegant);
+}
+
+.text-link:hover {
+  color: var(--color-accent-wine);
+  border-bottom-color: var(--color-accent-wine);
+}
+
+.text-link:hover svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 767px) {
+  .btn {
+    width: 100%;
+    padding: 15px 24px;
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+   5. 共通ヘッダー（スクロール追従 ＆ スマホドロワー）
+   ========================================================= */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height-pc);
+  z-index: 1000;
+  background-color: rgba(250, 248, 245, 0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(62, 39, 35, 0.1);
+  color: var(--color-text-dark);
+  transition:
+    background-color 0.4s var(--ease-elegant),
+    border-color 0.4s var(--ease-elegant),
+    color 0.4s var(--ease-elegant),
+    box-shadow 0.4s var(--ease-elegant);
+}
+
+/* TOPページの最上部（FV上）では写真を活かす透過モード */
+.site-header--transparent:not(.is-scrolled) {
+  background-color: transparent;
+  background-image: linear-gradient(180deg, rgba(28, 16, 14, 0.62) 0%, rgba(28, 16, 14, 0) 100%);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: rgba(250, 248, 245, 0.15);
+  color: var(--color-bg-ivory);
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 2px 16px rgba(62, 39, 35, 0.06);
+}
+
+.site-header__inner {
+  max-width: 1320px;
+  height: 100%;
+  margin-inline: auto;
+  padding-inline: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* ブランドロゴ */
+.site-logo {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.1;
+  flex-shrink: 0;
+}
+
+.site-logo__main {
+  font-family: var(--font-serif-en);
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.site-logo__sub {
+  font-family: var(--font-serif-en);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  margin-top: 4px;
+  color: var(--color-text-gold-readable);
+  transition: color 0.3s ease;
+}
+
+.site-header--transparent:not(.is-scrolled) .site-logo__sub {
+  color: rgba(230, 207, 163, 0.92);
+}
+
+/* 画像ロゴに差し替えた場合のサイズ自動調整 */
+.site-logo img {
+  max-height: 44px;
+  width: auto;
+}
+
+/* PCグローバルナビ */
+.header-nav-wrap {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.global-nav__list {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.global-nav__link {
+  position: relative;
+  font-family: var(--font-serif-en);
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  padding-block: 6px;
+}
+
+.global-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-accent-gold);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.35s var(--ease-elegant);
+}
+
+.global-nav__link:hover::after,
+.global-nav__link.is-current::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* ヘッダー右端・常時表示CTAボタン */
+.header-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-accent-wine);
+  color: var(--color-bg-ivory);
+  border: 1px solid rgba(201, 169, 110, 0.4);
+  border-radius: 2px;
+  padding: 11px 22px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.header-cta-btn:hover {
+  background-color: var(--color-wine-hover);
+  border-color: var(--color-accent-gold);
+}
+
+/* ハンバーガーボタン（1023px以下で表示） */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  z-index: 1010;
+}
+
+.nav-toggle__bars {
+  position: relative;
+  width: 24px;
+  height: 13px;
+}
+
+.nav-toggle__bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transition: transform 0.35s var(--ease-elegant), opacity 0.25s ease, top 0.35s var(--ease-elegant);
+}
+
+.nav-toggle__bar:nth-child(1) {
+  top: 0;
+}
+.nav-toggle__bar:nth-child(2) {
+  top: 6px;
+}
+.nav-toggle__bar:nth-child(3) {
+  top: 12px;
+}
+
+.nav-toggle__label {
+  font-family: var(--font-serif-en);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  margin-top: 5px;
+  line-height: 1;
+}
+
+/* 開いた時の×印アニメーション */
+.nav-toggle[aria-expanded="true"] {
+  color: var(--color-text-dark);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) {
+  top: 6px;
+  transform: rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) {
+  top: 6px;
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 1023px) {
+  .site-header {
+    height: var(--header-height-sp);
+  }
+  .site-header__inner {
+    padding-inline: 20px;
+  }
+  .site-logo__main {
+    font-size: 20px;
+  }
+  .site-logo__sub {
+    font-size: 9px;
+  }
+  .header-nav-wrap {
+    display: none;
+  }
+  .nav-toggle {
+    display: inline-flex;
+  }
+}
+
+/* スマホ・タブレット用ドロワーメニュー */
+.mobile-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background-color: var(--color-bg-ivory);
+  color: var(--color-text-dark);
+  padding: calc(var(--header-height-sp) + 28px) 28px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease-elegant), visibility 0.35s var(--ease-elegant);
+}
+
+.mobile-drawer.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-drawer__list {
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.mobile-drawer__item {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.mobile-drawer__link {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-block: 16px;
+}
+
+.mobile-drawer__en {
+  font-family: var(--font-serif-en);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--color-text-dark);
+}
+
+.mobile-drawer__jp {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.mobile-drawer__footer {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(201, 169, 110, 0.4);
+  text-align: center;
+}
+
+.mobile-drawer__tel-label {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.mobile-drawer__tel {
+  display: inline-block;
+  font-family: var(--font-serif-en);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+
+.mobile-drawer__hours {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* =========================================================
+   6. スマホ専用・画面下部フローティング予約バー（絵文字なし・洗練仕様）
+   ========================================================= */
+.floating-bar {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .floating-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 950;
+    display: flex;
+    align-items: stretch;
+    background-color: var(--color-bg-ivory);
+    border-top: 1px solid var(--color-accent-gold);
+    box-shadow: 0 -4px 18px rgba(62, 39, 35, 0.12);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    transition: transform 0.35s var(--ease-elegant), opacity 0.35s var(--ease-elegant);
+  }
+
+  /* 予約フォーム入力中に邪魔にならないよう隠す状態 */
+  .floating-bar.is-hidden-for-form {
+    transform: translateY(105%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .floating-bar__tel {
+    width: 38%;
+    min-height: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg-ivory);
+    border-right: 1px solid rgba(62, 39, 35, 0.12);
+    padding: 8px 6px;
+    text-align: center;
+  }
+
+  .floating-bar__tel-sub {
+    font-family: var(--font-serif-en);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    line-height: 1.2;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  .floating-bar__tel-main {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    margin-top: 3px;
+    line-height: 1.2;
+  }
+
+  .floating-bar__web {
+    width: 62%;
+    min-height: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-accent-wine);
+    color: var(--color-bg-ivory);
+    padding: 8px 12px;
+    text-align: center;
+  }
+
+  .floating-bar__web-sub {
+    font-family: var(--font-serif-en);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--color-bg-beige);
+    line-height: 1.2;
+  }
+
+  .floating-bar__web-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--color-bg-ivory);
+    margin-top: 3px;
+    line-height: 1.2;
+  }
+
+  .floating-bar__web-main svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* =========================================================
+   7. 共通フッター（ダークブラウン #3E2723 × アイボリー文字）
+   ========================================================= */
+.site-footer {
+  background-color: var(--color-text-dark);
+  color: var(--color-bg-ivory);
+  border-top: 1px solid rgba(201, 169, 110, 0.35);
+}
+
+.footer-cta {
+  padding-block: 48px;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.25);
+}
+
+.footer-cta__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.footer-cta__micro {
+  font-size: 15.5px;
+  color: rgba(250, 248, 245, 0.9);
+  letter-spacing: 0.05em;
+}
+
+.footer-main {
+  padding-block: 64px 48px;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 56px;
+}
+
+.footer-brand__logo {
+  font-family: var(--font-serif-en);
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--color-bg-ivory);
+  line-height: 1.2;
+}
+
+.footer-brand__copy {
+  margin-top: 14px;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--color-bg-beige);
+  letter-spacing: 0.08em;
+}
+
+.footer-brand__desc {
+  margin-top: 10px;
+  font-size: 14.5px;
+  color: rgba(250, 248, 245, 0.82);
+  line-height: 1.85;
+  max-width: 460px;
+}
+
+.footer-info {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(250, 248, 245, 0.14);
+  font-size: 14px;
+  color: rgba(250, 248, 245, 0.85);
+  line-height: 1.9;
+}
+
+.footer-info__tel {
+  font-family: var(--font-serif-en);
+  font-size: 19px;
+  color: var(--color-bg-ivory);
+  letter-spacing: 0.06em;
+}
+
+.footer-nav-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.footer-nav__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 14px 28px;
+}
+
+.footer-nav__link {
+  font-family: var(--font-serif-en);
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  color: rgba(250, 248, 245, 0.88);
+  display: inline-block;
+  padding-block: 3px;
+}
+
+.footer-nav__link:hover {
+  color: var(--color-accent-gold);
+}
+
+.footer-sns {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(250, 248, 245, 0.14);
+}
+
+.footer-sns__label {
+  font-family: var(--font-serif-en);
+  font-size: 12.5px;
+  letter-spacing: 0.2em;
+  color: var(--color-accent-gold);
+}
+
+.footer-sns__link {
+  font-family: var(--font-serif-en);
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: rgba(250, 248, 245, 0.88);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.45);
+  padding-bottom: 2px;
+}
+
+.footer-sns__link:hover {
+  color: var(--color-accent-gold);
+  border-bottom-color: var(--color-accent-gold);
+}
+
+.footer-bottom {
+  padding-block: 24px;
+  border-top: 1px solid rgba(250, 248, 245, 0.12);
+  text-align: center;
+  font-family: var(--font-serif-en);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: rgba(250, 248, 245, 0.68);
+}
+
+@media (max-width: 767px) {
+  /* スマホ下部フローティングバーに文字が隠れないよう最下部に十分な余白を確保 */
+  .site-footer {
+    padding-bottom: calc(var(--floating-bar-height) + env(safe-area-inset-bottom, 0px) + 16px);
+  }
+  .footer-cta {
+    padding-block: 36px;
+  }
+  .footer-cta__inner {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 18px;
+  }
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-block: 44px 36px;
+  }
+  .footer-nav__list {
+    gap: 12px 20px;
+  }
+}
+
+/* =========================================================
+   8. 【PAGE 01：TOP】ファーストビュー（FV：必須4要素完備）
+   ========================================================= */
+.hero {
+  position: relative;
+  min-height: 90vh;
+  max-height: 880px;
+  display: flex;
+  align-items: flex-end;
+  padding-top: calc(var(--header-height-pc) + 40px);
+  padding-bottom: 72px;
+  background-color: #241512;
+  color: var(--color-bg-ivory);
+  overflow: hidden;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+}
+
+/* PC用オーバーレイ：右半分の料理とワインを明るく活かし、左側の文字領域のみ高コントラストを確保 */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    100deg,
+    rgba(36, 21, 18, 0.84) 0%,
+    rgba(36, 21, 18, 0.58) 48%,
+    rgba(36, 21, 18, 0.18) 78%,
+    rgba(36, 21, 18, 0.08) 100%
+  );
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+.hero__content {
+  max-width: 660px;
+}
+
+/* ③ 実績・訴求ボタン（AI-company必須要素：端正なゴールド細枠タグボタン） */
+.hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 14px;
+  background-color: rgba(36, 21, 18, 0.58);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(201, 169, 110, 0.72);
+  border-radius: 2px;
+  font-size: 13.5px;
+  letter-spacing: 0.06em;
+  color: var(--color-bg-ivory);
+  line-height: 1.3;
+}
+
+/* 左端の5pxゴールド菱形オーナメント */
+.hero__badge-diamond {
+  width: 5px;
+  height: 5px;
+  background-color: var(--color-accent-gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.hero__badge-chevron {
+  width: 11px;
+  height: 11px;
+  color: var(--color-accent-gold);
+  transition: transform 0.3s ease;
+}
+
+.hero__badge:hover {
+  background-color: rgba(201, 169, 110, 0.22);
+  border-color: var(--color-accent-gold);
+}
+
+.hero__badge:hover .hero__badge-chevron {
+  transform: translateX(3px);
+}
+
+/* ① キャッチコピー（指定文言厳守） */
+.hero__brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-serif-en);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: #E6CFA3;
+  margin-bottom: 14px;
+}
+
+.hero__brand::after {
+  content: "";
+  width: 44px;
+  height: 1px;
+  background-color: rgba(201, 169, 110, 0.75);
+}
+
+.hero__title {
+  font-size: clamp(30px, 3.6vw, 44px);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0.1em;
+  color: var(--color-bg-ivory);
+  text-shadow: 0 2px 16px rgba(20, 10, 8, 0.35);
+}
+
+.hero__subtitle {
+  margin-top: 18px;
+  font-size: 16.5px;
+  line-height: 1.85;
+  letter-spacing: 0.06em;
+  color: rgba(250, 248, 245, 0.94);
+}
+
+/* ② アクションボタン（2ボタン） */
+.hero__actions {
+  margin-top: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: 88svh;
+    max-height: none;
+    padding-top: calc(var(--header-height-sp) + 140px);
+    padding-bottom: 44px;
+  }
+
+  .hero__img {
+    object-position: 62% 32%;
+  }
+
+  /* スマホ用オーバーレイ：上半分で料理写真を主役として見せ、下半分の文字をくっきり浮かび上がらせる */
+  .hero__overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(36, 21, 18, 0.34) 0%,
+      rgba(36, 21, 18, 0.14) 34%,
+      rgba(36, 21, 18, 0.76) 62%,
+      rgba(36, 21, 18, 0.92) 100%
+    );
+  }
+
+  .hero__badges {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .hero__badge {
+    font-size: 12.5px;
+    padding: 6px 11px;
+  }
+
+  .hero__brand {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+
+  .hero__title {
+    font-size: 27px;
+    line-height: 1.48;
+    letter-spacing: 0.07em;
+  }
+
+  .hero__subtitle {
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .hero__actions {
+    margin-top: 26px;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* =========================================================
+   9. 【PAGE 01：TOP】CONCEPT（重層フォト × 細線3コラム）
+   ========================================================= */
+.concept-editorial {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.concept__paragraphs p + p {
+  margin-top: 1.35em;
+}
+
+.chef-signature {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border-subtle);
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.chef-signature__role {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.chef-signature__name {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--color-text-dark);
+}
+
+/* 2枚の重層フォトコラージュ */
+.concept__collage {
+  position: relative;
+  padding-bottom: 64px;
+  padding-left: 44px;
+}
+
+.concept__photo-main {
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(62, 39, 35, 0.1);
+}
+
+.concept__photo-main img {
+  width: 100%;
+  aspect-ratio: 4 / 4.6;
+  object-fit: cover;
+}
+
+.concept__photo-sub {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 62%;
+  border: 8px solid var(--color-bg-ivory);
+  border-radius: 2px;
+  box-shadow: 0 10px 28px rgba(62, 39, 35, 0.14);
+  overflow: hidden;
+}
+
+.concept__photo-sub img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+/* 下段：箱型カードではなく「ナンバリング×1px細線」の3コラム */
+.concept-pillars {
+  margin-top: 84px;
+  padding-top: 52px;
+  border-top: 1px solid var(--color-border-subtle);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.pillar-item {
+  padding-inline: 32px;
+  border-right: 1px solid var(--color-border-subtle);
+}
+
+.pillar-item:first-child {
+  padding-left: 0;
+}
+
+.pillar-item:last-child {
+  padding-right: 0;
+  border-right: none;
+}
+
+.pillar-item__num {
+  display: block;
+  font-family: var(--font-serif-en);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: var(--color-text-gold-readable);
+  margin-bottom: 14px;
+}
+
+.pillar-item__title {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-text-dark);
+  margin-bottom: 12px;
+}
+
+.pillar-item__desc {
+  font-size: 15.5px;
+  line-height: 1.9;
+  color: var(--color-text-body);
+}
+
+@media (max-width: 1023px) {
+  .concept-editorial {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+  .concept__collage {
+    max-width: 560px;
+    margin-inline: auto;
+  }
+  .concept-pillars {
+    margin-top: 64px;
+    padding-top: 36px;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .pillar-item {
+    padding-inline: 0;
+    padding-block: 28px;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+  .pillar-item:first-child {
+    padding-top: 0;
+  }
+  .pillar-item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .concept__collage {
+    padding-left: 0;
+    padding-bottom: 0;
+    display: grid;
+    gap: 16px;
+  }
+  .concept__photo-main img {
+    aspect-ratio: 4 / 3;
+  }
+  .concept__photo-sub {
+    position: static;
+    width: 100%;
+    border: none;
+    box-shadow: 0 6px 20px rgba(62, 39, 35, 0.1);
+  }
+}
+
+/* =========================================================
+   10. 【PAGE 01：TOP】ANNIVERSARY（スプリット × ゴールド二重枠招待状シート）
+   ========================================================= */
+.anniversary-showcase {
+  display: grid;
+  grid-template-columns: 0.94fr 1.06fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.anniversary__visuals {
+  position: sticky;
+  top: calc(var(--header-height-pc) + 24px);
+  display: grid;
+  gap: 18px;
+}
+
+.anniversary__main-photo {
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 169, 110, 0.5);
+  box-shadow: 0 12px 32px rgba(62, 39, 35, 0.1);
+  background-color: var(--color-bg-ivory);
+}
+
+/* チョコレート文字が切れないよう4:3そのままを端正に表示 */
+.anniversary__main-photo img {
+  width: 100%;
+  aspect-ratio: 1200 / 896;
+  object-fit: cover;
+}
+
+.anniversary__sub-photo {
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 169, 110, 0.35);
+}
+
+.anniversary__sub-photo img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.anniversary__points-heading {
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border-strong);
+  margin-bottom: 28px;
+  letter-spacing: 0.06em;
+}
+
+.anniversary-point {
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid rgba(62, 39, 35, 0.12);
+}
+
+.anniversary-point:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.anniversary-point__roman {
+  display: inline-block;
+  font-family: var(--font-serif-en);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--color-accent-wine);
+  margin-bottom: 6px;
+}
+
+.anniversary-point__title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-text-dark);
+  margin-bottom: 10px;
+}
+
+.anniversary-point__body {
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--color-text-body);
+}
+
+/* 招待状風メッセージ例文シート（アイボリー紙面＋内側8pxゴールドインセット枠） */
+.invitation-sheet {
+  max-width: 980px;
+  margin: 64px auto 0;
+  background-color: var(--color-bg-ivory);
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 0 10px 30px rgba(62, 39, 35, 0.07);
+}
+
+.invitation-sheet__inner {
+  border: 1px solid var(--color-accent-gold);
+  padding: 40px 44px;
+}
+
+.invitation-sheet__header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.invitation-sheet__eyebrow {
+  font-family: var(--font-serif-en);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  color: var(--color-text-gold-readable);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.invitation-sheet__title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.invitation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.invitation-col {
+  padding: 24px 24px;
+  border-right: 1px solid var(--color-border-subtle);
+}
+
+.invitation-col:first-child {
+  padding-left: 4px;
+}
+
+.invitation-col:last-child {
+  padding-right: 4px;
+  border-right: none;
+}
+
+.invitation-col__cat {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-accent-wine);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(201, 169, 110, 0.65);
+}
+
+.invitation-examples li + li {
+  margin-top: 12px;
+}
+
+.invitation-examples__it {
+  display: block;
+  font-family: var(--font-serif-en);
+  font-style: italic;
+  font-size: 17.5px;
+  color: var(--color-accent-wine);
+  line-height: 1.35;
+}
+
+.invitation-examples__note {
+  display: block;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.invitation-examples__jp {
+  font-size: 15px;
+  color: var(--color-text-dark);
+  line-height: 1.6;
+}
+
+.invitation-sheet__note {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.anniversary-cta {
+  margin-top: 48px;
+  text-align: center;
+}
+
+.anniversary-cta__micro {
+  font-size: 15px;
+  color: var(--color-text-body);
+  margin-bottom: 20px;
+}
+
+.anniversary-cta__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1023px) {
+  .anniversary-showcase {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .anniversary__visuals {
+    position: static;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+  .invitation-grid {
+    grid-template-columns: 1fr;
+  }
+  .invitation-col {
+    padding: 20px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+  .invitation-col:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .invitation-sheet {
+    margin-top: 44px;
+    padding: 7px;
+  }
+  .invitation-sheet__inner {
+    padding: 26px 18px;
+  }
+  .anniversary-point__title {
+    font-size: 18.5px;
+  }
+}
+
+/* =========================================================
+   11. 【PAGE 01：TOP】MENU（段差2×2フォトギャラリー × お品書き罫線）
+   ========================================================= */
+.menu-staggered {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 56px;
+  row-gap: 56px;
+  align-items: start;
+}
+
+/* 右カラム全体を下げて料理専門誌のようなリズムを生む段差配置 */
+.menu-staggered .menu-feature:nth-child(even) {
+  margin-top: 56px;
+}
+
+.menu-feature__cat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.menu-feature__cat::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background-color: var(--color-accent-gold);
+}
+
+.menu-feature__cat-en {
+  font-family: var(--font-serif-en);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--color-text-gold-readable);
+}
+
+.menu-feature__cat-jp {
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+
+.menu-feature__photo {
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.menu-feature__photo img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.menu-feature:hover .menu-feature__photo img {
+  transform: scale(1.03);
+}
+
+.menu-feature__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border-subtle);
+  margin-bottom: 12px;
+}
+
+.menu-feature__name {
+  font-size: 19.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-text-dark);
+}
+
+.menu-feature__price {
+  flex-shrink: 0;
+  font-family: var(--font-serif-en);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  font-variant-numeric: lining-nums tabular-nums;
+  white-space: nowrap;
+}
+
+.menu-feature__tax {
+  font-family: var(--font-serif-jp);
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin-left: 2px;
+}
+
+.menu-feature__desc {
+  font-size: 15.5px;
+  line-height: 1.9;
+  color: var(--color-text-body);
+}
+
+.section-bottom-action {
+  margin-top: 56px;
+  text-align: center;
+}
+
+@media (max-width: 1023px) {
+  .menu-staggered {
+    column-gap: 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  .menu-staggered {
+    grid-template-columns: 1fr;
+    row-gap: 44px;
+  }
+  .menu-staggered .menu-feature:nth-child(even) {
+    margin-top: 0;
+  }
+  .menu-feature__head {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .menu-feature__price {
+    align-self: flex-end;
+  }
+}
+
+/* =========================================================
+   12. 【PAGE 01：TOP】COURSE（記念日主役フルワイド ＋ 下段2列階層）
+   ========================================================= */
+/* 上段：ANNIVERSARY COURSE フルワイド特別枠 */
+.course-featured {
+  background-color: var(--color-bg-ivory);
+  border: 1px solid var(--color-accent-gold);
+  padding: 9px;
+  border-radius: 2px;
+  box-shadow: 0 12px 32px rgba(62, 39, 35, 0.07);
+}
+
+.course-featured__inner {
+  border: 1px solid rgba(201, 169, 110, 0.48);
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 44px;
+  align-items: center;
+}
+
+.course-featured__media {
+  border-radius: 2px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.course-featured__media img {
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.course-badge {
+  display: inline-block;
+  background-color: var(--color-accent-wine);
+  color: var(--color-bg-ivory);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 5px 14px;
+  border-radius: 2px;
+  margin-bottom: 14px;
+}
+
+.course-featured__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.course-name-en {
+  display: block;
+  font-family: var(--font-serif-en);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--color-text-gold-readable);
+  margin-bottom: 4px;
+}
+
+.course-name-jp {
+  font-size: 23px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  line-height: 1.4;
+}
+
+.course-price-block {
+  text-align: right;
+}
+
+.course-price-num {
+  font-family: var(--font-serif-en);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-accent-wine);
+  line-height: 1.1;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.course-price-meta {
+  display: block;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.course-summary {
+  margin-top: 14px;
+  font-size: 15.5px;
+  font-weight: 500;
+  color: var(--color-text-dark);
+}
+
+/* 記念日2大特典ボックス */
+.course-perks {
+  margin-top: 18px;
+  background-color: var(--color-bg-beige);
+  border-left: 3px solid var(--color-accent-gold);
+  padding: 16px 20px;
+  border-radius: 2px;
+}
+
+.course-perks__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-accent-wine);
+  margin-bottom: 6px;
+  letter-spacing: 0.06em;
+}
+
+.course-perks__list li {
+  font-size: 15px;
+  color: var(--color-text-dark);
+  line-height: 1.75;
+  position: relative;
+  padding-left: 16px;
+}
+
+.course-perks__list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 11px;
+  width: 5px;
+  height: 5px;
+  background-color: var(--color-accent-wine);
+  transform: rotate(45deg);
+}
+
+/* コースお品書き簡易リスト */
+.course-items-list {
+  margin-top: 18px;
+  margin-bottom: 24px;
+  display: grid;
+  gap: 7px;
+}
+
+.course-items-list li {
+  font-size: 15px;
+  color: var(--color-text-body);
+  line-height: 1.65;
+  padding-left: 16px;
+  position: relative;
+}
+
+.course-items-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 8px;
+  height: 1px;
+  background-color: var(--color-accent-gold);
+}
+
+/* 下段：LUNCH ＆ DINNER 2カラム比較お品書き枠 */
+.course-pair {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.course-sheet {
+  background-color: var(--color-bg-ivory);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 2px;
+  padding: 36px 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.course-sheet__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.course-sheet .course-price-num {
+  font-size: 28px;
+  color: var(--color-text-dark);
+}
+
+.course-sheet__cta {
+  margin-top: 24px;
+}
+
+.course-sheet__cta .btn {
+  width: 100%;
+}
+
+@media (max-width: 1023px) {
+  .course-featured__inner {
+    grid-template-columns: 1fr;
+    padding: 28px;
+    gap: 28px;
+  }
+  .course-featured__media img {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+  .course-pair {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .course-featured {
+    padding: 6px;
+  }
+  .course-featured__inner {
+    padding: 22px 16px;
+  }
+  .course-name-jp {
+    font-size: 20px;
+  }
+  .course-price-block {
+    text-align: left;
+  }
+  .course-sheet {
+    padding: 26px 20px;
+  }
+}
+
+/* =========================================================
+   13. 【PAGE 01：TOP】WINE（5:7非対称スプリット ＋ 左ゴールド縦線枠）
+   ========================================================= */
+.wine-split {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.wine-split__photo {
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(62, 39, 35, 0.09);
+}
+
+.wine-split__photo img {
+  width: 100%;
+  aspect-ratio: 4 / 4.4;
+  object-fit: cover;
+}
+
+.wine-split__text p + p {
+  margin-top: 1.3em;
+}
+
+/* ノンアルコール安心メッセージ（絵文字ゼロ・左3pxゴールド縦線） */
+.callout-non-alc {
+  margin-top: 28px;
+  background-color: var(--color-bg-beige);
+  border-left: 3px solid var(--color-accent-gold);
+  padding: 22px 26px;
+  border-radius: 2px;
+}
+
+.callout-non-alc__en {
+  display: block;
+  font-family: var(--font-serif-en);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--color-text-gold-readable);
+  margin-bottom: 4px;
+}
+
+.callout-non-alc__title {
+  font-size: 17.5px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 8px;
+}
+
+.callout-non-alc__body {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--color-text-body);
+}
+
+.wine-split__actions {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@media (max-width: 1023px) {
+  .wine-split {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .wine-split__photo img {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* =========================================================
+   14. 【PAGE 01：TOP】ACCESS & INFO（横罫線リスト・マップ・安心ガイド）
+   ========================================================= */
+.access-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.info-dl {
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.info-dl__row {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 16px;
+  padding-block: 18px;
+  border-bottom: 1px solid rgba(62, 39, 35, 0.16);
+}
+
+.info-dl__dt {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color-text-dark);
+}
+
+.info-dl__dd {
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: var(--color-text-body);
+}
+
+.info-dl__note {
+  display: block;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.access-visuals {
+  display: grid;
+  gap: 20px;
+}
+
+.access-photo {
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 169, 110, 0.45);
+}
+
+.access-photo img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+/* Google Maps 埋め込み枠（ウォームトーン調和フィルター付き・大判見やすい設計） */
+.map-box {
+  background-color: var(--color-bg-ivory);
+  border: 1px solid rgba(62, 39, 35, 0.16);
+  border-radius: 2px;
+  padding: 14px;
+}
+
+.map-frame {
+  position: relative;
+  width: 100%;
+  height: 310px;
+  background-color: #EDE3D5;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.map-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: sepia(0.16) contrast(0.96) saturate(0.88);
+}
+
+.map-box__caption {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+
+/* 駅からの徒歩ルート案内カード（アイボリー紙面＋左端ゴールドアクセント） */
+.route-guide-card {
+  background-color: var(--color-bg-ivory);
+  border: 1px solid rgba(62, 39, 35, 0.14);
+  border-left: 3px solid var(--color-accent-gold);
+  border-radius: 2px;
+  padding: 20px 24px;
+}
+
+.route-guide-card__en {
+  display: block;
+  font-family: var(--font-serif-en);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--color-text-gold-readable);
+  margin-bottom: 4px;
+}
+
+.route-guide-card__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 6px;
+}
+
+.route-guide-card__body {
+  font-size: 14.5px;
+  line-height: 1.85;
+  color: var(--color-text-body);
+}
+
+/* 初めてご来店される方へ（4項目の安心ミニガイド：上辺ゴールド1pxライン） */
+.first-time-guide {
+  margin-top: 72px;
+  padding-top: 52px;
+  border-top: 1px solid rgba(62, 39, 35, 0.18);
+}
+
+.first-time-guide__heading {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.first-time-guide__en {
+  display: block;
+  font-family: var(--font-serif-en);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--color-text-gold-readable);
+  margin-bottom: 6px;
+}
+
+.first-time-guide__title {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--color-text-dark);
+}
+
+.first-time-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 48px;
+  row-gap: 32px;
+}
+
+.guide-block {
+  padding-top: 20px;
+  border-top: 1px solid var(--color-accent-gold);
+}
+
+.guide-block__title {
+  font-size: 17.5px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 8px;
+}
+
+.guide-block__body {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--color-text-body);
+}
+
+@media (max-width: 1023px) {
+  .access-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .info-dl__row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding-block: 14px;
+  }
+  .first-time-guide {
+    margin-top: 52px;
+    padding-top: 40px;
+  }
+  .first-time-grid {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+  }
+}
+
+/* =========================================================
+   15. 予約クロージングセクション（全ページ共通利用可）
+   ========================================================= */
+.closing-cta {
+  background-color: var(--color-text-dark);
+  color: var(--color-bg-ivory);
+  padding-block: 96px;
+  text-align: center;
+  position: relative;
+}
+
+.closing-cta__ornament {
+  width: 1px;
+  height: 32px;
+  background-color: var(--color-accent-gold);
+  margin: 0 auto 24px;
+}
+
+.closing-cta__title {
+  font-size: clamp(23px, 2.5vw, 32px);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  color: var(--color-bg-ivory);
+}
+
+.closing-cta__sub {
+  margin-top: 16px;
+  font-size: 15.5px;
+  color: rgba(250, 248, 245, 0.86);
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.closing-cta__actions {
+  margin-top: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.closing-cta__tel {
+  font-size: 15px;
+  color: var(--color-bg-beige);
+  letter-spacing: 0.05em;
+}
+
+.closing-cta__tel a {
+  font-family: var(--font-serif-en);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-bg-ivory);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.5);
+  padding-bottom: 2px;
+  margin-inline: 4px;
+}
+
+@media (max-width: 767px) {
+  .closing-cta {
+    padding-block: 68px;
+  }
+  .closing-cta__actions .btn {
+    max-width: 360px;
+  }
+}
+
+/* =========================================================
+   16. 下層3ページ共通ヘッダー ＆ クイック移動アンカーバー
+   ========================================================= */
+.page-hero {
+  padding-top: calc(var(--header-height-pc) + 44px);
+  padding-bottom: 56px;
+  background-color: var(--color-bg-beige);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.4);
+  position: relative;
+}
+
+.breadcrumb {
+  margin-bottom: 24px;
+}
+
+.breadcrumb__list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-serif-en);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  color: var(--color-text-muted);
+}
+
+.breadcrumb__list a:hover {
+  color: var(--color-accent-wine);
+}
+
+.breadcrumb__sep {
+  color: var(--color-accent-gold);
+}
+
+.page-hero__header {
+  text-align: center;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.page-hero__en {
+  display: block;
+  font-family: var(--font-serif-en);
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  line-height: 1.15;
+  color: var(--color-text-dark);
+}
+
+.page-hero__sub {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 14.5px;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-accent-gold);
+}
+
+.page-hero__catch {
+  margin-top: 26px;
+  font-size: clamp(21px, 2.3vw, 28px);
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--color-text-dark);
+}
+
+.page-hero__lead {
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 1.95;
+  color: var(--color-text-body);
+}
+
+/* ページ内クイック移動アンカーバー */
+.anchor-bar {
+  background-color: var(--color-bg-ivory);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.anchor-bar__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 36px;
+  padding-block: 18px;
+}
+
+.anchor-bar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-dark);
+  padding-block: 4px;
+}
+
+.anchor-bar__link svg {
+  width: 13px;
+  height: 13px;
+  color: var(--color-accent-wine);
+  transition: transform 0.3s ease;
+}
+
+.anchor-bar__link:hover {
+  color: var(--color-accent-wine);
+}
+
+.anchor-bar__link:hover svg {
+  transform: translateY(3px);
+}
+
+@media (max-width: 1023px) {
+  .page-hero {
+    padding-top: calc(var(--header-height-sp) + 28px);
+    padding-bottom: 42px;
+  }
+}
+
+@media (max-width: 767px) {
+  .breadcrumb {
+    margin-bottom: 16px;
+  }
+  .page-hero__lead {
+    font-size: 15px;
+    text-align: left;
+  }
+  .anchor-bar__list {
+    gap: 8px 18px;
+    padding-block: 14px;
+  }
+  .anchor-bar__link {
+    font-size: 14px;
+  }
+}
+
+/* =========================================================
+   17. 【PAGE 02：MENU】交互スプリットお品書き ＆ コース詳細
+   ========================================================= */
+.alacarte-note {
+  max-width: 820px;
+  margin: 0 auto 64px;
+  padding: 18px 24px;
+  background-color: var(--color-bg-beige-soft);
+  border-left: 3px solid var(--color-accent-gold);
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--color-text-body);
+}
+
+.alacarte-category {
+  display: grid;
+  grid-template-columns: 0.62fr 1fr;
+  gap: 56px;
+  align-items: start;
+  padding-block: 56px;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.alacarte-category:first-of-type {
+  padding-top: 0;
+  border-top: none;
+}
+
+/* 偶数カテゴリーは写真を右、お品書きリストを左に配置 */
+.alacarte-category--reverse {
+  grid-template-columns: 1fr 0.62fr;
+}
+
+.alacarte-category--reverse .alacarte-category__media {
+  order: 2;
+}
+
+.alacarte-category--reverse .alacarte-category__content {
+  order: 1;
+}
+
+.alacarte-category__media {
+  position: sticky;
+  top: calc(var(--header-height-pc) + 24px);
+}
+
+.alacarte-category__photo {
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(62, 39, 35, 0.08);
+}
+
+.alacarte-category__photo img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.alacarte-category__caption {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+.alacarte-cat-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 28px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-text-dark);
+}
+
+.alacarte-cat-head__num {
+  font-family: var(--font-serif-en);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-gold-readable);
+}
+
+.alacarte-cat-head__en {
+  font-family: var(--font-serif-en);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--color-text-dark);
+}
+
+.alacarte-cat-head__jp {
+  font-size: 15px;
+  color: var(--color-text-muted);
+}
+
+/* お品書き1品ごとのドットリーダー構造 */
+.dish-item {
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.dish-item:last-child {
+  margin-bottom: 0;
+}
+
+.dish-item__head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.dish-item__name {
+  font-size: 18.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-text-dark);
+}
+
+.dish-item__dots {
+  flex: 1 1 auto;
+  min-width: 24px;
+  border-bottom: 1px dotted rgba(62, 39, 35, 0.32);
+  transform: translateY(-4px);
+}
+
+.dish-item__price {
+  flex-shrink: 0;
+  font-family: var(--font-serif-en);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  font-variant-numeric: lining-nums tabular-nums;
+  white-space: nowrap;
+}
+
+.dish-item__tax {
+  font-family: var(--font-serif-jp);
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin-left: 2px;
+}
+
+.dish-item__it {
+  display: block;
+  margin-top: 3px;
+  font-size: 14.5px;
+}
+
+.dish-item__desc {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--color-text-body);
+}
+
+/* MENUページ：コース詳細ステージ */
+.course-detail-note {
+  text-align: center;
+  font-size: 14.5px;
+  color: var(--color-text-muted);
+  margin-top: -28px;
+  margin-bottom: 48px;
+}
+
+.memoria-stage {
+  background-color: var(--color-bg-ivory);
+  border: 1px solid var(--color-accent-gold);
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 0 12px 36px rgba(62, 39, 35, 0.08);
+}
+
+.memoria-stage__inner {
+  border: 1px solid rgba(201, 169, 110, 0.5);
+  padding: 48px;
+}
+
+.memoria-stage__hero {
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 36px;
+}
+
+.memoria-stage__hero img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 440px;
+  object-fit: cover;
+}
+
+.memoria-stage__top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border-strong);
+}
+
+.memoria-stage__cond {
+  margin-top: 8px;
+  font-size: 14.5px;
+  color: var(--color-text-muted);
+}
+
+/* 全皿お品書き横並びテーブル（イタリア語皿区分 × 料理内容） */
+.course-menu-dl {
+  margin-top: 28px;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.course-menu-dl__row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 16px;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--color-border-subtle);
+  align-items: baseline;
+}
+
+.course-menu-dl__dt {
+  font-family: var(--font-serif-en);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-accent-wine);
+  letter-spacing: 0.04em;
+}
+
+.course-menu-dl__dt span {
+  font-family: var(--font-serif-jp);
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin-left: 6px;
+}
+
+.course-menu-dl__dd {
+  font-size: 15.5px;
+  color: var(--color-text-dark);
+  line-height: 1.75;
+}
+
+.memoria-stage__cta {
+  margin-top: 36px;
+  text-align: center;
+}
+
+.memoria-stage__micro {
+  font-size: 14.5px;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+}
+
+/* DINNER ＆ LUNCH 詳細シート */
+.sub-course-stack {
+  margin-top: 40px;
+  display: grid;
+  gap: 36px;
+}
+
+.sub-course-card {
+  background-color: var(--color-bg-ivory);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 2px;
+  padding: 40px 44px;
+}
+
+.sub-course-card__lead {
+  margin-top: 16px;
+  font-size: 15.5px;
+  color: var(--color-text-body);
+}
+
+.sub-course-card__option {
+  margin-top: 20px;
+  padding: 14px 18px;
+  background-color: var(--color-bg-beige-soft);
+  border-left: 3px solid var(--color-accent-gold);
+  font-size: 14.5px;
+  color: var(--color-text-dark);
+}
+
+.sub-course-card__cta {
+  margin-top: 28px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 回遊バナー（MENU⇔WINE） */
+.cross-link-banner {
+  background-color: var(--color-bg-beige);
+  border: 1px solid rgba(201, 169, 110, 0.5);
+  border-radius: 2px;
+  padding: 36px 40px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.cross-link-banner__thumb {
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.cross-link-banner__thumb img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.cross-link-banner__en {
+  display: block;
+  font-family: var(--font-serif-en);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--color-text-gold-readable);
+  margin-bottom: 6px;
+}
+
+.cross-link-banner__title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 10px;
+}
+
+.cross-link-banner__desc {
+  font-size: 15px;
+  color: var(--color-text-body);
+  margin-bottom: 18px;
+}
+
+@media (max-width: 1023px) {
+  .alacarte-category,
+  .alacarte-category--reverse {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .alacarte-category--reverse .alacarte-category__media {
+    order: 1;
+  }
+  .alacarte-category--reverse .alacarte-category__content {
+    order: 2;
+  }
+  .alacarte-category__media {
+    position: static;
+    max-width: 560px;
+  }
+  .memoria-stage__inner {
+    padding: 32px 24px;
+  }
+  .course-menu-dl__row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .sub-course-card {
+    padding: 30px 24px;
+  }
+  .cross-link-banner {
+    grid-template-columns: 1fr;
+    padding: 28px 24px;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .dish-item__head {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .dish-item__dots {
+    display: none;
+  }
+  .dish-item__price {
+    margin-left: auto;
+  }
+  .memoria-stage {
+    padding: 6px;
+  }
+  .memoria-stage__inner {
+    padding: 22px 16px;
+  }
+  .sub-course-card {
+    padding: 24px 18px;
+  }
+  .sub-course-card__cta {
+    justify-content: stretch;
+  }
+}
+
+/* =========================================================
+   18. 【PAGE 03：WINE】ペアリングシート ＆ ソムリエブック・リスト行
+   ========================================================= */
+.wine-hero-photo {
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 52px;
+  box-shadow: 0 12px 32px rgba(62, 39, 35, 0.09);
+}
+
+.wine-hero-photo img {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  min-height: 240px;
+  object-fit: cover;
+}
+
+.pairing-sheet {
+  background-color: var(--color-bg-beige);
+  border: 1px solid var(--color-accent-gold);
+  padding: 9px;
+  border-radius: 2px;
+}
+
+.pairing-sheet__inner {
+  background-color: var(--color-bg-ivory);
+  border: 1px solid rgba(201, 169, 110, 0.45);
+  padding: 40px 44px;
+}
+
+.pairing-sheet__title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 12px;
+}
+
+.pairing-sheet__desc {
+  font-size: 15.5px;
+  color: var(--color-text-body);
+  margin-bottom: 24px;
+}
+
+.pairing-table {
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.pairing-table__row {
+  display: grid;
+  grid-template-columns: 260px 130px 1fr;
+  gap: 20px;
+  align-items: baseline;
+  padding-block: 16px;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.pairing-table__name {
+  font-size: 16.5px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.pairing-table__price {
+  font-family: var(--font-serif-en);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-accent-wine);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.pairing-table__note {
+  font-size: 14.5px;
+  color: var(--color-text-body);
+}
+
+.pairing-sheet__tax-note {
+  margin-top: 14px;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+/* ソムリエブック・カテゴリー＆横割り行 */
+.sommelier-cat + .sommelier-cat {
+  margin-top: 80px;
+}
+
+.sommelier-cat__header {
+  padding-left: 18px;
+  border-left: 3px solid var(--color-accent-wine);
+  margin-bottom: 28px;
+}
+
+.sommelier-cat__title-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.sommelier-cat__en {
+  font-family: var(--font-serif-en);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--color-text-dark);
+  line-height: 1.2;
+}
+
+.sommelier-cat__jp {
+  font-size: 15.5px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.sommelier-cat__lead {
+  margin-top: 8px;
+  font-size: 15.5px;
+  color: var(--color-text-body);
+}
+
+.sommelier-list {
+  border-top: 1px solid var(--color-border-strong);
+}
+
+/* 1銘柄ごとのPC 3ブロック横割り行 */
+.sommelier-row {
+  display: grid;
+  grid-template-columns: 0.34fr 0.46fr 0.20fr;
+  gap: 32px;
+  padding-block: 32px;
+  border-bottom: 1px solid var(--color-border-subtle);
+  align-items: start;
+}
+
+.sommelier-row__num {
+  display: inline-block;
+  font-family: var(--font-serif-en);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-text-gold-readable);
+  margin-bottom: 4px;
+}
+
+.sommelier-row__name {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--color-text-dark);
+}
+
+.sommelier-row__orig {
+  display: block;
+  margin-top: 4px;
+  font-size: 14.5px;
+  line-height: 1.4;
+}
+
+.sommelier-row__meta {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+
+.sommelier-row__meta span + span::before {
+  content: "|";
+  margin-right: 12px;
+  color: var(--color-accent-gold);
+}
+
+.sommelier-row__desc {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--color-text-body);
+}
+
+.sommelier-row__pairing {
+  margin-top: 14px;
+  background-color: var(--color-bg-beige-soft);
+  border-left: 2px solid var(--color-accent-gold);
+  padding: 9px 14px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--color-text-dark);
+}
+
+.sommelier-row__pairing-label {
+  font-family: var(--font-serif-en);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-accent-wine);
+  margin-right: 8px;
+}
+
+/* 右揃え・グラス＆ボトル縦並び価格（tabular-numsでピシッと整列） */
+.sommelier-row__prices {
+  display: grid;
+  gap: 10px;
+  justify-content: end;
+}
+
+.wine-price-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 168px;
+}
+
+.wine-price-line__label {
+  font-family: var(--font-serif-en);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--color-text-muted);
+}
+
+.wine-price-line__val {
+  font-family: var(--font-serif-en);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.wine-price-tax {
+  text-align: right;
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+
+.wine-list-footnote {
+  margin-top: 28px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+.non-alc-column {
+  margin-top: 44px;
+  background-color: var(--color-bg-beige);
+  border-left: 3px solid var(--color-accent-gold);
+  padding: 28px 32px;
+  border-radius: 2px;
+}
+
+.non-alc-column__title {
+  font-size: 18.5px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 10px;
+}
+
+.non-alc-column__body {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--color-text-body);
+}
+
+@media (max-width: 1023px) {
+  .pairing-table__row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .sommelier-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-block: 26px;
+  }
+  .sommelier-row__prices {
+    justify-content: start;
+    grid-template-columns: repeat(2, auto);
+    gap: 24px;
+    padding-top: 8px;
+  }
+  .wine-price-line {
+    min-width: 0;
+    gap: 10px;
+  }
+  .wine-price-tax {
+    text-align: left;
+    grid-column: 1 / -1;
+    margin-top: -6px;
+  }
+}
+
+@media (max-width: 767px) {
+  .pairing-sheet__inner {
+    padding: 24px 18px;
+  }
+  .sommelier-cat + .sommelier-cat {
+    margin-top: 56px;
+  }
+  .non-alc-column {
+    padding: 22px 20px;
+  }
+}
+
+/* =========================================================
+   19. 【PAGE 04：RESERVATION】フォーム・確認画面・完了画面・ポリシー
+   ========================================================= */
+/* お電話案内ボックス */
+.tel-notice-box {
+  background-color: var(--color-bg-ivory);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 2px;
+  padding: 28px 32px;
+  margin-bottom: 36px;
+}
+
+.tel-notice-box__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.tel-notice-box__title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.tel-notice-box__number-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.tel-notice-box__tel {
+  font-family: var(--font-serif-en);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--color-accent-wine);
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+}
+
+.tel-notice-box__hours {
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+
+.tel-notice-box__note {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+/* 外部予約システム接続用案内バナー（EXTERNAL_BOOKING_URL設定時に自動表示） */
+.external-booking-banner {
+  display: none;
+  background-color: var(--color-bg-paper);
+  border: 2px solid var(--color-accent-gold);
+  border-radius: 2px;
+  padding: 28px 32px;
+  margin-bottom: 36px;
+  text-align: center;
+}
+
+.external-booking-banner.is-active {
+  display: block;
+}
+
+/* 予約確定までの安心3ステップ図解（絵文字ゼロ・ゴールド接続ライン） */
+.flow-panel {
+  background-color: var(--color-bg-beige);
+  border: 1px solid rgba(201, 169, 110, 0.5);
+  border-radius: 2px;
+  padding: 32px 36px;
+  margin-bottom: 48px;
+}
+
+.flow-panel__title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 26px;
+}
+
+.flow-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+}
+
+.flow-step {
+  background-color: var(--color-bg-ivory);
+  border: 1px solid rgba(62, 39, 35, 0.12);
+  border-radius: 2px;
+  padding: 20px 20px;
+  position: relative;
+}
+
+.flow-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -24px;
+  width: 24px;
+  height: 1px;
+  background-color: var(--color-accent-gold);
+}
+
+.flow-step__num {
+  display: inline-block;
+  font-family: var(--font-serif-en);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--color-accent-wine);
+  margin-bottom: 6px;
+}
+
+.flow-step__head {
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 8px;
+  line-height: 1.45;
+}
+
+.flow-step__desc {
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--color-text-body);
+}
+
+/* 現在地インジケーター（1.入力 → 2.確認 → 3.仮受付完了） */
+.form-progress {
+  max-width: 780px;
+  margin: 0 auto 28px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.form-progress__item {
+  padding: 12px 10px;
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 500;
+  background-color: var(--color-bg-beige);
+  color: var(--color-text-muted);
+  border: 1px solid rgba(62, 39, 35, 0.12);
+  border-radius: 2px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.form-progress__num {
+  font-family: var(--font-serif-en);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.form-progress__item.is-active {
+  background-color: var(--color-accent-wine);
+  color: var(--color-bg-ivory);
+  border-color: var(--color-accent-wine);
+}
+
+.form-progress__item.is-done {
+  background-color: var(--color-bg-ivory);
+  color: var(--color-text-dark);
+  border-color: var(--color-accent-gold);
+}
+
+/* フォームシート本体（最大幅780px） */
+.reservation-sheet {
+  max-width: 780px;
+  margin-inline: auto;
+  background-color: var(--color-bg-paper);
+  border: 1px solid rgba(62, 39, 35, 0.14);
+  border-radius: 2px;
+  padding: 52px 56px;
+  box-shadow: 0 10px 32px rgba(62, 39, 35, 0.05);
+}
+
+.form-step-block + .form-step-block {
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.form-step-header {
+  padding-left: 16px;
+  border-left: 3px solid var(--color-accent-wine);
+  margin-bottom: 28px;
+}
+
+.form-step-header__en {
+  display: block;
+  font-family: var(--font-serif-en);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--color-accent-wine);
+  margin-bottom: 4px;
+}
+
+.form-step-header__title {
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  line-height: 1.45;
+}
+
+.form-step-lead {
+  margin-bottom: 28px;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--color-text-body);
+}
+
+.form-group {
+  margin-bottom: 28px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-row-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 10px;
+}
+
+.badge-req,
+.badge-opt {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.3;
+  padding: 2px 8px;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+}
+
+.badge-req {
+  background-color: var(--color-accent-wine);
+  color: var(--color-bg-ivory);
+}
+
+.badge-opt {
+  background-color: var(--color-bg-beige);
+  color: var(--color-text-dark);
+}
+
+/* ★重要：スマホで入力時に画面が勝手にズームされないよう 16px を厳守 */
+.form-control {
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 16px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text-dark);
+  background-color: var(--color-bg-paper);
+  border: 1px solid var(--color-border-input);
+  border-radius: 2px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+textarea.form-control {
+  min-height: 104px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.form-control::placeholder {
+  color: #9A8882;
+}
+
+.form-control:focus {
+  border-color: var(--color-accent-wine);
+  box-shadow: 0 0 0 3px rgba(114, 47, 55, 0.14);
+  outline: none;
+}
+
+.form-control.is-invalid {
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+.form-help {
+  margin-top: 8px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.form-error-msg {
+  display: none;
+  margin-top: 6px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--color-error);
+}
+
+.form-error-msg.is-visible {
+  display: block;
+}
+
+/* ご希望のコース：カード型ラジオボタン5種 */
+.course-radio-list {
+  display: grid;
+  gap: 12px;
+}
+
+.course-radio-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 16px 20px;
+  border: 1px solid var(--color-border-input);
+  border-radius: 2px;
+  background-color: var(--color-bg-paper);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.course-radio-card:hover {
+  border-color: var(--color-accent-gold);
+}
+
+.course-radio-card input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 4px;
+  accent-color: var(--color-accent-wine);
+  cursor: pointer;
+}
+
+.course-radio-card.is-selected,
+.course-radio-card:has(input[type="radio"]:checked) {
+  border: 2px solid var(--color-accent-wine);
+  padding: 15px 19px;
+  background-color: var(--color-wine-subtle);
+}
+
+.course-radio-card__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+
+.course-radio-card__name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.course-radio-card__tag {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--color-accent-wine);
+  background-color: var(--color-bg-beige);
+  border: 1px solid var(--color-accent-gold);
+  padding: 1px 8px;
+  border-radius: 2px;
+}
+
+.course-radio-card__price {
+  font-family: var(--font-serif-en);
+  font-size: 17.5px;
+  font-weight: 600;
+  color: var(--color-accent-wine);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.course-radio-card__desc {
+  display: block;
+  margin-top: 4px;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* 横並び・縦積みラジオボタン（プレート希望・連絡方法希望） */
+.radio-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.radio-pills--stack {
+  flex-direction: column;
+}
+
+.radio-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 10px 18px;
+  border: 1px solid var(--color-border-input);
+  border-radius: 2px;
+  background-color: var(--color-bg-paper);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.radio-pill input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-accent-wine);
+}
+
+.radio-pill:has(input[type="radio"]:checked) {
+  border-color: var(--color-accent-wine);
+  background-color: var(--color-wine-subtle);
+  font-weight: 500;
+}
+
+/* メッセージプレート例文ミニガイド（ワンクリック挿入チップ付き） */
+.plate-message-wrap {
+  margin-top: 16px;
+  padding: 20px;
+  background-color: var(--color-bg-ivory);
+  border: 1px solid rgba(201, 169, 110, 0.55);
+  border-radius: 2px;
+}
+
+.plate-chips {
+  margin-top: 12px;
+}
+
+.plate-chips__label {
+  display: block;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+.plate-chips__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.example-chip {
+  background-color: var(--color-bg-paper);
+  border: 1px solid var(--color-border-input);
+  border-radius: 2px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--color-text-dark);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.example-chip:hover {
+  border-color: var(--color-accent-wine);
+  background-color: var(--color-wine-subtle);
+  color: var(--color-accent-wine);
+}
+
+/* 送信直前の重要案内ボックス（仮予約・24時間以内連絡の明記） */
+.important-notice-box {
+  margin-top: 44px;
+  margin-bottom: 28px;
+  padding: 22px 26px;
+  background-color: var(--color-bg-beige);
+  border: 1px solid var(--color-accent-gold);
+  border-radius: 2px;
+}
+
+.important-notice-box__title {
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--color-accent-wine);
+  margin-bottom: 8px;
+}
+
+.important-notice-box__body {
+  font-size: 14.5px;
+  line-height: 1.85;
+  color: var(--color-text-dark);
+}
+
+.form-submit-area {
+  text-align: center;
+}
+
+.form-submit-area .btn {
+  min-width: 320px;
+}
+
+.form-global-error {
+  display: none;
+  margin-bottom: 20px;
+  padding: 14px 18px;
+  background-color: var(--color-error-bg);
+  border: 1px solid var(--color-error);
+  border-radius: 2px;
+  font-size: 14.5px;
+  color: var(--color-error);
+  text-align: left;
+}
+
+.form-global-error.is-visible {
+  display: block;
+}
+
+/* 確認画面（STEP 2/3） */
+.confirm-panel,
+.thanks-panel {
+  display: none;
+}
+
+.confirm-panel.is-active,
+.thanks-panel.is-active {
+  display: block;
+}
+
+.reservation-form.is-hidden {
+  display: none;
+}
+
+.confirm-panel__title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.confirm-panel__lead {
+  font-size: 15px;
+  color: var(--color-text-body);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.confirm-section-heading {
+  font-size: 16.5px;
+  font-weight: 600;
+  color: var(--color-accent-wine);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-accent-gold);
+  margin-bottom: 4px;
+  margin-top: 28px;
+}
+
+.confirm-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.confirm-table th,
+.confirm-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--color-border-subtle);
+  text-align: left;
+  vertical-align: top;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.confirm-table th {
+  width: 34%;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.confirm-table td {
+  color: var(--color-text-body);
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.confirm-micro {
+  margin-top: 28px;
+  padding: 16px 20px;
+  background-color: var(--color-bg-beige-soft);
+  border-left: 3px solid var(--color-accent-gold);
+  font-size: 14px;
+  color: var(--color-text-dark);
+  line-height: 1.8;
+}
+
+.confirm-actions {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* 送信完了画面（サンクス画面） */
+.thanks-panel {
+  text-align: center;
+  padding-block: 12px;
+}
+
+.thanks-check {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  border: 1px solid var(--color-accent-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent-gold);
+}
+
+.thanks-check svg {
+  width: 26px;
+  height: 26px;
+}
+
+.thanks-panel__en {
+  display: block;
+  font-family: var(--font-serif-en);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  color: var(--color-text-gold-readable);
+  margin-bottom: 10px;
+}
+
+.thanks-panel__title {
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 20px;
+}
+
+.thanks-panel__lead {
+  font-size: 15.5px;
+  color: var(--color-text-body);
+  margin-bottom: 24px;
+}
+
+.thanks-important-box {
+  text-align: left;
+  background-color: var(--color-bg-beige);
+  border: 1px solid var(--color-accent-gold);
+  border-radius: 2px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+}
+
+.thanks-important-box__head {
+  font-size: 16.5px;
+  font-weight: 600;
+  color: var(--color-accent-wine);
+  margin-bottom: 10px;
+}
+
+.thanks-important-box p + p {
+  margin-top: 12px;
+}
+
+.thanks-summary-box {
+  text-align: left;
+  background-color: var(--color-bg-ivory);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 2px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  font-size: 14.5px;
+}
+
+.thanks-summary-box__title {
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.thanks-contact-box {
+  text-align: left;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 2px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+.thanks-contact-box__tel {
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.thanks-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ご予約に関するご案内・キャンセルポリシー */
+.policy-list {
+  max-width: 820px;
+  margin-inline: auto;
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.policy-item {
+  padding-block: 26px;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.policy-item__title {
+  font-size: 17.5px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.policy-item__num {
+  font-family: var(--font-serif-en);
+  font-size: 16px;
+  color: var(--color-text-gold-readable);
+}
+
+.policy-item__body {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--color-text-body);
+}
+
+.policy-fee-box {
+  margin-top: 14px;
+  padding: 16px 20px;
+  background-color: var(--color-bg-ivory);
+  border-left: 3px solid var(--color-accent-gold);
+  font-size: 14.5px;
+  line-height: 1.85;
+}
+
+.policy-fee-box ul {
+  margin-bottom: 10px;
+}
+
+.policy-fee-box li {
+  font-weight: 500;
+  color: var(--color-text-dark);
+}
+
+@media (max-width: 1023px) {
+  .flow-steps {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .flow-step:not(:last-child)::after {
+    top: auto;
+    bottom: -17px;
+    left: 28px;
+    right: auto;
+    width: 1px;
+    height: 16px;
+  }
+  .reservation-sheet {
+    padding: 36px 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .tel-notice-box {
+    padding: 22px 18px;
+  }
+  .flow-panel {
+    padding: 24px 18px;
+  }
+  .form-progress__item {
+    font-size: 12px;
+    padding: 10px 4px;
+  }
+  .reservation-sheet {
+    padding: 26px 18px;
+  }
+  .form-row-2col {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .form-submit-area .btn {
+    min-width: 0;
+    width: 100%;
+  }
+  .confirm-table th,
+  .confirm-table td {
+    display: block;
+    width: 100%;
+    padding: 8px 4px;
+  }
+  .confirm-table th {
+    border-bottom: none;
+    padding-top: 14px;
+    padding-bottom: 2px;
+    color: var(--color-accent-wine);
+    font-size: 14px;
+  }
+  .confirm-actions {
+    flex-direction: column-reverse;
+  }
+}
+
+/* =========================================================
+   20. 穏やかなスクロール・フェードイン演出（視差軽減設定にも対応）
+   ========================================================= */
+.fade-up {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.75s var(--ease-elegant),
+    transform 0.75s var(--ease-elegant);
+}
+
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* 印刷時（お品書きや予約控えを印刷する場合）の配慮 */
+@media print {
+  .site-header,
+  .floating-bar,
+  .footer-cta {
+    display: none !important;
+  }
+  body {
+    background: #FFFFFF;
+    color: #000000;
+  }
+}

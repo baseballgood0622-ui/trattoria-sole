@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ★ここで検索結果に表示されるページタイトル・説明文を変更できます -->
+  <title>Trattoria SOLE（トラットリア ソーレ）｜代々木上原で15年続くイタリアンレストラン</title>
+  <meta name="description" content="代々木上原駅徒歩3分、街角で15年愛されるイタリアンレストラン「Trattoria SOLE（トラットリア ソーレ）」。大切な日には、心に残る一皿を。誕生日・結婚記念日・プロポーズの特別コースや特製メッセージプレートも承ります。">
+
+  <!-- Google Fonts（気品ある欧文 Cormorant Garamond ＆ 温かみのある日本語明朝体 Shippori Mincho） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- 共通スタイルシート -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =====================================================================
+       共通ヘッダー（スクロール追従・全ページ共通予約導線）
+       ===================================================================== -->
+  <header class="site-header site-header--transparent" id="site-header">
+    <div class="site-header__inner">
+      <!-- ★既存のロゴ画像ファイルがある場合は、ここのテキストロゴを <img src="assets/logo.png" alt="Trattoria SOLE"> に差し替えられます -->
+      <a href="index.html" class="site-logo" aria-label="Trattoria SOLE ホームへ">
+        <span class="site-logo__main">Trattoria SOLE</span>
+        <span class="site-logo__sub">YOYOGI-UEHARA | SINCE 2011</span>
+      </a>
+
+      <!-- PC用グローバルナビゲーション ＋ 常時表示予約ボタン -->
+      <div class="header-nav-wrap">
+        <nav class="global-nav" aria-label="メインナビゲーション">
+          <ul class="global-nav__list">
+            <li><a href="index.html" class="global-nav__link is-current">HOME</a></li>
+            <li><a href="menu.html" class="global-nav__link">MENU</a></li>
+            <li><a href="wine.html" class="global-nav__link">WINE</a></li>
+            <li><a href="#access" class="global-nav__link">ACCESS</a></li>
+            <li><a href="#concept" class="global-nav__link">CONCEPT</a></li>
+            <li><a href="reservation.html" class="global-nav__link">RESERVATION</a></li>
+          </ul>
+        </nav>
+        <a href="reservation.html" class="header-cta-btn">オンライン予約</a>
+      </div>
+
+      <!-- スマホ・タブレット用ハンバーガーボタン -->
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="メニューを開く">
+        <span class="nav-toggle__bars" aria-hidden="true">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </span>
+        <span class="nav-toggle__label" id="nav-toggle-label">MENU</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- スマホ・タブレット用ドロワーメニュー -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <nav aria-label="スマートフォン用メニュー">
+      <ul class="mobile-drawer__list">
+        <li class="mobile-drawer__item">
+          <a href="index.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">HOME</span>
+            <span class="mobile-drawer__jp">トップページ</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="#anniversary" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">ANNIVERSARY</span>
+            <span class="mobile-drawer__jp">記念日のおもてなし</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="menu.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">MENU</span>
+            <span class="mobile-drawer__jp">お料理・コースのご案内</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="wine.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">WINE</span>
+            <span class="mobile-drawer__jp">料理を引き立てるワイン</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="#access" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">ACCESS</span>
+            <span class="mobile-drawer__jp">店舗情報・アクセス</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="#concept" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">CONCEPT</span>
+            <span class="mobile-drawer__jp">私たちが大切にしていること</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="reservation.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">RESERVATION</span>
+            <span class="mobile-drawer__jp">ご予約・記念日のご相談</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="mobile-drawer__footer">
+      <p class="mobile-drawer__tel-label">お電話でのご予約・ご相談（11:00–22:00）</p>
+      <a href="tel:0354540150" class="mobile-drawer__tel tel-num">03-5454-0150</a>
+      <p class="mobile-drawer__hours">
+        LUNCH 11:30–15:00 (L.O. 13:30) / DINNER 17:30–22:30 (L.O. 20:30)<br>
+        定休日：毎週水曜日・第2火曜日
+      </p>
+      <a href="reservation.html" class="btn btn--primary">
+        <span>オンライン予約・ご相談</span>
+        <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ===================================================================
+         1. ファーストビュー（FV：必須4要素完備・写真が主役＆可読性100%）
+         ★ここでトップ画面のキャッチコピー・ボタン文言・メイン画像を変更できます
+         =================================================================== -->
+    <section class="hero" aria-label="メインビジュアル">
+      <!-- ④ メインビジュアル画像 -->
+      <div class="hero__media">
+        <img
+          src="assets/hero-main.jpg"
+          alt="キャンドルが灯る温かなテーブルに並ぶTrattoria SOLEの本格イタリア料理と赤ワイン"
+          width="1376"
+          height="768"
+          loading="eager"
+          fetchpriority="high"
+          class="hero__img"
+        >
+        <div class="hero__overlay" aria-hidden="true"></div>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <!-- ③ 実績・訴求ボタン（AI-company必須要素：安心感のアピール） -->
+          <div class="hero__badges">
+            <a href="#concept" class="hero__badge">
+              <span class="hero__badge-diamond" aria-hidden="true"></span>
+              <span>代々木上原で愛されて15年</span>
+              <svg class="hero__badge-chevron" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M4.5 2.5L8 6L4.5 9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#anniversary" class="hero__badge">
+              <span class="hero__badge-diamond" aria-hidden="true"></span>
+              <span>記念日メッセージプレート対応</span>
+              <svg class="hero__badge-chevron" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M4.5 2.5L8 6L4.5 9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- ① キャッチコピー（※オーナー指定文言厳守） -->
+          <p class="hero__brand">Trattoria SOLE</p>
+          <h1 class="hero__title">大切な日には、<span class="ib">心に残る一皿を。</span></h1>
+          <p class="hero__subtitle">誕生日も、記念日も、<span class="ib">大切な人と過ごすかけがえのない時間を。</span></p>
+
+          <!-- ② アクションボタン（CTAボタン ※オーナー指定2ボタン厳守） -->
+          <div class="hero__actions">
+            <a href="#anniversary" class="btn btn--ghost-light">
+              <span>記念日・コースを見る</span>
+            </a>
+            <a href="reservation.html" class="btn btn--primary-on-dark">
+              <span>オンライン予約</span>
+              <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         2. ANNIVERSARY｜特別な日を、特別な場所で（最重要セクション）
+         ★ここで記念日のおもてなし内容・プレート例文を変更できます
+         =================================================================== -->
+    <section class="section section--beige" id="anniversary">
+      <div class="container">
+        <!-- セクション見出し（※オーナー指定文言一字一句厳守） -->
+        <div class="section-header section-header--center fade-up">
+          <div class="section-eyebrow">
+            <span class="section-eyebrow__en">ANNIVERSARY</span>
+            <span class="section-eyebrow__sep" aria-hidden="true">/</span>
+            <span class="section-eyebrow__jp">特別な日を、特別な場所で</span>
+          </div>
+          <h2 class="section-title">忘れられない一日を、ここで。</h2>
+          <p class="section-lead">大切な人の笑顔が見たい日。いつもより少し贅沢に過ごしたい日。Trattoria SOLEが、料理とワインでそのひとときを彩ります。</p>
+        </div>
+
+        <!-- スプリット展開：左 大判ビジュアル × 右 3つのおもてなし -->
+        <div class="anniversary-showcase">
+          <div class="anniversary__visuals fade-up">
+            <figure class="anniversary__main-photo">
+              <img
+                src="assets/anniversary-plate.jpg"
+                alt="季節のフルーツとチョコレート文字で彩られた特製アニバーサリー・デザートプレート"
+                width="1200"
+                height="896"
+                loading="lazy"
+              >
+            </figure>
+            <figure class="anniversary__sub-photo">
+              <img
+                src="assets/anniversary-course.jpg"
+                alt="キャンドルが揺れるテーブルに並ぶ記念日特別コースと乾杯スパークリングワイン"
+                width="1376"
+                height="768"
+                loading="lazy"
+              >
+            </figure>
+          </div>
+
+          <div class="anniversary__points fade-up">
+            <h3 class="anniversary__points-heading">特別な日を彩る「3つのおもてなし」</h3>
+
+            <article class="anniversary-point">
+              <span class="anniversary-point__roman">HOSPITALITY I</span>
+              <h4 class="anniversary-point__title">祝福のために仕立てる「記念日特別コース」</h4>
+              <p class="anniversary-point__body">乾杯のスパークリングワイン（ノンアルコールへ変更無料）から始まり、オマール海老の手打ちパスタや黒毛和牛の炭火焼きまで。旬の贅沢を織り込んだ全7皿のフルコースをご用意しています。</p>
+            </article>
+
+            <article class="anniversary-point">
+              <span class="anniversary-point__roman">HOSPITALITY II</span>
+              <h4 class="anniversary-point__title">気恥ずかしくない、大人にふさわしい上品な演出</h4>
+              <p class="anniversary-point__body">店内中が注目するような派手な演出ではなく、お二人の会話が温まったタイミングで、キャンドルを添えた美しいドルチェプレートをさりげなくテーブルへお届けします。ご希望に応じてお写真撮影も自然にお手伝いいたします。</p>
+            </article>
+
+            <article class="anniversary-point">
+              <span class="anniversary-point__roman">HOSPITALITY III</span>
+              <h4 class="anniversary-point__title">想いを届ける「特製メッセージプレート」対応</h4>
+              <p class="anniversary-point__body">パティシエが一皿ずつ丁寧にメッセージをお入れします。お誕生日、結婚記念日、プロポーズ、日頃の感謝まで、お好きな言葉をご予約時にお知らせください。</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- 招待状風デザイン枠：メッセージ例文ガイド -->
+        <div class="invitation-sheet fade-up">
+          <div class="invitation-sheet__inner">
+            <div class="invitation-sheet__header">
+              <span class="invitation-sheet__eyebrow">MESSAGE PLATE EXAMPLES</span>
+              <h3 class="invitation-sheet__title">ご希望のメッセージを添えられます（例文）</h3>
+            </div>
+
+            <div class="invitation-grid">
+              <div class="invitation-col">
+                <h4 class="invitation-col__cat">お誕生日に</h4>
+                <ul class="invitation-examples">
+                  <li>
+                    <span class="invitation-examples__it">Buon Compleanno, [お名前]</span>
+                    <span class="invitation-examples__note">（イタリア語でお誕生日おめでとう）</span>
+                  </li>
+                  <li>
+                    <span class="invitation-examples__it">Happy Birthday, [お名前]</span>
+                  </li>
+                  <li class="invitation-examples__jp">お誕生日おめでとう。いつもありがとう</li>
+                </ul>
+              </div>
+
+              <div class="invitation-col">
+                <h4 class="invitation-col__cat">ご結婚記念日に</h4>
+                <ul class="invitation-examples">
+                  <li>
+                    <span class="invitation-examples__it">Buon Anniversario</span>
+                    <span class="invitation-examples__note">（記念日おめでとう）</span>
+                  </li>
+                  <li>
+                    <span class="invitation-examples__it">Happy Wedding Anniversary</span>
+                  </li>
+                  <li class="invitation-examples__jp">結婚10周年おめでとう。これからもよろしくね</li>
+                </ul>
+              </div>
+
+              <div class="invitation-col">
+                <h4 class="invitation-col__cat">プロポーズ・感謝の日に</h4>
+                <ul class="invitation-examples">
+                  <li>
+                    <span class="invitation-examples__it">Grazie di cuore</span>
+                    <span class="invitation-examples__note">（心からの感謝を込めて）</span>
+                  </li>
+                  <li>
+                    <span class="invitation-examples__it">Will you marry me?</span>
+                  </li>
+                  <li class="invitation-examples__jp">これからもずっと一緒にいてください</li>
+                </ul>
+              </div>
+            </div>
+
+            <p class="invitation-sheet__note">※花束のお預かりや、プレートをお出しするタイミングのご相談も予約フォームから承っております。</p>
+          </div>
+        </div>
+
+        <!-- ANNIVERSARYセクション直下・予約導線エリア -->
+        <div class="anniversary-cta fade-up">
+          <p class="anniversary-cta__micro">お相手様に気づかれない事前相談や、苦手食材のご変更も細やかにサポートいたします。</p>
+          <div class="anniversary-cta__buttons">
+            <a href="reservation.html?course=anniversary" class="btn btn--primary">
+              <span>記念日コースを予約・相談する</span>
+              <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="menu.html#anniversary-course" class="btn btn--secondary">
+              <span>記念日コースの全品メニューを見る</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         3. MENU｜料理へのこだわり（段差2×2フォトギャラリー × お品書き罫線）
+         ★ここでトップページに表示する看板料理4品と価格を変更できます
+         =================================================================== -->
+    <section class="section section--ivory" id="menu">
+      <div class="container">
+        <div class="section-header section-header--center fade-up">
+          <div class="section-eyebrow">
+            <span class="section-eyebrow__en">MENU</span>
+            <span class="section-eyebrow__sep" aria-hidden="true">/</span>
+            <span class="section-eyebrow__jp">料理へのこだわり</span>
+          </div>
+          <h2 class="section-title">四季の恵みを、<span class="ib">一番美味しい瞬間に。</span></h2>
+          <p class="section-lead">
+            日本の豊かな旬食材と、イタリアの伝統的な手仕事を掛け合わせた一皿。<br class="pc-only">
+            アラカルト（単品）でもコースでも、その日の気分に合わせてお楽しみいただけます。
+          </p>
+        </div>
+
+        <!-- 均一カードではなく、料理専門誌のような段差2×2フォトギャラリー -->
+        <div class="menu-staggered">
+          <!-- 1. ANTIPASTO -->
+          <article class="menu-feature fade-up">
+            <div class="menu-feature__cat">
+              <span class="menu-feature__cat-en">ANTIPASTO</span>
+              <span class="menu-feature__cat-jp">前菜</span>
+            </div>
+            <figure class="menu-feature__photo">
+              <img
+                src="assets/menu-antipasto.jpg"
+                alt="季節の鮮魚のカルパッチョ 契約農園の彩りハーブと柑橘の香り"
+                width="1200"
+                height="896"
+                loading="lazy"
+              >
+            </figure>
+            <div class="menu-feature__head">
+              <h3 class="menu-feature__name">季節の鮮魚のカルパッチョ 契約農園の彩りハーブと柑橘の香り</h3>
+              <p class="menu-feature__price">¥2,200<span class="menu-feature__tax">（税込）</span></p>
+            </div>
+            <p class="menu-feature__desc">その朝届いた天然鮮魚に、香り高い旬の柑橘と摘みたてハーブを添えて。爽やかな酸味が最初の一杯を引き立てる看板前菜です。</p>
+          </article>
+
+          <!-- 2. PASTA -->
+          <article class="menu-feature fade-up">
+            <div class="menu-feature__cat">
+              <span class="menu-feature__cat-en">PASTA</span>
+              <span class="menu-feature__cat-jp">パスタ</span>
+            </div>
+            <figure class="menu-feature__photo">
+              <img
+                src="assets/menu-pasta.jpg"
+                alt="手打ちタリアテッレ 黒毛和牛すね肉のじっくり煮込んだラグーソース"
+                width="1200"
+                height="896"
+                loading="lazy"
+              >
+            </figure>
+            <div class="menu-feature__head">
+              <h3 class="menu-feature__name">手打ちタリアテッレ 黒毛和牛すね肉のじっくり煮込んだラグーソース</h3>
+              <p class="menu-feature__price">¥2,600<span class="menu-feature__tax">（税込）</span></p>
+            </div>
+            <p class="menu-feature__desc">毎朝店内で打つ小麦香る平打ち生パスタに、香味野菜と赤ワインで6時間煮込んだ黒毛和牛の濃厚な旨みが絡み合います。</p>
+          </article>
+
+          <!-- 3. SECONDO -->
+          <article class="menu-feature fade-up">
+            <div class="menu-feature__cat">
+              <span class="menu-feature__cat-en">SECONDO</span>
+              <span class="menu-feature__cat-jp">メイン</span>
+            </div>
+            <figure class="menu-feature__photo">
+              <img
+                src="assets/menu-secondo.jpg"
+                alt="厳選黒毛和牛イチボの炭火タリアータ 熟成バルサミコとパルミジャーノ"
+                width="1200"
+                height="896"
+                loading="lazy"
+              >
+            </figure>
+            <div class="menu-feature__head">
+              <h3 class="menu-feature__name">厳選黒毛和牛イチボの炭火タリアータ 熟成バルサミコとパルミジャーノ</h3>
+              <p class="menu-feature__price">¥4,400<span class="menu-feature__tax">（税込）</span></p>
+            </div>
+            <p class="menu-feature__desc">希少部位イチボを炭火で香ばしく焼き上げ、しっとりロゼ色に。12年熟成バルサミコの芳醇な甘みと赤身の旨みが広がる逸品です。</p>
+          </article>
+
+          <!-- 4. DOLCE -->
+          <article class="menu-feature fade-up">
+            <div class="menu-feature__cat">
+              <span class="menu-feature__cat-en">DOLCE</span>
+              <span class="menu-feature__cat-jp">ドルチェ</span>
+            </div>
+            <figure class="menu-feature__photo">
+              <img
+                src="assets/menu-dolce.jpg"
+                alt="クラシカル・ティラミスと香り高いエスプレッソ"
+                width="1200"
+                height="896"
+                loading="lazy"
+              >
+            </figure>
+            <div class="menu-feature__head">
+              <h3 class="menu-feature__name">クラシカル・ティラミス エスプレッソとマルサラ酒の芳醇な香り</h3>
+              <p class="menu-feature__price">¥1,100<span class="menu-feature__tax">（税込）</span></p>
+            </div>
+            <p class="menu-feature__desc">創業以来15年愛され続ける特製ドルチェ。濃厚なマスカルポーネの口どけと、ほろ苦いエスプレッソが大人の余韻を残します。</p>
+          </article>
+        </div>
+
+        <div class="section-bottom-action fade-up">
+          <a href="menu.html" class="btn btn--secondary">
+            <span>すべてのアラカルト・メニューを見る</span>
+            <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         4. COURSE｜コースのご案内（記念日主役フルワイド ＋ 下段2列階層）
+         ★ここで3つのコース料金・特典・お品書き概要を変更できます
+         =================================================================== -->
+    <section class="section section--beige-soft" id="course">
+      <div class="container">
+        <div class="section-header section-header--center fade-up">
+          <div class="section-eyebrow">
+            <span class="section-eyebrow__en">COURSE</span>
+            <span class="section-eyebrow__sep" aria-hidden="true">/</span>
+            <span class="section-eyebrow__jp">コースのご案内</span>
+          </div>
+          <h2 class="section-title">大切なひとときに寄り添う、<span class="ib">3つのコース。</span></h2>
+          <p class="section-lead">
+            旬の味わいを少しずつ贅沢にお楽しみいただけるコースをご用意しております。<br class="pc-only">
+            アレルギーや苦手な食材がございましたら、お一人様ずつ別メニューへご変更いたします。
+          </p>
+        </div>
+
+        <!-- ▼ 記念日コースの料金・内容（上段フルワイド特別ハイライト枠） ▼ -->
+        <article class="course-featured fade-up">
+          <div class="course-featured__inner">
+            <figure class="course-featured__media">
+              <img
+                src="assets/anniversary-course.jpg"
+                alt="活オマール海老のパスタや黒毛和牛ロースト、乾杯スパークリングが並ぶ記念日特別コース"
+                width="1376"
+                height="768"
+                loading="lazy"
+              >
+            </figure>
+
+            <div class="course-featured__body">
+              <span class="course-badge">誕生日・記念日 人気No.1</span>
+              <div class="course-featured__head">
+                <div>
+                  <span class="course-name-en">ANNIVERSARY COURSE</span>
+                  <h3 class="course-name-jp">記念日特別コース &ldquo;MEMORIA&rdquo;</h3>
+                </div>
+                <div class="course-price-block">
+                  <span class="course-price-num">¥12,000</span>
+                  <span class="course-price-meta">（税込・サービス料5%別）</span>
+                </div>
+              </div>
+
+              <p class="course-summary">全7品＋2大特典｜誕生日・結婚記念日・プロポーズの特別な夜に</p>
+
+              <!-- 記念日2大特典 -->
+              <div class="course-perks">
+                <p class="course-perks__title">コースに含まれる「記念日2大特典」</p>
+                <ul class="course-perks__list">
+                  <li>特典1：乾杯スパークリングワイン付き（※ノンアルコール変更無料）</li>
+                  <li>特典2：ご希望メッセージ入り「特製アニバーサリー・ドルチェプレート」</li>
+                </ul>
+              </div>
+
+              <ul class="course-items-list">
+                <li>乾杯スパークリングワイン</li>
+                <li>アミューズ ／ 旬鮮魚の冷前菜 ／ ホタテとトリュフの温前菜</li>
+                <li>活オマール海老の手打ちタリアテッレ</li>
+                <li>天然鮮魚のポワレ ＆ 黒毛和牛フィレ肉の炭火ロースト（Wメイン）</li>
+                <li>特製メッセージ付きドルチェプレート ＆ カフェ・小菓子</li>
+              </ul>
+
+              <a href="reservation.html?course=anniversary" class="btn btn--primary" style="width: 100%;">
+                <span>記念日コースを予約する</span>
+                <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ▼ ランチコース・定番ディナーコース（下段2カラム比較お品書き枠） ▼ -->
+        <div class="course-pair">
+          <!-- Card 01: LUNCH COURSE -->
+          <article class="course-sheet fade-up">
+            <div>
+              <div class="course-sheet__head">
+                <div>
+                  <span class="course-name-en">LUNCH COURSE</span>
+                  <h3 class="course-name-jp">季節のランチコース</h3>
+                </div>
+                <div class="course-price-block">
+                  <span class="course-price-num">¥4,800</span>
+                  <span class="course-price-meta">（税込・サービス料なし）</span>
+                </div>
+              </div>
+              <p class="course-summary">全5品｜お昼の記念日や、少し贅沢な週末ランチに</p>
+              <ul class="course-items-list">
+                <li>季節の前菜5種盛り合わせ</li>
+                <li>自家製ローズマリーフォカッチャ</li>
+                <li>選べる季節のパスタ</li>
+                <li>本日のお魚 または お肉のメインディッシュ</li>
+                <li>本日のドルチェ ＆ 食後のお飲み物</li>
+              </ul>
+            </div>
+            <div class="course-sheet__cta">
+              <a href="reservation.html?course=lunch" class="btn btn--secondary">
+                <span>ランチコースを予約する</span>
+                <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 02: DINNER COURSE -->
+          <article class="course-sheet fade-up">
+            <div>
+              <div class="course-sheet__head">
+                <div>
+                  <span class="course-name-en">DINNER COURSE</span>
+                  <h3 class="course-name-jp">季節のディナーコース &ldquo;SOLE&rdquo;</h3>
+                </div>
+                <div class="course-price-block">
+                  <span class="course-price-num">¥8,800</span>
+                  <span class="course-price-meta">（税込・サービス料5%別）</span>
+                </div>
+              </div>
+              <p class="course-summary">全6品｜旬の食材と手打ちパスタを堪能する定番ディナー</p>
+              <ul class="course-items-list">
+                <li>始まりの小さな一皿（アミューズ）</li>
+                <li>季節の冷前菜 ＆ 温前菜（2皿）</li>
+                <li>シェフ特製 手打ちパスタ</li>
+                <li>選べるメイン（本日の天然鮮魚 または 厳選黒毛和牛）</li>
+                <li>選べるドルチェ ＆ 食後のお飲み物・小菓子</li>
+              </ul>
+            </div>
+            <div class="course-sheet__cta">
+              <a href="reservation.html?course=dinner" class="btn btn--secondary">
+                <span>ディナーコースを予約する</span>
+                <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <div class="section-bottom-action fade-up">
+          <a href="menu.html#course-detail" class="text-link">
+            <span>各コースの詳しいお品書きを見る</span>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         5. WINE｜料理を引き立てるワイン（5:7スプリット ＋ 左ゴールド縦線枠）
+         ★ここでワイン紹介文・ノンアルコール案内を変更できます
+         =================================================================== -->
+    <section class="section section--ivory" id="wine">
+      <div class="container">
+        <div class="wine-split">
+          <figure class="wine-split__photo fade-up">
+            <img
+              src="assets/wine-selection.jpg"
+              alt="イタリア各地から厳選した赤・白・スパークリングワインのボトルとグラス"
+              width="1376"
+              height="768"
+              loading="lazy"
+            >
+          </figure>
+
+          <div class="wine-split__content fade-up">
+            <div class="section-header" style="margin-bottom: 28px;">
+              <div class="section-eyebrow">
+                <span class="section-eyebrow__en">WINE</span>
+                <span class="section-eyebrow__sep" aria-hidden="true">/</span>
+                <span class="section-eyebrow__jp">料理を引き立てるワイン</span>
+              </div>
+              <h2 class="section-title">
+                一皿の香りと重なり、<br>
+                会話がほどける一杯を。
+              </h2>
+            </div>
+
+            <div class="wine-split__text">
+              <p>イタリア全20州の造り手から厳選した、常時80種類以上のワインを取り揃えております。</p>
+              <p>華やかな乾杯のフランチャコルタ（伊産スパークリング）から、余韻の長いバローロ、海風を感じる白ワインまで。グラスワインも毎日8〜10種類ご用意しております。</p>
+              <p>「お肉に合う重めの赤を」「すっきり飲みやすい白を」など、銘柄に詳しくなくてもどうぞ気軽にお声がけください。</p>
+            </div>
+
+            <!-- 絵文字ゼロ・左ゴールド縦線コールアウト -->
+            <div class="callout-non-alc">
+              <span class="callout-non-alc__en">NON-ALCOHOLIC PAIRING</span>
+              <h3 class="callout-non-alc__title">ノンアルコールでのペアリングも承ります</h3>
+              <p class="callout-non-alc__body">お酒を控えたい方や大切なお相手様にも同じテーブルで乾杯の喜びを分かち合っていただけるよう、ぶどう本来の風味を活かしたノンアルコールスパークリングや、季節の自家製ハーブコーディアルもご用意しております。</p>
+            </div>
+
+            <div class="wine-split__actions">
+              <a href="wine.html" class="btn btn--secondary">
+                <span>厳選ワインリストを見る</span>
+                <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href="reservation.html" class="btn btn--primary">
+                <span>ワインと楽しむお席を予約する</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         6. ACCESS & INFO｜店舗情報・初めての方の安心案内
+         ★ここで住所・営業時間・定休日・電話番号・Googleマップを変更できます
+         =================================================================== -->
+    <section class="section section--beige" id="access">
+      <div class="container">
+        <div class="section-header section-header--center fade-up">
+          <div class="section-eyebrow">
+            <span class="section-eyebrow__en">ACCESS &amp; INFO</span>
+            <span class="section-eyebrow__sep" aria-hidden="true">/</span>
+            <span class="section-eyebrow__jp">店舗情報・ご来店案内</span>
+          </div>
+          <h2 class="section-title">
+            代々木上原駅より徒歩3分。<br>
+            静かな路地に灯る、<span class="ib">温かな明かりが目印です。</span>
+          </h2>
+        </div>
+
+        <div class="access-grid">
+          <!-- ▼ 店舗基本情報テーブル（ここから住所・営業時間などを編集できます） ▼ -->
+          <dl class="info-dl fade-up">
+            <div class="info-dl__row">
+              <dt class="info-dl__dt">店舗名</dt>
+              <dd class="info-dl__dd">Trattoria SOLE（トラットリア ソーレ）</dd>
+            </div>
+            <div class="info-dl__row">
+              <dt class="info-dl__dt">住所</dt>
+              <dd class="info-dl__dd">〒151-0064 東京都渋谷区上原1-24-8 ソーレ代々木上原 1F</dd>
+            </div>
+            <div class="info-dl__row">
+              <dt class="info-dl__dt">アクセス</dt>
+              <dd class="info-dl__dd">小田急線・東京メトロ千代田線「代々木上原駅」南口より徒歩3分</dd>
+            </div>
+            <div class="info-dl__row">
+              <dt class="info-dl__dt">営業時間</dt>
+              <dd class="info-dl__dd">
+                <span class="num-en">LUNCH：11:30 – 15:00（L.O. 13:30）</span><br>
+                <span class="num-en">DINNER：17:30 – 22:30（L.O. 20:30）</span>
+              </dd>
+            </div>
+            <div class="info-dl__row">
+              <dt class="info-dl__dt">定休日</dt>
+              <dd class="info-dl__dd">毎週水曜日・第2火曜日（※祝日の場合は営業、翌木曜休業）</dd>
+            </div>
+            <div class="info-dl__row">
+              <dt class="info-dl__dt">電話番号</dt>
+              <dd class="info-dl__dd">
+                <a href="tel:0354540150" class="tel-num" style="font-size: 20px; font-weight: 600; color: var(--color-accent-wine);">03-5454-0150</a>
+                <span class="info-dl__note">※営業中は繋がりにくい場合がございます。24時間受付のオンライン予約もぜひご利用ください。</span>
+              </dd>
+            </div>
+            <div class="info-dl__row">
+              <dt class="info-dl__dt">席数</dt>
+              <dd class="info-dl__dd">全22席（テーブル16席 ／ カウンター6席・全席禁煙）</dd>
+            </div>
+          </dl>
+
+          <!-- 右カラム：大判Google Maps 埋め込み枠 ＋ 駅からの徒歩ルート案内 -->
+          <div class="access-visuals fade-up">
+            <div class="map-box">
+              <div class="map-frame">
+                <!-- ★実際の店舗住所が決まりましたら、Googleマップの「共有 > 地図を埋め込む」で発行した iframe の src="..." に差し替えられます -->
+                <iframe
+                  title="Trattoria SOLE 周辺アクセスマップ（代々木上原駅南口エリア）"
+                  src="https://maps.google.com/maps?q=%E4%BB%A3%E3%80%85%E6%9C%A8%E4%B8%8A%E5%8E%9F%E9%A7%85&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="map-box__caption">
+                <span>代々木上原駅 南口より徒歩3分</span>
+                <a href="https://maps.google.com/?q=%E4%BB%A3%E3%80%85%E6%9C%A8%E4%B8%8A%E5%8E%9F%E9%A7%85" target="_blank" rel="noopener noreferrer" class="text-link" style="font-size: 13.5px; padding-bottom: 2px;">
+                  <span>Google Mapsで開く</span>
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="route-guide-card">
+              <span class="route-guide-card__en">DIRECTIONS FROM STATION</span>
+              <h3 class="route-guide-card__title">代々木上原駅からの道のり（徒歩3分）</h3>
+              <p class="route-guide-card__body">
+                小田急線・東京メトロ千代田線「代々木上原駅」南口を出て緩やかな坂を下り、閑静な住宅街へ一歩入った路地の1階にございます。オリーブの鉢植えと温かな真鍮の看板が目印です。道に迷われた際はお気軽にお電話ください。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 初めてご来店される方へ（安心ミニガイド・4項目） -->
+        <div class="first-time-guide fade-up">
+          <div class="first-time-guide__heading">
+            <span class="first-time-guide__en">FOR FIRST-TIME GUESTS</span>
+            <h3 class="first-time-guide__title">初めてご来店される方へ</h3>
+          </div>
+
+          <div class="first-time-grid">
+            <article class="guide-block">
+              <h4 class="guide-block__title">ドレスコード（服装）について</h4>
+              <p class="guide-block__body">スマートカジュアルを推奨しております。ジャケット着用などの堅苦しい決まりはございませんので、少しおしゃれをした普段着でどうぞリラックスしてお越しください。</p>
+            </article>
+
+            <article class="guide-block">
+              <h4 class="guide-block__title">サービス料・チャージについて</h4>
+              <p class="guide-block__body">ランチタイムはサービス料なし、ディナータイムのみサービス料5%を頂戴しております。テーブルチャージ（席料）はいただいておりません。</p>
+            </article>
+
+            <article class="guide-block">
+              <h4 class="guide-block__title">アレルギー・苦手な食材について</h4>
+              <p class="guide-block__body">ご予約時にお知らせいただければ、お連れ様の分も含めて別食材へ無料で変更いたします。生ものやアルコールを控えたい場合も気兼ねなくご相談ください。</p>
+            </article>
+
+            <article class="guide-block">
+              <h4 class="guide-block__title">お支払い・お子様のご同伴について</h4>
+              <p class="guide-block__body">各種クレジットカード・電子マネーをご利用いただけます。落ち着いてお食事をお楽しみいただける中学生以上のお子様より大人と同じコースにてご案内しております（※ランチや貸切のご相談はお電話にて承ります）。</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         7. CONCEPT｜私たちが大切にしていること（重層フォト × 細線3コラム）
+         ★メインコンテンツの最後に配置：オーナーシェフの想い・署名・3つのこだわりを変更できます
+         =================================================================== -->
+    <section class="section section--ivory" id="concept">
+      <div class="container">
+        <div class="concept-editorial">
+          <!-- 左カラム：ストーリー本文 -->
+          <div class="concept__story fade-up">
+            <div class="section-header" style="margin-bottom: 32px;">
+              <div class="section-eyebrow">
+                <span class="section-eyebrow__en">CONCEPT</span>
+                <span class="section-eyebrow__sep" aria-hidden="true">/</span>
+                <span class="section-eyebrow__jp">私たちが大切にしていること</span>
+              </div>
+              <h2 class="section-title">
+                代々木上原の静かな街角で、15年。<br>
+                幾千もの「おめでとう」に<span class="ib">寄り添ってきました。</span>
+              </h2>
+            </div>
+
+            <div class="concept__paragraphs">
+              <p>扉を開けた瞬間、ふっと肩の力が抜けて、自然と笑顔がこぼれる場所でありたい。</p>
+              <p>そんな想いから、ここ代々木上原に小さなイタリアン「Trattoria SOLE（太陽）」を開いて15年が経ちました。</p>
+              <p>私たちが目指すのは、背伸びをして緊張する高級店ではなく、ヨーロッパの街角で長く愛されるレストランのような温かな空間です。</p>
+              <p>お二人の大切な節目に、「ここに来てよかった」と心から思っていただける一皿を、今日も丁寧にお仕立てしています。</p>
+            </div>
+
+            <div class="chef-signature">
+              <span class="chef-signature__role">Trattoria SOLE オーナーシェフ</span>
+              <span class="chef-signature__name">松本 隆司</span>
+            </div>
+          </div>
+
+          <!-- 右カラム：2枚の重層フォトコラージュ -->
+          <div class="concept__collage fade-up">
+            <figure class="concept__photo-main">
+              <img
+                src="assets/chef-story.jpg"
+                alt="一皿ずつ丁寧に仕上げを行うオーナーシェフ松本隆司の盛り付け風景"
+                width="1200"
+                height="896"
+                loading="lazy"
+              >
+            </figure>
+            <figure class="concept__photo-sub">
+              <img
+                src="assets/interior-warm.jpg"
+                alt="木の温もりと白いテーブルクロスが調和したTrattoria SOLEの落ち着いた店内空間"
+                width="1376"
+                height="768"
+                loading="lazy"
+              >
+            </figure>
+          </div>
+        </div>
+
+        <!-- 下段：3つのこだわり（箱型カードではなく1px細線で仕切るエディトリアル構成） -->
+        <div class="concept-pillars fade-up">
+          <article class="pillar-item">
+            <span class="pillar-item__num num-en">01</span>
+            <h3 class="pillar-item__title">旬の声を聴く、生産者からの贈り物</h3>
+            <p class="pillar-item__desc">毎朝届く契約農家の瑞々しい旬野菜や、その日一番の天然鮮魚。奇をてらわず、素材が持つ本来の輪郭と香りをまっすぐに引き出します。</p>
+          </article>
+
+          <article class="pillar-item">
+            <span class="pillar-item__num num-en">02</span>
+            <h3 class="pillar-item__title">一皿の余韻を深める、イタリアワイン</h3>
+            <p class="pillar-item__desc">北はピエモンテから南はシチリアまで。お料理の温度やソースの香りに寄り添い、会話が自然と弾むワインを厳選しています。</p>
+          </article>
+
+          <article class="pillar-item">
+            <span class="pillar-item__num num-en">03</span>
+            <h3 class="pillar-item__title">大切な人と、心ほどける時間を</h3>
+            <p class="pillar-item__desc">お皿をお出しする間合いや、心地よい距離感のおもてなし。お二人が目の前の相手とゆっくり向き合える、穏やかな夜をお約束します。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         8. TOPページ最下部・予約クロージングセクション
+         =================================================================== -->
+    <section class="closing-cta" aria-label="ご予約のご案内">
+      <div class="container fade-up">
+        <div class="closing-cta__ornament" aria-hidden="true"></div>
+        <h2 class="closing-cta__title">
+          大切な人とのかけがえのない夜を、<br>
+          心を込めてご用意いたします。
+        </h2>
+        <p class="closing-cta__sub">お誕生日や記念日のご相談、お席のご希望など、24時間いつでもWebフォームよりお送りいただけます。</p>
+
+        <div class="closing-cta__actions">
+          <a href="reservation.html" class="btn btn--primary-on-dark">
+            <span>オンライン予約・記念日のご相談</span>
+            <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <p class="closing-cta__tel">
+            お電話でのご予約・お問い合わせ：<a href="tel:0354540150" class="tel-num">03-5454-0150</a>（受付 <span class="num-en">11:00〜22:00</span>）
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       共通フッター
+       ===================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cta">
+        <div class="footer-cta__inner">
+          <p class="footer-cta__micro">記念日プレートやサプライズのご相談もWebから承ります</p>
+          <a href="reservation.html" class="btn btn--primary-on-dark">
+            <span>オンライン予約・ご相談はこちら</span>
+            <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-main">
+        <div class="footer-brand">
+          <p class="footer-brand__logo">Trattoria SOLE</p>
+          <p class="footer-brand__copy">大切な日には、心に残る一皿を。</p>
+          <p class="footer-brand__desc">代々木上原の静かな街角で15年。旬の食材とイタリアワインで、心ほどけるひとときをお届けします。</p>
+          <div class="footer-info">
+            <p>〒151-0064 東京都渋谷区上原1-24-8 ソーレ代々木上原 1F（代々木上原駅 南口 徒歩3分）</p>
+            <p>TEL：<a href="tel:0354540150" class="footer-info__tel tel-num">03-5454-0150</a></p>
+            <p class="num-en">LUNCH 11:30–15:00 (L.O. 13:30) / DINNER 17:30–22:30 (L.O. 20:30)｜定休日：水曜・第2火曜</p>
+          </div>
+        </div>
+
+        <div class="footer-nav-area">
+          <nav aria-label="フッターナビゲーション">
+            <ul class="footer-nav__list">
+              <li><a href="index.html" class="footer-nav__link">HOME</a></li>
+              <li><a href="index.html#anniversary" class="footer-nav__link">ANNIVERSARY</a></li>
+              <li><a href="menu.html" class="footer-nav__link">MENU</a></li>
+              <li><a href="wine.html" class="footer-nav__link">WINE</a></li>
+              <li><a href="index.html#access" class="footer-nav__link">ACCESS</a></li>
+              <li><a href="index.html#concept" class="footer-nav__link">CONCEPT</a></li>
+              <li><a href="reservation.html" class="footer-nav__link">RESERVATION</a></li>
+            </ul>
+          </nav>
+
+          <!-- ★公式SNSのURLが決まりましたら href="#" を実際のURLに変更できます -->
+          <div class="footer-sns">
+            <span class="footer-sns__label">FOLLOW US</span>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="footer-sns__link">Instagram</a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="footer-sns__link">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <small>&copy; Trattoria SOLE All Rights Reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       スマホ専用・画面下部追従（フローティング）予約バー（※絵文字ゼロ・洗練仕様）
+       ===================================================================== -->
+  <div class="floating-bar" id="floating-bar" aria-label="スマートフォン用クイック予約バー">
+    <a href="tel:0354540150" class="floating-bar__tel">
+      <span class="floating-bar__tel-sub">TEL 11:00–22:00</span>
+      <span class="floating-bar__tel-main">お電話相談</span>
+    </a>
+    <a href="reservation.html" class="floating-bar__web">
+      <span class="floating-bar__web-sub">24H WEB RESERVATION</span>
+      <span class="floating-bar__web-main">
+        <span>オンライン予約</span>
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+
+  <!-- 共通スクリプト -->
+  <script src="js/main.js" defer></script>
+</body>
+</html>

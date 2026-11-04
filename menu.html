@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ★ここでMENUページのタイトル・検索結果説明文を変更できます -->
+  <title>MENU（お料理・コースのご案内）｜Trattoria SOLE（トラットリア ソーレ）</title>
+  <meta name="description" content="代々木上原のイタリアン「Trattoria SOLE」のお料理・コース一覧。乾杯スパークリングと特製メッセージプレートが付いた記念日特別コース（¥12,000）をはじめ、ランチ・ディナーコース、旬のアラカルト全16品をご案内します。">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- 共通スタイルシート -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =====================================================================
+       共通ヘッダー（スクロール追従・全ページ共通予約導線）
+       ===================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner">
+      <!-- ★既存のロゴ画像ファイルがある場合は、ここのテキストロゴを <img src="assets/logo.png" alt="Trattoria SOLE"> に差し替えられます -->
+      <a href="index.html" class="site-logo" aria-label="Trattoria SOLE ホームへ">
+        <span class="site-logo__main">Trattoria SOLE</span>
+        <span class="site-logo__sub">YOYOGI-UEHARA | SINCE 2011</span>
+      </a>
+
+      <div class="header-nav-wrap">
+        <nav class="global-nav" aria-label="メインナビゲーション">
+          <ul class="global-nav__list">
+            <li><a href="index.html" class="global-nav__link">HOME</a></li>
+            <li><a href="menu.html" class="global-nav__link is-current">MENU</a></li>
+            <li><a href="wine.html" class="global-nav__link">WINE</a></li>
+            <li><a href="index.html#access" class="global-nav__link">ACCESS</a></li>
+            <li><a href="index.html#concept" class="global-nav__link">CONCEPT</a></li>
+            <li><a href="reservation.html" class="global-nav__link">RESERVATION</a></li>
+          </ul>
+        </nav>
+        <a href="reservation.html" class="header-cta-btn">オンライン予約</a>
+      </div>
+
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="メニューを開く">
+        <span class="nav-toggle__bars" aria-hidden="true">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </span>
+        <span class="nav-toggle__label" id="nav-toggle-label">MENU</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- スマホ・タブレット用ドロワーメニュー -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <nav aria-label="スマートフォン用メニュー">
+      <ul class="mobile-drawer__list">
+        <li class="mobile-drawer__item">
+          <a href="index.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">HOME</span>
+            <span class="mobile-drawer__jp">トップページ</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="index.html#anniversary" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">ANNIVERSARY</span>
+            <span class="mobile-drawer__jp">記念日のおもてなし</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="menu.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">MENU</span>
+            <span class="mobile-drawer__jp">お料理・コースのご案内</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="wine.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">WINE</span>
+            <span class="mobile-drawer__jp">料理を引き立てるワイン</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="index.html#access" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">ACCESS</span>
+            <span class="mobile-drawer__jp">店舗情報・アクセス</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="index.html#concept" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">CONCEPT</span>
+            <span class="mobile-drawer__jp">私たちが大切にしていること</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="reservation.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">RESERVATION</span>
+            <span class="mobile-drawer__jp">ご予約・記念日のご相談</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="mobile-drawer__footer">
+      <p class="mobile-drawer__tel-label">お電話でのご予約・ご相談（11:00–22:00）</p>
+      <a href="tel:0354540150" class="mobile-drawer__tel tel-num">03-5454-0150</a>
+      <p class="mobile-drawer__hours">
+        LUNCH 11:30–15:00 (L.O. 13:30) / DINNER 17:30–22:30 (L.O. 20:30)<br>
+        定休日：毎週水曜日・第2火曜日
+      </p>
+      <a href="reservation.html" class="btn btn--primary">
+        <span>オンライン予約・ご相談</span>
+        <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ===================================================================
+         1. ページヘッダー・導入コピー
+         =================================================================== -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+          <ol class="breadcrumb__list">
+            <li><a href="index.html">HOME</a></li>
+            <li class="breadcrumb__sep" aria-hidden="true">/</li>
+            <li aria-current="page">MENU</li>
+          </ol>
+        </nav>
+
+        <div class="page-hero__header">
+          <span class="page-hero__en">MENU</span>
+          <span class="page-hero__sub">お料理・コースのご案内</span>
+          <h1 class="page-hero__catch">素材の輪郭を活かし、<span class="ib">季節を映すイタリアン。</span></h1>
+          <p class="page-hero__lead">
+            毎朝生産者から届く旬の野菜や天然の魚介、店内で丁寧に打つ生パスタ。<br class="pc-only">
+            松本シェフが15年間磨き続けてきたのは、奇をてらわず、最後の一口まで心地よく味わえる誠実な一皿です。<br class="pc-only">
+            記念日のフルコースから、ワインと楽しむアラカルトまで、シーンに合わせてお選びください。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ページ内クイック移動アンカーバー -->
+    <nav class="anchor-bar" aria-label="ページ内メニュー移動">
+      <div class="container">
+        <ul class="anchor-bar__list">
+          <li>
+            <a href="#anniversary-course" class="anchor-bar__link">
+              <span>記念日コースを見る</span>
+              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M7 2.5V11.5M3.5 8L7 11.5L10.5 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#course-detail" class="anchor-bar__link">
+              <span>ランチ・ディナーコース</span>
+              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M7 2.5V11.5M3.5 8L7 11.5L10.5 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#alacarte" class="anchor-bar__link">
+              <span>アラカルト（前菜・パスタ・メイン・ドルチェ）</span>
+              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M7 2.5V11.5M3.5 8L7 11.5L10.5 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ===================================================================
+         2. アラカルトメニュー（4カテゴリー × 各4品＝全16品）
+         ★ここで季節のアラカルト料理名・説明・税込価格を編集できます
+         =================================================================== -->
+    <section class="section section--ivory" id="alacarte">
+      <div class="container">
+        <div class="section-header section-header--center fade-up">
+          <div class="section-eyebrow">
+            <span class="section-eyebrow__en">À LA CARTE</span>
+            <span class="section-eyebrow__sep" aria-hidden="true">/</span>
+            <span class="section-eyebrow__jp">アラカルト（単品料理）</span>
+          </div>
+          <h2 class="section-title">その日の気分とワインに合わせて楽しむ、<span class="ib">季節のお品書き。</span></h2>
+        </div>
+
+        <p class="alacarte-note fade-up">
+          ※アラカルトのお料理は、お二人で取り分けて召し上がりやすいよう、キッチンにて人数分にお分けしてご提供することも可能です。ご注文時にスタッフへお気軽にお申し付けください。
+        </p>
+
+        <!-- ▼ Category 01：ANTIPASTO｜前菜（左写真・右お品書き） ▼ -->
+        <div class="alacarte-category fade-up">
+          <div class="alacarte-category__media">
+            <figure class="alacarte-category__photo">
+              <img
+                src="assets/menu-antipasto.jpg"
+                alt="季節の鮮魚のカルパッチョ 契約農園の彩りハーブと柑橘の香り"
+                width="1200"
+                height="896"
+                loading="lazy"
+              >
+            </figure>
+            <p class="alacarte-category__caption">季節の鮮魚のカルパッチョ 契約農園の彩りハーブと柑橘の香り</p>
+          </div>
+
+          <div class="alacarte-category__content">
+            <div class="alacarte-cat-head">
+              <span class="alacarte-cat-head__num num-en">01</span>
+              <h3 class="alacarte-cat-head__en">ANTIPASTO</h3>
+              <span class="alacarte-cat-head__jp">前菜</span>
+            </div>
+
+            <div class="alacarte-list">
+              <!-- 前菜 1 -->
+              <article class="dish-item">
+                <div class="dish-item__head">
+                  <h4 class="dish-item__name">季節の鮮魚のカルパッチョ 契約農園の彩りハーブと柑橘の香り</h4>
+                  <span class="dish-item__dots" aria-hidden="true"></span>
+                  <span class="dish-item__price">¥2,200<span class="dish-item__tax">（税込）</span></span>
+                </div>
+                <span class="dish-item__it lang-it">Carpaccio di Pesce del Giorno con Erbe Aromatiche e Agrumi</span>
+                <p class="dish-item__desc">その朝届いた天然鮮魚を薄造りにし、香り高い旬の柑橘と摘みたてハーブ、シチリア産オリーブオイルで爽やかに仕立てた看板前菜です。</p>
+              </article>
+
+              <!-- 前菜 2 -->
+              <article class="dish-item">
+                <div class="dish-item__head">
+                  <h4 class="dish-item__name">水牛モッツァレラ「ブッラータ」と完熟フルーツトマトのカプレーゼ</h4>
+                  <span class="dish-item__dots" aria-hidden="true"></span>
+                  <span class="dish-item__price">¥2,400<span class="dish-item__tax">（税込）</span></span>
+                </div>
+                <span class="dish-item__it lang-it">Burrata Fresca con Pomodori Maturi e Basilico</span>
+                <p class="dish-item__desc">ナイフを入れた瞬間に濃厚な生クリームがとろけ出すイタリア産ブッラータチーズに、糖度の高い完熟トマトとバジルを添えました。</p>
+              </article>
+
+              <!-- 前菜 3 -->
+              <article class="dish-item">
+                <div class="dish-item__head">
+                  <h4 class="dish-item__name">イタリア産生ハム・サラミと季節の果実の盛り合わせ</h4>
+                  <span class="dish-item__dots" aria-hidden="true"></span>
+                  <span class="dish-item__price">¥2,500<span class="dish-item__tax">（税込）</span></span>
+                </div>
+                <span class="dish-item__it lang-it">Prosciutto di Parma, Salumi Misti e Frutta di Stagione</span>
+                <p class="dish-item__desc">24ヶ月熟成パルマ産プロシュートなど厳選シャルキュトリー（ハム・サラミ類）と、瑞々しい旬の果実。乾杯のスパークリングと相性抜群です。</p>
+              </article>
+
+              <!-- 前菜 4 -->
+              <article class="dish-item">
+                <div class="dish-item__head">
+                  <h4 class="dish-item__name">北海道産ホタテと旬野菜の温かいソテー 焦がしバターとケッパーのソース</h4>
+                  <span class="dish-item__dots" aria-hidden="true"></span>
+                  <span class="dish-item__price">¥2,600<span class="dish-item__tax">（税込）</span></span>
+                </div>
+                <span class="dish-item__it lang-it">Capesante Saltate con Verdure di Stagione al Burro Nocciola</span>
+                <p class="dish-item__desc">肉厚なホタテの表面を香ばしく焼き上げ、中はレアな甘みのままに。芳醇な焦がしバターとケッパーの酸味が食欲をそそる温前菜です。</p>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- ▼ Category 02：PASTA｜パスタ（左お品書き・右写真） ▼ -->
+        <div class="alacarte-category alacarte-category--reverse fade-up">
+          <div class="alacarte-category__media">
+            <figure class="alacarte-category__photo">
+              <img
+                src="assets/menu-pasta.jpg"
+                alt="手打ちタリアテッレ 黒毛和牛すね肉のじっくり煮込んだラグーソース"
+                width="1200"
+                height="896"
+                loading="lazy"
+              >
+            </figure>
+            <p class="alacarte-category__caption">手打ちタリアテッレ 黒毛和牛すね肉のじっくり煮込んだラグーソース</p>
+          </div>
+
+          <div class="alacarte-category__content">
+            <div class="alacarte-cat-head">
+              <span class="alacarte-cat-head__num num-en">02</span>
+              <h3 class="alacarte-cat-head__en">PASTA</h3>
+              <span class="alacarte-cat-head__jp">パスタ</span>
+            </div>
+
+            <div class="alacarte-list">
+              <!-- パスタ 1 -->
+              <article class="dish-item">
+                <div class="dish-item__head">
+                  <h4 class="dish-item__name">手打ちタリアテッレ 黒毛和牛すね肉のじっくり煮込んだラグーソース</h4>
+                  <span class="dish-item__dots" aria-hidden="true"></span>
+                  <span class="dish-item__price">¥2,600<span class="dish-item__tax">（税込）</span></span>
+                </div>
+                <span class="dish-item__it lang-it">Tagliatelle Fatte in Casa al Ragù di Manzo</span>
+                <p class="dish-item__desc">毎朝店内で打つ小麦香る平打ち生パスタ。香味野菜と赤ワインで6時間煮込んだ黒毛和牛の深いコクと、パルミジャーノが絡み合います。</p>
+              </article>
+
+              <!-- パスタ 2 -->
+              <article class="dish-item">
+                <div class="dish-item__head">
+                  <h4 class="dish-item__name">北海道産生ウニとフレッシュトマトのスパゲッティ 青柚子のアクセント</h4>
+                  <span class="dish-item__dots" aria-hidden="true"></span>
+                  <span class="dish-item__price">¥3,200<span class="dish-item__tax">（税込）</span></span>
+                </div>
+                <span class="dish-item__it lang-it">Spaghetti ai Ricci di Mare e Pomodorini Freschi</span>
+                <p class="dish-item__desc">とろける生ウニの濃厚な甘みを、完熟チェリートマトの軽やかな酸味で引き立てた贅沢な一皿。仕上げに散らす青柚子が爽やかに香ります。</p>
+              </article>
+
+              <!-- パスタ 3 -->
+              <article class="dish-item">
+                <div class="dish-item__head">
+                  <h4 class="dish-item__name">旬の真鯛と浅利、サルデーニャ産カラスミのリングイネ</h4>
+                  <span class="dish-item__dots" aria-hidden="true"></span>
+                  <span class="dish-item__price">¥2,500<span class="dish-item__tax">（税込）</span></span>
+                </div>
+                <span class="dish-item__it lang-it">Linguine con Orata, Vongole e Bottarga di Muggine</span>
+                <p class="dish-item__desc">皮目まで香ばしく焼いた真鯛と浅利の出汁をたっぷり吸わせたオイルベース。仕上げに削る黄金色のカラスミが磯の旨みを広げます。</p>
+              </article>
+
+              <!-- パスタ 4 -->
+              <article class="dish-item">
+                <div class="dish-item__head">
+                  <h4 class="dish-item__name">4種イタリア産チーズの自家製ニョッキ トリュフ蜂蜜の香り</h4>
+                  <span class="dish-item__dots" aria-hidden="true"></span>
+                  <span class="dish-item__price">¥2,400<span class="dish-item__tax">（税込）</span></span>
+                </div>
+                <span class="dish-item__it lang-it">Gnocchi di Patate ai Quattro Formaggi con Miele al Tartufo</span>
+                <p class="dish-item__desc">北海道産じゃがいもで仕立てる、雲のように柔らかな自家製ニョッキ。ゴルゴンゾーラなど4種チーズの濃厚なソースに、赤や白ワインが進みます。</p>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- ▼ Category 03：SECONDO｜メインディッシュ（左写真・右お品書き） ▼ -->
+        <div class="alacarte-category fade-up">
+          <div class="alacarte-category__media">
+            <figure class="alacarte-category__photo">
+              <img
+                src="assets/menu-secondo.jpg"
+                alt="厳選黒毛和牛イチボの炭火タリアータ 熟成バルサミコとパルミジャーノ"
+                width="1200"
+                height="896"
+                loading="lazy"
+              >
+            </figure>
+            <p class="alacarte-category__caption">厳選黒毛和牛イチボの炭火タリアータ 熟成バルサミコとパルミジャーノ</p>
+          </div>
+
+          <div class="alacarte-category__content">
+            <div class="alacarte-cat-head">
+              <span class="alacarte-cat-head__num num-en">03</span>
+              <h3 class="alacarte-cat-head__en">SECONDO</h3>
+              <span class="alacarte-cat-head__jp">メインディッシュ</span>
+            </div>
+
+            <div class="alacarte-list">
+              <!-- メイン 1 -->
+              <article class="dish-item">
+                <div class="dish-item__head">
+                  <h4 class="dish-item__name">厳選黒毛和牛イチボの炭火タリアータ 熟成バルサミコとパルミジャーノ</h4>
+                  <span class="dish-item__dots" aria-hidden="true"></span>
+                  <span class="dish-item__price">¥4,400<span class="dish-item__tax">（税込）</span></span>
+                </div>
+                <span class="dish-item__it lang-it">Tagliata di Manzo alla Griglia con Rucola e Aceto Balsamico</span>
+                <p class="dish-item__desc">きめ細かな赤身と上品な脂を併せ持つ希少部位イチボを炭火でじっくり火入れ。12年熟成バルサミコの芳醇な甘みとともに味わう看板メインです。</p>
+              </article>
+
+              <!-- メイン 2 -->
+              <article class="dish-item">
+                <div class="dish-item__head">
+                  <h4 class="dish-item__name">本日の天然鮮魚のアクアパッツァ 魚介の旨みあふれる黄金スープ</h4>
+                  <span class="dish-item__dots" aria-hidden="true"></span>
+                  <span class="dish-item__price">¥3,600<span class="dish-item__tax">（税込）</span></span>
+                </div>
+                <span class="dish-item__it lang-it">Acqua Pazza del Pescato del Giorno</span>
+                <p class="dish-item__desc">丸ごと仕入れる旬の天然鮮魚を、浅利・ドライトマト・オリーブと白ワインで蒸し焼きに。最後の一滴まで自家製パンに浸して味わいたい一皿です。</p>
+              </article>
+
+              <!-- メイン 3 -->
+              <article class="dish-item">
+                <div class="dish-item__head">
+                  <h4 class="dish-item__name">骨付き仔羊背肉の香草ロースト ローズマリーと熟成赤ワインのソース</h4>
+                  <span class="dish-item__dots" aria-hidden="true"></span>
+                  <span class="dish-item__price">¥4,200<span class="dish-item__tax">（税込）</span></span>
+                </div>
+                <span class="dish-item__it lang-it">Costolette d'Agnello Arrosto alle Erbe Aromatiche</span>
+                <p class="dish-item__desc">驚くほど柔らかくクセのない仔羊を、フレッシュハーブとともにしっとりとロースト。ピエモンテやトスカーナの赤ワインと最高の調和を見せます。</p>
+              </article>
+
+              <!-- メイン 4 -->
+              <article class="dish-item">
+                <div class="dish-item__head">
+                  <h4 class="dish-item__name">銘柄豚肩ロースの低温炭火グリル 旬の根菜と粒マスタードソース</h4>
+                  <span class="dish-item__dots" aria-hidden="true"></span>
+                  <span class="dish-item__price">¥3,400<span class="dish-item__tax">（税込）</span></span>
+                </div>
+                <span class="dish-item__it lang-it">Arrosto di Maiale alla Griglia con Verdure di Stagione</span>
+                <p class="dish-item__desc">低温でじっくり旨みを閉じ込めてから炭火で香ばしく仕上げた銘柄豚。噛むほどに溢れる甘い肉汁を、爽やかな粒マスタードが引き締めます。</p>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- ▼ Category 04：DOLCE｜ドルチェ（左お品書き・右写真） ▼ -->
+        <div class="alacarte-category alacarte-category--reverse fade-up">
+          <div class="alacarte-category__media">
+            <figure class="alacarte-category__photo">
+              <img
+                src="assets/menu-dolce.jpg"
+                alt="クラシカル・ティラミスと香り高いエスプレッソ"
+                width="1200"
+                height="896"
+                loading="lazy"
+              >
+            </figure>
+            <p class="alacarte-category__caption">クラシカル・ティラミス エスプレッソとマルサラ酒の芳醇な香り</p>
+          </div>
+
+          <div class="alacarte-category__content">
+            <div class="alacarte-cat-head">
+              <span class="alacarte-cat-head__num num-en">04</span>
+              <h3 class="alacarte-cat-head__en">DOLCE</h3>
+              <span class="alacarte-cat-head__jp">ドルチェ</span>
+            </div>
+
+            <div class="alacarte-list">
+              <!-- ドルチェ 1 -->
+              <article class="dish-item">
+                <div class="dish-item__head">
+                  <h4 class="dish-item__name">クラシカル・ティラミス エスプレッソとマルサラ酒の芳醇な香り</h4>
+                  <span class="dish-item__dots" aria-hidden="true"></span>
+                  <span class="dish-item__price">¥1,100<span class="dish-item__tax">（税込）</span></span>
+                </div>
+                <span class="dish-item__it lang-it">Tiramisù Classico della Casa</span>
+                <p class="dish-item__desc">創業以来15年変わらないレシピでお作りするSOLEの代名詞。濃厚で軽やかなマスカルポーネと深煎りエスプレッソが織りなす大人の味わいです。</p>
+              </article>
+
+              <!-- ドルチェ 2 -->
+              <article class="dish-item">
+                <div class="dish-item__head">
+                  <h4 class="dish-item__name">マダガスカル産バニラビーンズ香る濃厚パンナコッタ 季節のベリーソース</h4>
+                  <span class="dish-item__dots" aria-hidden="true"></span>
+                  <span class="dish-item__price">¥1,000<span class="dish-item__tax">（税込）</span></span>
+                </div>
+                <span class="dish-item__it lang-it">Panna Cotta alla Vaniglia con Salsa ai Frutti di Bosco</span>
+                <p class="dish-item__desc">生クリームの豊かなコクとバニラの甘い香り、とろけるような口どけ。甘酸っぱい果実のソースが食後に心地よい余韻をもたらします。</p>
+              </article>
+
+              <!-- ドルチェ 3 -->
+              <article class="dish-item">
+                <div class="dish-item__head">
+                  <h4 class="dish-item__name">シチリア・ブロンテ産ピスタチオのセミフレッド 温かいチョコレート添え</h4>
+                  <span class="dish-item__dots" aria-hidden="true"></span>
+                  <span class="dish-item__price">¥1,200<span class="dish-item__tax">（税込）</span></span>
+                </div>
+                <span class="dish-item__it lang-it">Semifreddo al Pistacchio di Bronte con Cioccolato Caldo</span>
+                <p class="dish-item__desc">「緑の宝石」と呼ばれる最高品質ピスタチオを贅沢に使ったアイスケーキ。温かいビターチョコレートをかけて、温度のコントラストをお楽しみください。</p>
+              </article>
+
+              <!-- ドルチェ 4 -->
+              <article class="dish-item">
+                <div class="dish-item__head">
+                  <h4 class="dish-item__name">季節の焼き立てタルトと自家製ジェラートの盛り合わせ</h4>
+                  <span class="dish-item__dots" aria-hidden="true"></span>
+                  <span class="dish-item__price">¥1,300<span class="dish-item__tax">（税込）</span></span>
+                </div>
+                <span class="dish-item__it lang-it">Crostata di Frutta di Stagione con Gelato Artigianale</span>
+                <p class="dish-item__desc">旬の果実を焼き込んだ香ばしいタルトと、素材本来の味を凝縮した自家製ジェラートを一皿に。エスプレッソや紅茶とともにどうぞ。</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         3. コース詳細エリア（全品お品書き構成）
+         ★ここで各コースの料金・皿構成・特典内容を編集できます
+         =================================================================== -->
+    <section class="section section--beige" id="course-detail">
+      <div class="container">
+        <div class="section-header section-header--center fade-up">
+          <div class="section-eyebrow">
+            <span class="section-eyebrow__en">COURSE MENU</span>
+            <span class="section-eyebrow__sep" aria-hidden="true">/</span>
+            <span class="section-eyebrow__jp">コース料理の詳細</span>
+          </div>
+          <h2 class="section-title">特別な夜にも、穏やかな昼下がりにも。</h2>
+        </div>
+
+        <p class="course-detail-note fade-up">
+          ※コース内容は季節の仕入れ状況により最も美味しい食材へ少しずつ替わります。苦手な食材・アレルギーは事前のご相談でお一人様ずつ変更いたします。
+        </p>
+
+        <!-- ▼ ① 専用ビジュアルエリア：ANNIVERSARY COURSE "MEMORIA" ▼ -->
+        <article class="memoria-stage fade-up" id="anniversary-course">
+          <div class="memoria-stage__inner">
+            <figure class="memoria-stage__hero">
+              <img
+                src="assets/anniversary-course.jpg"
+                alt="キャンドルの光に包まれたテーブルに並ぶ活オマール海老のパスタ・黒毛和牛ロースト・特製記念日プレート"
+                width="1376"
+                height="768"
+                loading="lazy"
+              >
+            </figure>
+
+            <span class="course-badge">誕生日・結婚記念日・プロポーズに人気No.1</span>
+
+            <div class="memoria-stage__top">
+              <div>
+                <span class="course-name-en">ANNIVERSARY COURSE</span>
+                <h3 class="course-name-jp" style="font-size: 26px;">ANNIVERSARY COURSE &ldquo;MEMORIA&rdquo;（メモリア）</h3>
+                <p class="memoria-stage__cond">ご利用条件：2名様より承ります（ランチタイムでのご利用も可能です）</p>
+              </div>
+              <div class="course-price-block">
+                <span style="font-size: 14px; color: var(--color-text-muted); margin-right: 4px;">お一人様</span>
+                <span class="course-price-num">¥12,000</span>
+                <span class="course-price-meta">（税込・ディナーサービス料5%別）</span>
+              </div>
+            </div>
+
+            <!-- 2大記念日特典 -->
+            <div class="course-perks" style="margin-top: 24px;">
+              <p class="course-perks__title">コースに含まれる「2大記念日特典」</p>
+              <ul class="course-perks__list">
+                <li><strong>乾杯スパークリングワイン（フランチャコルタ）1杯付き</strong>（※ノンアルコールスパークリングへ無料変更可）</li>
+                <li><strong>ご希望のメッセージを添えた「特製アニバーサリー・ドルチェプレート」</strong></li>
+              </ul>
+            </div>
+
+            <!-- 全7皿＋乾杯酒・カフェのお品書きテーブル -->
+            <dl class="course-menu-dl">
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Brindisi<span>（乾杯）</span></dt>
+                <dd class="course-menu-dl__dd">イタリア最高峰スパークリング「フランチャコルタ」または プレミアム・ノンアルコールスパークリング</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Stuzzichino<span>（始まりの一皿）</span></dt>
+                <dd class="course-menu-dl__dd">季節の歓迎のひと口アミューズ</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Antipasto Freddo<span>（冷前菜）</span></dt>
+                <dd class="course-menu-dl__dd">旬の天然鮮魚と契約農園ハーブの庭園風カルパッチョ キャビア添え</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Antipasto Caldo<span>（温前菜）</span></dt>
+                <dd class="course-menu-dl__dd">北海道産ホタテと旬茸のソテー 芳醇なトリュフの香り</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Primo Piatto<span>（パスタ）</span></dt>
+                <dd class="course-menu-dl__dd">活オマール海老の濃厚トマトクリーム 手打ちタリアテッレ</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Pesce<span>（魚料理）</span></dt>
+                <dd class="course-menu-dl__dd">本日の天然鮮魚のポワレ 蛤とサフランの黄金ソース</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Carne<span>（肉料理）</span></dt>
+                <dd class="course-menu-dl__dd">厳選黒毛和牛フィレ肉の炭火ロースト 熟成赤ワインソース</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Dolce Speciale<span>（記念日ドルチェ）</span></dt>
+                <dd class="course-menu-dl__dd">ご希望メッセージを添えた特製アニバーサリー・ドルチェプレート</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Pane e Caffè<span>（パン・カフェ）</span></dt>
+                <dd class="course-menu-dl__dd">自家製フォカッチャ ／ エスプレッソ・コーヒー・紅茶より選択・自家製小菓子付き</dd>
+              </div>
+            </dl>
+
+            <div class="memoria-stage__cta">
+              <p class="memoria-stage__micro">プレートに添えるメッセージや、サプライズのご要望も予約フォームでご指定いただけます</p>
+              <a href="reservation.html?course=anniversary" class="btn btn--primary">
+                <span>この記念日コースを予約・相談する</span>
+                <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ▼ ② DINNER COURSE "SOLE" ＆ ③ LUNCH COURSE ▼ -->
+        <div class="sub-course-stack">
+          <!-- ② DINNER COURSE -->
+          <article class="sub-course-card fade-up" id="dinner-course">
+            <div class="memoria-stage__top">
+              <div>
+                <span class="course-name-en">DINNER COURSE</span>
+                <h3 class="course-name-jp">DINNER COURSE &ldquo;SOLE&rdquo;（ソーレ）</h3>
+              </div>
+              <div class="course-price-block">
+                <span style="font-size: 14px; color: var(--color-text-muted); margin-right: 4px;">お一人様</span>
+                <span class="course-price-num" style="color: var(--color-text-dark);">¥8,800</span>
+                <span class="course-price-meta">（税込・サービス料5%別）</span>
+              </div>
+            </div>
+
+            <p class="sub-course-card__lead">旬の前菜2皿に自慢の手打ちパスタ、選べるメインディッシュまで。Trattoria SOLEの魅力をバランスよく堪能できる一番人気の定番ディナーコースです。</p>
+
+            <dl class="course-menu-dl">
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Stuzzichino<span>（始まりの一皿）</span></dt>
+                <dd class="course-menu-dl__dd">本日の小さなアミューズ</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Antipasto Freddo<span>（冷前菜）</span></dt>
+                <dd class="course-menu-dl__dd">季節の鮮魚のカルパッチョ 柑橘とハーブの香り</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Antipasto Caldo<span>（温前菜）</span></dt>
+                <dd class="course-menu-dl__dd">水牛モッツァレラと旬野菜のオーブン焼き または 本日の温前菜</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Primo Piatto<span>（パスタ）</span></dt>
+                <dd class="course-menu-dl__dd">シェフ特製 手打ちタリアテッレ 季節のラグーソース</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Secondo Piatto<span>（選べるメイン）</span></dt>
+                <dd class="course-menu-dl__dd">本日の天然鮮魚のアクアパッツァ または 厳選黒毛和牛イチボの炭火タリアータ</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Dolce<span>（選べるドルチェ）</span></dt>
+                <dd class="course-menu-dl__dd">クラシカル・ティラミス ほか本日のドルチェより1品</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Pane e Caffè<span>（パン・カフェ）</span></dt>
+                <dd class="course-menu-dl__dd">自家製フォカッチャ ／ エスプレッソ・コーヒー・紅茶・小菓子</dd>
+              </div>
+            </dl>
+
+            <p class="sub-course-card__option">※オプション案内：＋<span class="price-num">¥1,650</span>（税込）にて、ドルチェを「特製メッセージ付きアニバーサリープレート」へご変更いただけます。</p>
+
+            <div class="sub-course-card__cta">
+              <a href="reservation.html?course=dinner" class="btn btn--secondary">
+                <span>ディナーコースを予約する</span>
+                <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- ③ LUNCH COURSE -->
+          <article class="sub-course-card fade-up" id="lunch-course">
+            <div class="memoria-stage__top">
+              <div>
+                <span class="course-name-en">LUNCH COURSE</span>
+                <h3 class="course-name-jp">LUNCH COURSE（季節のランチコース）</h3>
+              </div>
+              <div class="course-price-block">
+                <span style="font-size: 14px; color: var(--color-text-muted); margin-right: 4px;">お一人様</span>
+                <span class="course-price-num" style="color: var(--color-text-dark);">¥4,800</span>
+                <span class="course-price-meta">（税込・サービス料なし）</span>
+              </div>
+            </div>
+
+            <p class="sub-course-card__lead">陽光の差し込む穏やかな店内で、彩り豊かな前菜盛り合わせからメイン、ドルチェまでゆったり楽しめるお昼のコースです。お昼の誕生日祝いにも好評です。</p>
+
+            <dl class="course-menu-dl">
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Antipasto Misto<span>（前菜）</span></dt>
+                <dd class="course-menu-dl__dd">季節の彩り前菜5種盛り合わせ</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Pane<span>（パン）</span></dt>
+                <dd class="course-menu-dl__dd">自家製ローズマリーフォカッチャ</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Primo Piatto<span>（選べるパスタ）</span></dt>
+                <dd class="course-menu-dl__dd">本日のパスタ2種よりお好みの1皿</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Secondo Piatto<span>（選べるメイン）</span></dt>
+                <dd class="course-menu-dl__dd">本日のお魚料理 または 銘柄豚肩ロースの炭火グリル</dd>
+              </div>
+              <div class="course-menu-dl__row">
+                <dt class="course-menu-dl__dt">Dolce e Caffè<span>（ドルチェ・カフェ）</span></dt>
+                <dd class="course-menu-dl__dd">本日の特製ドルチェ ＆ 食後のお飲み物</dd>
+              </div>
+            </dl>
+
+            <p class="sub-course-card__option">※オプション案内：＋<span class="price-num">¥1,650</span>（税込）にて「特製メッセージプレート」のご用意も可能です（前日までの要予約）。</p>
+
+            <div class="sub-course-card__cta">
+              <a href="reservation.html?course=lunch" class="btn btn--secondary">
+                <span>ランチコースを予約する</span>
+                <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         4. WINEページへの回遊 ＆ 予約クロージングエリア
+         =================================================================== -->
+    <section class="section section--ivory">
+      <div class="container">
+        <div class="cross-link-banner fade-up">
+          <figure class="cross-link-banner__thumb">
+            <img
+              src="assets/wine-selection.jpg"
+              alt="イタリア各地から厳選したワインとグラス"
+              width="1376"
+              height="768"
+              loading="lazy"
+            >
+          </figure>
+          <div>
+            <span class="cross-link-banner__en">PAIRING &amp; WINE LIST</span>
+            <h2 class="cross-link-banner__title">お料理の余韻を深める、厳選イタリアワイン</h2>
+            <p class="cross-link-banner__desc">前菜からメインディッシュまで、一皿ごとに寄り添うグラスワインやノンアルコールドリンクをご紹介しています。</p>
+            <a href="wine.html" class="text-link">
+              <span>ワインリストを見る</span>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-cta" aria-label="ご予約のご案内">
+      <div class="container fade-up">
+        <div class="closing-cta__ornament" aria-hidden="true"></div>
+        <h2 class="closing-cta__title">ご希望のコースが決まりましたら、<br>オンラインよりご予約いただけます。</h2>
+        <p class="closing-cta__sub">当日メニューを見ながら決めたい方の「お席のみ予約」や、記念日のご相談も承っております。</p>
+        <div class="closing-cta__actions">
+          <a href="reservation.html" class="btn btn--primary-on-dark">
+            <span>オンライン予約・記念日のご相談</span>
+            <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       共通フッター
+       ===================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cta">
+        <div class="footer-cta__inner">
+          <p class="footer-cta__micro">記念日プレートやサプライズのご相談もWebから承ります</p>
+          <a href="reservation.html" class="btn btn--primary-on-dark">
+            <span>オンライン予約・ご相談はこちら</span>
+            <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-main">
+        <div class="footer-brand">
+          <p class="footer-brand__logo">Trattoria SOLE</p>
+          <p class="footer-brand__copy">大切な日には、心に残る一皿を。</p>
+          <p class="footer-brand__desc">代々木上原の静かな街角で15年。旬の食材とイタリアワインで、心ほどけるひとときをお届けします。</p>
+          <div class="footer-info">
+            <p>〒151-0064 東京都渋谷区上原1-24-8 ソーレ代々木上原 1F（代々木上原駅 南口 徒歩3分）</p>
+            <p>TEL：<a href="tel:0354540150" class="footer-info__tel tel-num">03-5454-0150</a></p>
+            <p class="num-en">LUNCH 11:30–15:00 (L.O. 13:30) / DINNER 17:30–22:30 (L.O. 20:30)｜定休日：水曜・第2火曜</p>
+          </div>
+        </div>
+
+        <div class="footer-nav-area">
+          <nav aria-label="フッターナビゲーション">
+            <ul class="footer-nav__list">
+              <li><a href="index.html" class="footer-nav__link">HOME</a></li>
+              <li><a href="index.html#anniversary" class="footer-nav__link">ANNIVERSARY</a></li>
+              <li><a href="menu.html" class="footer-nav__link">MENU</a></li>
+              <li><a href="wine.html" class="footer-nav__link">WINE</a></li>
+              <li><a href="index.html#access" class="footer-nav__link">ACCESS</a></li>
+              <li><a href="index.html#concept" class="footer-nav__link">CONCEPT</a></li>
+              <li><a href="reservation.html" class="footer-nav__link">RESERVATION</a></li>
+            </ul>
+          </nav>
+
+          <div class="footer-sns">
+            <span class="footer-sns__label">FOLLOW US</span>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="footer-sns__link">Instagram</a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="footer-sns__link">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <small>&copy; Trattoria SOLE All Rights Reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- スマホ専用・画面下部追従（フローティング）予約バー -->
+  <div class="floating-bar" id="floating-bar" aria-label="スマートフォン用クイック予約バー">
+    <a href="tel:0354540150" class="floating-bar__tel">
+      <span class="floating-bar__tel-sub">TEL 11:00–22:00</span>
+      <span class="floating-bar__tel-main">お電話相談</span>
+    </a>
+    <a href="reservation.html" class="floating-bar__web">
+      <span class="floating-bar__web-sub">24H WEB RESERVATION</span>
+      <span class="floating-bar__web-main">
+        <span>オンライン予約</span>
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

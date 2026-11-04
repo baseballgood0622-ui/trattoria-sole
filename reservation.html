@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ★ここでRESERVATIONページのタイトル・検索結果説明文を変更できます -->
+  <title>RESERVATION（ご予約・記念日のご相談）｜Trattoria SOLE（トラットリア ソーレ）</title>
+  <meta name="description" content="代々木上原のイタリアン「Trattoria SOLE」のオンライン予約リクエスト（24時間受付）・お電話予約のご案内。お誕生日・結婚記念日・プロポーズのメッセージプレートやサプライズ、アレルギー対応のご相談も承ります。">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- 共通スタイルシート -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =====================================================================
+       共通ヘッダー（スクロール追従・全ページ共通予約導線）
+       ===================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner">
+      <!-- ★既存のロゴ画像ファイルがある場合は、ここのテキストロゴを <img src="assets/logo.png" alt="Trattoria SOLE"> に差し替えられます -->
+      <a href="index.html" class="site-logo" aria-label="Trattoria SOLE ホームへ">
+        <span class="site-logo__main">Trattoria SOLE</span>
+        <span class="site-logo__sub">YOYOGI-UEHARA | SINCE 2011</span>
+      </a>
+
+      <div class="header-nav-wrap">
+        <nav class="global-nav" aria-label="メインナビゲーション">
+          <ul class="global-nav__list">
+            <li><a href="index.html" class="global-nav__link">HOME</a></li>
+            <li><a href="menu.html" class="global-nav__link">MENU</a></li>
+            <li><a href="wine.html" class="global-nav__link">WINE</a></li>
+            <li><a href="index.html#access" class="global-nav__link">ACCESS</a></li>
+            <li><a href="index.html#concept" class="global-nav__link">CONCEPT</a></li>
+            <li><a href="reservation.html" class="global-nav__link is-current">RESERVATION</a></li>
+          </ul>
+        </nav>
+        <a href="#reservation-form-anchor" class="header-cta-btn">オンライン予約</a>
+      </div>
+
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="メニューを開く">
+        <span class="nav-toggle__bars" aria-hidden="true">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </span>
+        <span class="nav-toggle__label" id="nav-toggle-label">MENU</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- スマホ・タブレット用ドロワーメニュー -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <nav aria-label="スマートフォン用メニュー">
+      <ul class="mobile-drawer__list">
+        <li class="mobile-drawer__item">
+          <a href="index.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">HOME</span>
+            <span class="mobile-drawer__jp">トップページ</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="index.html#anniversary" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">ANNIVERSARY</span>
+            <span class="mobile-drawer__jp">記念日のおもてなし</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="menu.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">MENU</span>
+            <span class="mobile-drawer__jp">お料理・コースのご案内</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="wine.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">WINE</span>
+            <span class="mobile-drawer__jp">料理を引き立てるワイン</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="index.html#access" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">ACCESS</span>
+            <span class="mobile-drawer__jp">店舗情報・アクセス</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="index.html#concept" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">CONCEPT</span>
+            <span class="mobile-drawer__jp">私たちが大切にしていること</span>
+          </a>
+        </li>
+        <li class="mobile-drawer__item">
+          <a href="reservation.html" class="mobile-drawer__link">
+            <span class="mobile-drawer__en">RESERVATION</span>
+            <span class="mobile-drawer__jp">ご予約・記念日のご相談</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="mobile-drawer__footer">
+      <p class="mobile-drawer__tel-label">お電話でのご予約・ご相談（11:00–22:00）</p>
+      <a href="tel:0354540150" class="mobile-drawer__tel tel-num">03-5454-0150</a>
+      <p class="mobile-drawer__hours">
+        LUNCH 11:30–15:00 (L.O. 13:30) / DINNER 17:30–22:30 (L.O. 20:30)<br>
+        定休日：毎週水曜日・第2火曜日
+      </p>
+      <a href="#reservation-form-anchor" class="btn btn--primary">
+        <span>予約フォームへ進む</span>
+        <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ===================================================================
+         1. ページヘッダー（入力への集中度を高める端正なベージュ紙面ヘッダー）
+         =================================================================== -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+          <ol class="breadcrumb__list">
+            <li><a href="index.html">HOME</a></li>
+            <li class="breadcrumb__sep" aria-hidden="true">/</li>
+            <li aria-current="page">RESERVATION</li>
+          </ol>
+        </nav>
+
+        <div class="page-hero__header">
+          <span class="page-hero__en">RESERVATION</span>
+          <span class="page-hero__sub">ご予約・記念日のご相談</span>
+          <h1 class="page-hero__catch">大切なひとときのご準備を、<span class="ib">心を込めてお手伝いいたします。</span></h1>
+          <p class="page-hero__lead">
+            お誕生日や結婚記念日、プロポーズのご相談から、普段のディナー・ランチまで。<br class="pc-only">
+            お休み前の遅いお時間でも、スマートフォンからゆっくりご希望をお送りいただけるWeb予約リクエスト（24時間受付）をご用意しております。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         2. お電話案内 ＆ 予約確定までの3ステップ ＆ オンライン予約フォーム
+         =================================================================== -->
+    <section class="section section--ivory">
+      <div class="container container--narrow">
+
+        <!-- お電話でのご予約・お急ぎのご相談ボックス -->
+        <div class="tel-notice-box fade-up">
+          <div class="tel-notice-box__top">
+            <h2 class="tel-notice-box__title">当日・翌日のご予約や、お急ぎのご相談はお電話にて承ります</h2>
+            <div class="tel-notice-box__number-wrap">
+              <a href="tel:0354540150" class="tel-notice-box__tel tel-num">03-5454-0150</a>
+              <span class="tel-notice-box__hours">受付 <span class="num-en">11:00 – 22:00</span>（水曜・第2火曜定休）</span>
+            </div>
+          </div>
+          <p class="tel-notice-box__note">
+            ※ランチ（<span class="num-en">12:00〜13:30</span>頃）・ディナー（<span class="num-en">18:30〜20:30</span>頃）の営業ピーク時は、目の前のお客様へのおもてなしを優先しているためお電話に出られない場合がございます。お急ぎでない場合は、下記オンラインフォームをぜひご利用ください。
+          </p>
+        </div>
+
+        <!-- ★【外部予約システム連携フック】
+             js/main.js 先頭の EXTERNAL_BOOKING_URL に TableCheck や トレタ 等の予約URLを設定すると、
+             自動的にこの即時空席確認バナーが表示されます（未設定時は非表示）。 -->
+        <div class="external-booking-banner" id="external-booking-banner">
+          <p style="font-size: 16px; font-weight: 600; color: var(--color-text-dark); margin-bottom: 10px;">
+            リアルタイム空席確認・即時予約ページをご利用いただけます
+          </p>
+          <p style="font-size: 14.5px; color: var(--color-text-body); margin-bottom: 18px;">
+            最新の空席状況をご確認のうえ、その場でお席を確定したい場合は下記ボタンより外部予約ページへお進みください。細かなサプライズ相談をご希望の場合は、ページ下の仮予約リクエストフォームもご利用いただけます。
+          </p>
+          <a href="#" id="external-booking-link" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+            <span>リアルタイム空席確認・予約ページへ</span>
+            <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- ご予約確定までの流れ（誤認を防ぐ誠実な3ステップ表示） -->
+        <div class="flow-panel fade-up">
+          <h2 class="flow-panel__title">オンライン予約（仮受付）からご予約確定までの流れ</h2>
+          <ol class="flow-steps">
+            <li class="flow-step">
+              <span class="flow-step__num">STEP 01</span>
+              <h3 class="flow-step__head">フォームよりご希望を送信【仮予約受付】</h3>
+              <p class="flow-step__desc">ご希望の日時・コース・記念日のご要望をご入力のうえ送信してください。※この時点ではまだお席は確定しておりません。</p>
+            </li>
+            <li class="flow-step">
+              <span class="flow-step__num">STEP 02</span>
+              <h3 class="flow-step__head">24時間以内にスタッフよりご連絡</h3>
+              <p class="flow-step__desc">空席状況を確認のうえ、<strong>通常24時間以内（定休日を除く1営業日以内）</strong>に店舗スタッフよりお電話またはメールにてご連絡いたします。</p>
+            </li>
+            <li class="flow-step">
+              <span class="flow-step__num">STEP 03</span>
+              <h3 class="flow-step__head">お席の確保をもって【ご予約確定】</h3>
+              <p class="flow-step__desc">スタッフからの確認連絡およびお席の確保完了をもって、正式に【ご予約確定】となります。記念日演出の細かなご相談もこの際に承ります。</p>
+            </li>
+          </ol>
+        </div>
+
+        <!-- フォーム先頭スクロール位置アンカー ＆ 現在地インジケーター -->
+        <div id="reservation-form-anchor"></div>
+        <ol class="form-progress" aria-label="予約手続きの進行状況">
+          <li class="form-progress__item is-active" id="progress-step-1" aria-current="step">
+            <span class="form-progress__num">1.</span>ご希望・連絡先入力
+          </li>
+          <li class="form-progress__item" id="progress-step-2">
+            <span class="form-progress__num">2.</span>ご入力内容の確認
+          </li>
+          <li class="form-progress__item" id="progress-step-3">
+            <span class="form-progress__num">3.</span>仮受付完了
+          </li>
+        </ol>
+
+        <!-- ===============================================================
+             予約フォームシート本体
+             ★重要ルール厳守：STEP 1（ご予約内容・記念日希望）が先、STEP 2（お客様情報）が後！
+             =============================================================== -->
+        <div class="reservation-sheet" id="reservation-sheet">
+
+          <!-- ▼ 入力フォーム画面 ▼ -->
+          <form class="reservation-form" id="reservation-form" novalidate>
+
+            <!-- ===========================================================
+                 【STEP 1（先）：ご予約内容・記念日のご希望】
+                 =========================================================== -->
+            <div class="form-step-block">
+              <div class="form-step-header">
+                <span class="form-step-header__en">STEP 01</span>
+                <h2 class="form-step-header__title">ご希望の日時・記念日の内容をお聞かせください</h2>
+              </div>
+              <p class="form-step-lead">まずはご希望のお席やコース、お祝いの内容をご選択ください。</p>
+
+              <!-- 項目 1-1：ご予約希望日 [必須] -->
+              <div class="form-group">
+                <label for="res-date" class="form-label">
+                  <span>ご予約希望日</span>
+                  <span class="badge-req">必須</span>
+                </label>
+                <input type="date" id="res-date" name="date" class="form-control" required>
+                <p class="form-error-msg" id="err-date" role="alert"></p>
+                <p class="form-error-msg" id="date-holiday-hint" style="color: var(--color-accent-wine); font-weight: 500;"></p>
+                <p class="form-help">※毎週水曜日・第2火曜日は定休日となります。当日・翌日のご予約はお電話（<a href="tel:0354540150" class="tel-num" style="border-bottom: 1px solid var(--color-accent-gold);">03-5454-0150</a>）にてお問い合わせください。</p>
+              </div>
+
+              <!-- 項目 1-2：ご希望のお時間 [必須] ＆ 項目 1-3：ご利用人数 [必須] -->
+              <div class="form-group form-row-2col">
+                <div>
+                  <label for="res-time" class="form-label">
+                    <span>ご希望のお時間</span>
+                    <span class="badge-req">必須</span>
+                  </label>
+                  <!-- ★ここで選択できる予約時間帯を変更できます -->
+                  <select id="res-time" name="time" class="form-control" required>
+                    <option value="">お時間を選択してください</option>
+                    <optgroup label="【LUNCH】11:30 – 15:00">
+                      <option value="LUNCH 11:30">11:30</option>
+                      <option value="LUNCH 12:00">12:00</option>
+                      <option value="LUNCH 12:30">12:30</option>
+                      <option value="LUNCH 13:00">13:00</option>
+                      <option value="LUNCH 13:30（最終入店）">13:30（最終入店）</option>
+                    </optgroup>
+                    <optgroup label="【DINNER】17:30 – 22:30">
+                      <option value="DINNER 17:30">17:30</option>
+                      <option value="DINNER 18:00">18:00</option>
+                      <option value="DINNER 18:30">18:30</option>
+                      <option value="DINNER 19:00">19:00</option>
+                      <option value="DINNER 19:30">19:30</option>
+                      <option value="DINNER 20:00">20:00</option>
+                      <option value="DINNER 20:30（最終入店）">20:30（最終入店）</option>
+                    </optgroup>
+                  </select>
+                  <p class="form-error-msg" id="err-time" role="alert"></p>
+                </div>
+
+                <div>
+                  <label for="res-guests" class="form-label">
+                    <span>ご利用人数</span>
+                    <span class="badge-req">必須</span>
+                  </label>
+                  <select id="res-guests" name="guests" class="form-control" required>
+                    <option value="1名様">1名様</option>
+                    <option value="2名様" selected>2名様</option>
+                    <option value="3名様">3名様</option>
+                    <option value="4名様">4名様</option>
+                    <option value="5名様">5名様</option>
+                    <option value="6名様">6名様</option>
+                  </select>
+                  <p class="form-error-msg" id="err-guests" role="alert"></p>
+                </div>
+              </div>
+              <p class="form-help" style="margin-top: -18px; margin-bottom: 28px;">※7名様以上でのご利用や貸切のご相談は、お席の配置を調整いたしますのでお電話にてお問い合わせください。</p>
+
+              <!-- 項目 1-4：ご希望のコース [必須]（カード型ラジオボタン） -->
+              <div class="form-group">
+                <div class="form-label" id="course-group-label">
+                  <span>ご希望のコース</span>
+                  <span class="badge-req">必須</span>
+                </div>
+
+                <!-- ★ここでフォーム上のコース名・料金表記を変更できます -->
+                <div class="course-radio-list" role="radiogroup" aria-labelledby="course-group-label">
+                  <!-- コース選択肢 1 -->
+                  <label class="course-radio-card">
+                    <input type="radio" name="course" value='ANNIVERSARY COURSE（記念日特別コース "MEMORIA"） ¥12,000' checked>
+                    <span>
+                      <span class="course-radio-card__top">
+                        <span class="course-radio-card__name">ANNIVERSARY COURSE（記念日特別コース &ldquo;MEMORIA&rdquo;）</span>
+                        <span class="course-radio-card__tag">誕生日・記念日 人気No.1</span>
+                      </span>
+                      <span class="course-radio-card__top" style="margin-top: 2px;">
+                        <span class="course-radio-card__price">¥12,000<span style="font-size: 12px; font-weight: 400; color: var(--color-text-muted); font-family: var(--font-serif-jp);">（税込・サ別5%）</span></span>
+                      </span>
+                      <span class="course-radio-card__desc">乾杯スパークリング＆特製メッセージ付きドルチェプレートを含む全7皿</span>
+                    </span>
+                  </label>
+
+                  <!-- コース選択肢 2 -->
+                  <label class="course-radio-card">
+                    <input type="radio" name="course" value='DINNER COURSE（季節のディナーコース "SOLE"） ¥8,800'>
+                    <span>
+                      <span class="course-radio-card__top">
+                        <span class="course-radio-card__name">DINNER COURSE（季節のディナーコース &ldquo;SOLE&rdquo;）</span>
+                        <span class="course-radio-card__price">¥8,800<span style="font-size: 12px; font-weight: 400; color: var(--color-text-muted); font-family: var(--font-serif-jp);">（税込・サ別5%）</span></span>
+                      </span>
+                      <span class="course-radio-card__desc">旬の前菜2皿・手打ちパスタ・選べるメイン・ドルチェの全6皿</span>
+                    </span>
+                  </label>
+
+                  <!-- コース選択肢 3 -->
+                  <label class="course-radio-card">
+                    <input type="radio" name="course" value="LUNCH COURSE（季節のランチコース） ¥4,800">
+                    <span>
+                      <span class="course-radio-card__top">
+                        <span class="course-radio-card__name">LUNCH COURSE（季節のランチコース）</span>
+                        <span class="course-radio-card__price">¥4,800<span style="font-size: 12px; font-weight: 400; color: var(--color-text-muted); font-family: var(--font-serif-jp);">（税込・サなし）</span></span>
+                      </span>
+                      <span class="course-radio-card__desc">前菜盛り合わせ・パスタ・メイン・ドルチェ＆カフェの全5皿（※ランチタイム限定）</span>
+                    </span>
+                  </label>
+
+                  <!-- コース選択肢 4 -->
+                  <label class="course-radio-card">
+                    <input type="radio" name="course" value="お席のみのご予約（当日アラカルトよりご注文）">
+                    <span>
+                      <span class="course-radio-card__top">
+                        <span class="course-radio-card__name">お席のみのご予約（当日アラカルトよりご注文）</span>
+                      </span>
+                      <span class="course-radio-card__desc">当日メニューや黒板のおすすめを見ながらお好みでご注文いただけます</span>
+                    </span>
+                  </label>
+
+                  <!-- コース選択肢 5 -->
+                  <label class="course-radio-card">
+                    <input type="radio" name="course" value="当日スタッフと相談して決めたい">
+                    <span>
+                      <span class="course-radio-card__top">
+                        <span class="course-radio-card__name">当日スタッフと相談して決めたい</span>
+                      </span>
+                      <span class="course-radio-card__desc">迷われている場合もご安心ください。お席を確保のうえご相談を承ります</span>
+                    </span>
+                  </label>
+                </div>
+                <p class="form-error-msg" id="err-course" role="alert"></p>
+              </div>
+
+              <!-- 項目 1-5：ご利用目的 [任意] -->
+              <div class="form-group">
+                <label for="res-purpose" class="form-label">
+                  <span>ご利用シーン・目的</span>
+                  <span class="badge-opt">任意</span>
+                </label>
+                <select id="res-purpose" name="purpose" class="form-control">
+                  <option value="">差し支えなければご選択ください</option>
+                  <option value="お誕生日のお祝い">お誕生日のお祝い</option>
+                  <option value="ご結婚記念日">ご結婚記念日</option>
+                  <option value="プロポーズ">プロポーズ</option>
+                  <option value="大切な方とのお食事・デート">大切な方とのお食事・デート</option>
+                  <option value="ご家族・ご友人とのお祝い">ご家族・ご友人とのお祝い</option>
+                  <option value="会食・ご接待">会食・ご接待</option>
+                  <option value="普段のお食事">普段のお食事</option>
+                  <option value="その他">その他</option>
+                </select>
+              </div>
+
+              <!-- 項目 1-6：メッセージプレートのご希望 [任意] ＋ ワンクリック例文挿入 -->
+              <div class="form-group">
+                <div class="form-label">
+                  <span>特製メッセージプレートのご希望</span>
+                  <span class="badge-opt">任意</span>
+                </div>
+                <div class="radio-pills">
+                  <label class="radio-pill">
+                    <input type="radio" name="plate_wish" value="希望する">
+                    <span>希望する</span>
+                  </label>
+                  <label class="radio-pill">
+                    <input type="radio" name="plate_wish" value="希望しない" checked>
+                    <span>希望しない</span>
+                  </label>
+                </div>
+                <p class="form-help">※「ANNIVERSARY COURSE」にはコース特典として無料で含まれております。その他のコース・お席のみ予約の場合は、＋<span class="price-num">¥1,650</span>（税込）にて特製アニバーサリープレートをご用意いたします。</p>
+
+                <!-- プレートに添えるメッセージ文言 ＆ 例文チップ -->
+                <div class="plate-message-wrap">
+                  <label for="res-plate-message" class="form-label" style="font-size: 14.5px; margin-bottom: 8px;">
+                    <span>プレートに添えるご希望のメッセージ（25文字程度まで）</span>
+                    <span class="badge-opt">任意</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="res-plate-message"
+                    name="plate_message"
+                    class="form-control"
+                    maxlength="40"
+                    placeholder="例：Buon Compleanno Yuka / お誕生日おめでとう いつもありがとう"
+                  >
+                  <div class="plate-chips">
+                    <span class="plate-chips__label">すぐ使える例文ミニガイド（タップすると入力欄に入ります）：</span>
+                    <div class="plate-chips__list">
+                      <button type="button" class="example-chip" data-example="Buon Compleanno, ">Buon Compleanno, [お名前]</button>
+                      <button type="button" class="example-chip" data-example="Happy Birthday, ">Happy Birthday, [お名前]</button>
+                      <button type="button" class="example-chip" data-example="Buon Anniversario">Buon Anniversario（記念日おめでとう）</button>
+                      <button type="button" class="example-chip" data-example="結婚〇周年おめでとう">結婚〇周年おめでとう</button>
+                      <button type="button" class="example-chip" data-example="Grazie di cuore">Grazie di cuore（心からの感謝を）</button>
+                      <button type="button" class="example-chip" data-example="Will you marry me?">Will you marry me?</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 項目 1-7：アレルギー・苦手な食材 [任意] -->
+              <div class="form-group">
+                <label for="res-allergy" class="form-label">
+                  <span>アレルギー・苦手な食材のご相談</span>
+                  <span class="badge-opt">任意</span>
+                </label>
+                <textarea
+                  id="res-allergy"
+                  name="allergy"
+                  class="form-control"
+                  rows="3"
+                  placeholder="例：連れが甲殻類アレルギーです。私は生牡蠣が苦手です。／ お酒が弱いため乾杯酒はノンアルコールを希望します。"
+                ></textarea>
+                <p class="form-help">※お連れ様の分も含め、どうぞ気兼ねなくご記入ください。お一人様ずつ別食材へ無料で変更いたします。</p>
+              </div>
+
+              <!-- 項目 1-8：その他ご要望・サプライズのご相談 [任意] -->
+              <div class="form-group">
+                <label for="res-request" class="form-label">
+                  <span>その他ご要望・お席や演出のご相談</span>
+                  <span class="badge-opt">任意</span>
+                </label>
+                <textarea
+                  id="res-request"
+                  name="request"
+                  class="form-control"
+                  rows="3"
+                  placeholder="例：落ち着いた奥のテーブル席を希望します。／ 事前に花束を預かっていただくことは可能でしょうか？"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- ===========================================================
+                 【STEP 2（後）：お客様情報のご入力】
+                 =========================================================== -->
+            <div class="form-step-block">
+              <div class="form-step-header">
+                <span class="form-step-header__en">STEP 02</span>
+                <h2 class="form-step-header__title">確認のご連絡先をご入力ください</h2>
+              </div>
+              <p class="form-step-lead">
+                店舗スタッフより空席確認およびご予約確定のご連絡を差し上げます。お相手様に内緒のサプライズ等で「電話ではなくメール連絡を希望」「平日の昼間のみ電話可」などのご希望がございましたら、下記にてご指定いただけます。
+              </p>
+
+              <!-- 項目 2-1：お名前 [必須] ＆ 項目 2-2：ふりがな [必須] -->
+              <div class="form-group form-row-2col">
+                <div>
+                  <label for="res-name" class="form-label">
+                    <span>お名前</span>
+                    <span class="badge-req">必須</span>
+                  </label>
+                  <input type="text" id="res-name" name="name" class="form-control" autocomplete="name" placeholder="例：佐藤 健太" required>
+                  <p class="form-error-msg" id="err-name" role="alert"></p>
+                </div>
+
+                <div>
+                  <label for="res-kana" class="form-label">
+                    <span>ふりがな</span>
+                    <span class="badge-req">必須</span>
+                  </label>
+                  <input type="text" id="res-kana" name="kana" class="form-control" placeholder="例：さとう けんた" required>
+                  <p class="form-error-msg" id="err-kana" role="alert"></p>
+                </div>
+              </div>
+
+              <!-- 項目 2-3：お電話番号 [必須] -->
+              <div class="form-group">
+                <label for="res-tel" class="form-label">
+                  <span>お電話番号</span>
+                  <span class="badge-req">必須</span>
+                </label>
+                <input type="tel" id="res-tel" name="tel" class="form-control" autocomplete="tel" placeholder="例：090-1234-5678" required>
+                <p class="form-error-msg" id="err-tel" role="alert"></p>
+                <p class="form-help">※メールが不達となった場合や、直前の確認事項がある際にご連絡を差し上げる場合がございます。</p>
+              </div>
+
+              <!-- 項目 2-4：メールアドレス [必須] -->
+              <div class="form-group">
+                <label for="res-email" class="form-label">
+                  <span>メールアドレス</span>
+                  <span class="badge-req">必須</span>
+                </label>
+                <input type="email" id="res-email" name="email" class="form-control" autocomplete="email" placeholder="例：kenta.sato@example.com" required>
+                <p class="form-error-msg" id="err-email" role="alert"></p>
+              </div>
+
+              <!-- 項目 2-5：ご希望の確認連絡方法 [任意] -->
+              <div class="form-group">
+                <div class="form-label">
+                  <span>店舗からの確認連絡のご希望</span>
+                  <span class="badge-opt">任意</span>
+                </div>
+                <div class="radio-pills radio-pills--stack">
+                  <label class="radio-pill">
+                    <input type="radio" name="contact_method" value="メールでの連絡を希望（サプライズ準備中の方におすすめ）" checked>
+                    <span>メールでの連絡を希望（サプライズ準備中の方におすすめ）</span>
+                  </label>
+                  <label class="radio-pill">
+                    <input type="radio" name="contact_method" value="お電話での連絡を希望">
+                    <span>お電話での連絡を希望</span>
+                  </label>
+                  <label class="radio-pill">
+                    <input type="radio" name="contact_method" value="どちらでも可">
+                    <span>どちらでも可</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- 送信直前の重要案内ボックス（仮予約・24時間以内連絡の明記） -->
+            <div class="important-notice-box">
+              <p class="important-notice-box__title">【ご予約確定のタイミングについて（必ずご確認ください）】</p>
+              <p class="important-notice-box__body">
+                本フォームは実際の空席管理システムと自動連動していないため、<strong>フォーム送信時点では【仮予約（リクエスト受付）】となります（まだお席は確定しておりません）。</strong><br>
+                送信後、<strong>通常24時間以内（定休日を除く1営業日以内）</strong>に店舗スタッフよりお電話またはメールにてご連絡を差し上げ、お席の確保をもって<strong>【ご予約確定】</strong>となります。
+              </p>
+            </div>
+
+            <div class="form-global-error" id="form-global-error" role="alert"></div>
+
+            <div class="form-submit-area">
+              <button type="submit" class="btn btn--primary">
+                <span>ご入力内容を確認する</span>
+                <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </form>
+
+          <!-- ===============================================================
+               ▼ 確認画面（STEP 2：ご入力内容のご確認） ▼
+               =============================================================== -->
+          <div class="confirm-panel" id="confirm-panel" aria-live="polite">
+            <h2 class="confirm-panel__title">ご入力内容のご確認</h2>
+            <p class="confirm-panel__lead">
+              以下の内容で仮予約リクエストを送信いたします。<br class="pc-only">
+              よろしければ画面下の「この内容で仮予約リクエストを送信する」ボタンを押してください。
+            </p>
+
+            <h3 class="confirm-section-heading">【ご予約内容・記念日のご希望】</h3>
+            <table class="confirm-table">
+              <tbody>
+                <tr>
+                  <th scope="row">ご予約希望日</th>
+                  <td id="conf-date"></td>
+                </tr>
+                <tr>
+                  <th scope="row">ご希望のお時間</th>
+                  <td id="conf-time"></td>
+                </tr>
+                <tr>
+                  <th scope="row">ご利用人数</th>
+                  <td id="conf-guests"></td>
+                </tr>
+                <tr>
+                  <th scope="row">ご希望のコース</th>
+                  <td id="conf-course"></td>
+                </tr>
+                <tr>
+                  <th scope="row">ご利用目的</th>
+                  <td id="conf-purpose"></td>
+                </tr>
+                <tr>
+                  <th scope="row">メッセージプレート</th>
+                  <td id="conf-plate"></td>
+                </tr>
+                <tr>
+                  <th scope="row">アレルギー・苦手な食材</th>
+                  <td id="conf-allergy"></td>
+                </tr>
+                <tr>
+                  <th scope="row">その他ご要望</th>
+                  <td id="conf-request"></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 class="confirm-section-heading">【お客様情報】</h3>
+            <table class="confirm-table">
+              <tbody>
+                <tr>
+                  <th scope="row">お名前（ふりがな）</th>
+                  <td id="conf-name"></td>
+                </tr>
+                <tr>
+                  <th scope="row">お電話番号</th>
+                  <td id="conf-tel"></td>
+                </tr>
+                <tr>
+                  <th scope="row">メールアドレス</th>
+                  <td id="conf-email"></td>
+                </tr>
+                <tr>
+                  <th scope="row">ご希望の確認連絡方法</th>
+                  <td id="conf-contact-method"></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p class="confirm-micro">
+              ※送信時点では<strong>【仮予約（リクエスト受付）】</strong>となります。通常24時間以内（定休日を除く1営業日以内）にスタッフよりご連絡し、お席の確保をもって<strong>【ご予約確定】</strong>となります。
+            </p>
+
+            <div class="confirm-actions">
+              <button type="button" class="btn btn--secondary" id="btn-back-to-edit">
+                <span>入力内容を修正する</span>
+              </button>
+              <button type="button" class="btn btn--primary" id="btn-final-submit">
+                <span>この内容で仮予約リクエストを送信する</span>
+                <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- ===============================================================
+               ▼ 送信完了画面（STEP 3：サンクス画面） ▼
+               =============================================================== -->
+          <div class="thanks-panel" id="thanks-panel" aria-live="polite">
+            <div class="thanks-check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M5 12.5L10 17.5L19 7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="thanks-panel__en">THANK YOU FOR YOUR REQUEST</span>
+            <h2 class="thanks-panel__title">ご予約リクエスト（仮受付）を承りました。</h2>
+            <p class="thanks-panel__lead">
+              このたびは「Trattoria SOLE」へご予約リクエストをお送りいただき、誠にありがとうございます。
+            </p>
+
+            <div class="thanks-important-box">
+              <p class="thanks-important-box__head">【重要：まだご予約は確定しておりません】</p>
+              <p>
+                本Webサイトのフォームは予約管理システムと直接連動していないため、<strong>現時点では【仮予約（リクエスト受付）】の状態となっております。</strong>
+              </p>
+              <p>
+                お送りいただいた内容と空席状況を確認のうえ、<strong>通常24時間以内（定休日を除く1営業日以内）</strong>に、店舗スタッフよりご希望のご連絡方法（メールまたはお電話）にてお返事を差し上げます。<br>
+                <strong>スタッフからのご連絡およびお席の確保をもって、正式に【ご予約確定】となります</strong>ので、今しばらくお待ちくださいませ。
+              </p>
+            </div>
+
+            <div class="thanks-summary-box">
+              <p class="thanks-summary-box__title">お受け付けしたご希望内容（控え）</p>
+              <p id="thanks-summary-content"></p>
+            </div>
+
+            <div class="thanks-contact-box">
+              <p>
+                万が一、2営業日を過ぎても店舗からの連絡が届かない場合（メールアドレスの入力誤り等の可能性がございます）や、当日・翌日のお急ぎのご予約につきましては、恐れ入りますがお電話にて直接お問い合わせください。
+              </p>
+              <p class="thanks-contact-box__tel">
+                お電話でのお問い合わせ：<a href="tel:0354540150" class="tel-num" style="color: var(--color-accent-wine); border-bottom: 1px solid var(--color-accent-gold);">03-5454-0150</a>（受付 <span class="num-en">11:00〜22:00</span> ／ 水曜・第2火曜定休）
+              </p>
+            </div>
+
+            <div class="thanks-actions">
+              <a href="index.html" class="btn btn--secondary">
+                <span>トップページへ戻る</span>
+              </a>
+              <a href="menu.html" class="btn btn--primary">
+                <span>お料理・コースをもう一度見る</span>
+                <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         3. ご予約に関するご案内・キャンセルポリシー（全5項目）
+         ★ここでキャンセル規定やドレスコード案内を編集できます
+         =================================================================== -->
+    <section class="section section--beige-soft" id="policy">
+      <div class="container">
+        <div class="section-header section-header--center fade-up">
+          <div class="section-eyebrow">
+            <span class="section-eyebrow__en">GUIDELINES &amp; POLICY</span>
+            <span class="section-eyebrow__sep" aria-hidden="true">/</span>
+            <span class="section-eyebrow__jp">ご来店のお願い</span>
+          </div>
+          <h2 class="section-title">ご予約に関するご案内・<span class="ib">キャンセルポリシー</span></h2>
+        </div>
+
+        <div class="policy-list fade-up">
+          <article class="policy-item">
+            <h3 class="policy-item__title">
+              <span class="policy-item__num num-en">01.</span>
+              <span>ドレスコードについて</span>
+            </h3>
+            <p class="policy-item__body">
+              スマートカジュアルを推奨しております。ジャケット必須などの堅苦しい規定はございません。Tシャツ・ハーフパンツ・サンダル等の極端に軽装なスタイルのみご遠慮いただき、少しおしゃれをした普段着でどうぞ気負わずお越しください。
+            </p>
+          </article>
+
+          <article class="policy-item">
+            <h3 class="policy-item__title">
+              <span class="policy-item__num num-en">02.</span>
+              <span>お子様のご同伴について</span>
+            </h3>
+            <p class="policy-item__body">
+              記念日や大切な語らいの空間をお守りするため、ディナータイムは大人と同じコースをお召し上がりいただける中学生以上のお子様よりご案内しております。ランチタイムやご家族での貸切利用につきましては、お電話にて柔軟にご相談を承ります。
+            </p>
+          </article>
+
+          <article class="policy-item">
+            <h3 class="policy-item__title">
+              <span class="policy-item__num num-en">03.</span>
+              <span>アレルギー・苦手食材のご連絡期限について</span>
+            </h3>
+            <p class="policy-item__body">
+              旬の食材をお一人様ずつ丁寧に仕込んでおりますため、アレルギーや苦手な食材がございます場合は、できる限り<strong>ご来店日の前日まで</strong>にお知らせいただけますと幸いです（当日のご申告は対応いたしかねる場合がございます）。
+            </p>
+          </article>
+
+          <article class="policy-item">
+            <h3 class="policy-item__title">
+              <span class="policy-item__num num-en">04.</span>
+              <span>記念日プレート・花束等のお預かりについて</span>
+            </h3>
+            <p class="policy-item__body">
+              特製メッセージプレートのご用意は前日までにご予約をお願いいたします。プレゼントや花束の事前お預かりも承っておりますので、ご希望の際はお気軽にご相談ください。
+            </p>
+          </article>
+
+          <article class="policy-item">
+            <h3 class="policy-item__title">
+              <span class="policy-item__num num-en">05.</span>
+              <span>キャンセル・人数変更ポリシーについて</span>
+            </h3>
+            <p class="policy-item__body">
+              ご予約日に向けて生産者から食材を取り寄せ、心を込めて仕込みを行っておりますため、ご予約のキャンセル・人数変更につきましては下記の通りキャンセル料を頂戴しております。
+            </p>
+            <div class="policy-fee-box">
+              <ul>
+                <li>・ご来店前日のキャンセル・人数減：コース料金の <strong><span class="num-en">50%</span></strong>（お席のみ予約の場合はお一人様 <span class="price-num">¥2,000</span>）</li>
+                <li>・ご来店当日のキャンセル・人数減：コース料金の <strong><span class="num-en">100%</span></strong>（お席のみ予約の場合はお一人様 <span class="price-num">¥4,000</span>）</li>
+              </ul>
+              <p>
+                ※急な体調不良ややむを得ないご事情による<strong>「別日程へのご変更」</strong>につきましては、できる限り柔軟にご相談を承りますので、分かり次第お早めにお電話（<a href="tel:0354540150" class="tel-num" style="border-bottom: 1px solid var(--color-accent-gold);">03-5454-0150</a>）にてご連絡ください。
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       共通フッター
+       ===================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <p class="footer-brand__logo">Trattoria SOLE</p>
+          <p class="footer-brand__copy">大切な日には、心に残る一皿を。</p>
+          <p class="footer-brand__desc">代々木上原の静かな街角で15年。旬の食材とイタリアワインで、心ほどけるひとときをお届けします。</p>
+          <div class="footer-info">
+            <p>〒151-0064 東京都渋谷区上原1-24-8 ソーレ代々木上原 1F（代々木上原駅 南口 徒歩3分）</p>
+            <p>TEL：<a href="tel:0354540150" class="footer-info__tel tel-num">03-5454-0150</a></p>
+            <p class="num-en">LUNCH 11:30–15:00 (L.O. 13:30) / DINNER 17:30–22:30 (L.O. 20:30)｜定休日：水曜・第2火曜</p>
+          </div>
+        </div>
+
+        <div class="footer-nav-area">
+          <nav aria-label="フッターナビゲーション">
+            <ul class="footer-nav__list">
+              <li><a href="index.html" class="footer-nav__link">HOME</a></li>
+              <li><a href="index.html#anniversary" class="footer-nav__link">ANNIVERSARY</a></li>
+              <li><a href="menu.html" class="footer-nav__link">MENU</a></li>
+              <li><a href="wine.html" class="footer-nav__link">WINE</a></li>
+              <li><a href="index.html#access" class="footer-nav__link">ACCESS</a></li>
+              <li><a href="index.html#concept" class="footer-nav__link">CONCEPT</a></li>
+              <li><a href="reservation.html" class="footer-nav__link">RESERVATION</a></li>
+            </ul>
+          </nav>
+
+          <div class="footer-sns">
+            <span class="footer-sns__label">FOLLOW US</span>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="footer-sns__link">Instagram</a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="footer-sns__link">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <small>&copy; Trattoria SOLE All Rights Reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- スマホ専用・画面下部追従（フローティング）予約バー
+       （※フォーム入力エリアが画面内にある時は js/main.js により自動で隠れて入力を邪魔しません） -->
+  <div class="floating-bar" id="floating-bar" aria-label="スマートフォン用クイック予約バー">
+    <a href="tel:0354540150" class="floating-bar__tel">
+      <span class="floating-bar__tel-sub">TEL 11:00–22:00</span>
+      <span class="floating-bar__tel-main">お電話相談</span>
+    </a>
+    <a href="#reservation-form-anchor" class="floating-bar__web">
+      <span class="floating-bar__web-sub">24H WEB RESERVATION</span>
+      <span class="floating-bar__web-main">
+        <span>予約フォームへ</span>
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M8 2.5V13.5M4 9.5L8 13.5L12 9.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
